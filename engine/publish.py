@@ -193,9 +193,16 @@ def buffer_post(job, acc):
            "dueAt": time.strftime("%Y-%m-%dT%H:%M:%S.000Z", time.gmtime(max(
                time.time() + 120, job.get("due_ts", 0)))),
            "assets": [{"video": {"url": url, "metadata": {"thumbnailOffset": 1500}}}]}
-    meta = acc.get("buffer_metadata")  # optional per-network metadata from config
+    if acc["platform"] == "youtube":
+        # Buffer schema (verified): YoutubePostMetadataInput{title, categoryId, privacy, madeForKids,
+        # notifySubscribers, embeddable, license, isAiGenerated}; category is required.
+        inp["metadata"] = {"youtube": {"title": job["title"][:100], "categoryId": "20",  # Gaming
+                                       "privacy": acc.get("privacy", "public"), "madeForKids": False,
+                                       "notifySubscribers": True, "isAiGenerated": False}}
+        inp["text"] = job["caption"][:4900]
+    meta = acc.get("buffer_metadata")  # optional per-network overrides from config
     if meta:
-        inp["metadata"] = meta
+        inp.setdefault("metadata", {}).update(meta)
     res = _gql(q, {"input": inp})["createPost"]
     if "post" not in res:
         raise RuntimeError(f"Buffer rejected post: {res.get('message')}")

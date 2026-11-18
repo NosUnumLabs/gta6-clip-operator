@@ -23,7 +23,11 @@ for name in ("CreatePostInput", "PostInputMetaData", "YoutubePostMetadataInput",
         report[name] = t(name)
     except Exception as e:
         report[name] = f"ERR {e}"
-print(json.dumps(report, indent=1)[:6000])
+post_t = report.get("Post")
+print("Post fields:", [f["name"] for f in (post_t.get("fields") or [])] if isinstance(post_t, dict) else post_t)
+for n in ("PostStatus",):
+    e = report.get(n)
+    print(n, [v["name"] for v in (e.get("enumValues") or [])] if isinstance(e, dict) else e)
 
 # find a YouTube metadata input type and its fields
 yt_type, yt_fields = None, []
@@ -63,6 +67,8 @@ if yt_type:
     meta = {}
     for k in yt_fields:
         kl = k.lower()
+        if kl == "categoryid":
+            meta[k] = "20"
         if kl in ("title",):
             meta[k] = "Vicecast engine test (will be deleted)"
         if "privacy" in kl or "visibility" in kl:
@@ -91,7 +97,9 @@ except Exception as e:
                     v[k] = v[k].upper()
     res = _gql(q, {"input": inp})["createPost"]
 print("createPost result:", res)
-pid = res.get("post", {}).get("id")
+pid = (res.get("post") or {}).get("id")
+if not pid:
+    sys.exit("createPost failed: " + str(res))
 for i in range(16):
     time.sleep(30)
     try:
