@@ -2,6 +2,9 @@ name: clip-operator
 on:
   schedule:
     - cron: "*/30 * * * *"      # every 30 min (GitHub may delay scheduled runs at busy times)
+  push:
+    branches: [main]
+    paths: ["heartbeat.txt"]   # watchdog nudge if GitHub's scheduler stalls
   workflow_dispatch:
     inputs:
       live: {description: "Post for real", default: "true"}
