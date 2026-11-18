@@ -1,0 +1,25 @@
+name: buffer-post-test
+# Posts a neutral test-pattern video through Buffer to verify the posting path. Delete it afterwards.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["buffertest_request.txt"]
+permissions: {contents: write}
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with: {python-version: "3.12"}
+      - run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-dejavu-core >/dev/null
+          pip install -q requests pyyaml numpy
+      - name: Post test
+        env:
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+          YT_MAIN_BUFFER_CHANNEL_ID: ${{ secrets.YT_MAIN_BUFFER_CHANNEL_ID }}
+          GH_TOKEN: ${{ github.token }}
+        run: python3 buffertest.py

@@ -219,3 +219,24 @@ def buffer_post_info(post_id):
                   if str(m.get("name", "")).lower() in ("views", "video views", "plays")), None)
     base["views"] = views
     return base
+
+
+def draft_upload(tag, path):
+    """Upload to a DRAFT release: visible only to people with push access (private review)."""
+    import subprocess
+    repo = os.environ["GITHUB_REPOSITORY"]
+    if subprocess.run(["gh", "release", "view", tag, "-R", repo], capture_output=True).returncode != 0:
+        subprocess.run(["gh", "release", "create", tag, "-R", repo, "--draft", "-t", tag,
+                        "-n", "Private review assets (auto)"], check=True, capture_output=True)
+    subprocess.run(["gh", "release", "upload", tag, str(path), "-R", repo, "--clobber"],
+                   check=True, capture_output=True)
+    return f"draft:{tag}/{Path(path).name}"
+
+
+def draft_download(ref, dest_dir):
+    import subprocess
+    tag, name = ref[len("draft:"):].split("/", 1)
+    repo = os.environ["GITHUB_REPOSITORY"]
+    subprocess.run(["gh", "release", "download", tag, "-R", repo, "-p", name, "-D", str(dest_dir),
+                    "--clobber"], check=True, capture_output=True)
+    return Path(dest_dir) / name
