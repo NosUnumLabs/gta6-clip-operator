@@ -77,11 +77,14 @@ def render_clip(src, clip, account, hook, out_path, cfg, seed=None, ass_path=Non
     size = style.get("size", 64)
     color = style.get("color", "white")
     box = style.get("box", "black@0.55")
-    hook_tf = _textfile(_wrap(hook.upper() if rng.random() < 0.5 else hook))
+    lines = _wrap(hook.upper() if rng.random() < 0.5 else hook).split("\n")
     hs = r.get("hook_seconds", 2.5)
-    draws = [f"drawtext=fontfile={font}:textfile={hook_tf}:fontsize={size}:fontcolor={color}:"
-             f"box=1:boxcolor={box}:boxborderw=24:line_spacing=10:x=(w-text_w)/2:y={hook_y}:"
-             f"enable='lt(t,{hs})'"]
+    line_h = int(size * 1.35)
+    draws = []
+    for i, ln in enumerate(lines):
+        y = f"({hook_y})-{(len(lines) - 1) * line_h // 2}+{i * line_h}"
+        draws.append(f"drawtext=fontfile={font}:textfile={_textfile(ln)}:fontsize={size}:fontcolor={color}:"
+                     f"box=1:boxcolor={box}:boxborderw=18:x=(w-text_w)/2:y={y}:enable='lt(t,{hs})'")
     disc = disclosure or r.get("disclosure_text") or account.get("disclosure_text", "")
     if disc:
         draws.append(f"drawtext=fontfile={font}:textfile={_textfile(disc)}:fontsize=40:"

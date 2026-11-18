@@ -14,7 +14,8 @@ def transcribe(path, model_size="base"):
     LAST_PROB = None
     try:
         from faster_whisper import WhisperModel
-    except Exception:
+    except Exception as e:
+        print(f"[captions] faster-whisper import failed: {e!r}")
         return None
     try:
         if _MODEL is None:
@@ -26,8 +27,12 @@ def transcribe(path, model_size="base"):
                 words.append((float(w.start), float(w.end), w.word.strip()))
                 probs.append(float(getattr(w, "probability", 0.8) or 0.8))
         LAST_PROB = sum(probs) / len(probs) if probs else None
+        print(f"[captions] {len(words)} words transcribed from {Path(path).name}")
         return words
-    except Exception:
+    except Exception as e:
+        import traceback
+        print(f"[captions] transcription failed: {e!r}")
+        traceback.print_exc()
         return None
 
 
