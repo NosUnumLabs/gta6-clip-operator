@@ -167,6 +167,17 @@ def main():
             learner.save(L)
         except Exception as e:
             ok = False; print("YOUTUBE API FAIL", str(e)[:300])
+        from engine import sources
+        for c in cfg["campaigns"]:
+            if not c.get("active", True):
+                continue
+            for src in c.get("sources", []):
+                try:
+                    vs = sources.list_vods(src["url"], limit=3)
+                    print(f"SOURCE OK   {c['id']:<22} {src['url']} -> {len(vs)} items; newest: "
+                          f"{(vs[0]['title'][:50] + ' ' + vs[0].get('date','')) if vs else '-'}")
+                except Exception as e:
+                    print(f"SOURCE FAIL {c['id']:<22} {src['url']}: {str(e)[:200]}")
         for k in ("BUFFER_API_KEY", "YT_API_KEY", "YT_MAIN_BUFFER_CHANNEL_ID", "TT_MAIN_BUFFER_CHANNEL_ID"):
             print(f"{k:<28} {'set' if os.environ.get(k) else 'MISSING'}")
         raise SystemExit(0 if ok else 1)

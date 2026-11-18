@@ -34,8 +34,27 @@ def _ytdlp():
     return exe
 
 
+def _kick_vods(slug, limit):
+    import requests
+    r = requests.get(f"https://kick.com/api/v2/channels/{slug}/videos",
+                     headers={"User-Agent": "Mozilla/5.0", "Accept": "application/json"}, timeout=30)
+    r.raise_for_status()
+    out = []
+    for v in r.json()[:limit]:
+        vid = (v.get("video") or {}).get("uuid") or v.get("uuid")
+        if not vid or v.get("is_live"):
+            continue  # brief: use the VOD only after the full stream ends
+        out.append({"id": f"kick:{vid}", "url": f"https://kick.com/{slug}/videos/{vid}",
+                    "title": v.get("session_title") or "", "duration": (v.get("duration") or 0) / 1000,
+                    "date": (v.get("start_time") or v.get("created_at") or "")[:10]})
+    return out
+
+
 def list_vods(url, limit=5):
-    """Return [{id, url, title, duration}] newest first. Local paths are listed directly."""
+    """Return [{id, url, title, duration, date}] newest first. Local paths are listed directly."""
+    m = re.match(r"https?://(www\.)?kick\.com/([^/]+)/videos/?$", url)
+    if m:
+        return _kick_vods(m.group(2), limit)
     p = Path(url)
     if p.exists():
         files = [p] if p.is_file() else sorted(p.glob("*.mp4")) + sorted(p.glob("*.mkv"))
@@ -51,9 +70,13 @@ def list_vods(url, limit=5):
     for e in entries:
         if not e:
             continue
+        if e.get("live_status") in ("is_live", "is_upcoming"):
+            continue
+        d = e.get("upload_date") or ""
         out.append({"id": f"{e.get('ie_key') or e.get('extractor_key','')}:{e.get('id')}",
                     "url": e.get("url") or e.get("webpage_url"),
-                    "title": e.get("title") or "", "duration": e.get("duration")})
+                    "title": e.get("title") or "", "duration": e.get("duration"),
+                    "date": f"{d[:4]}-{d[4:6]}-{d[6:8]}" if len(d) == 8 else ""})
     return out
 
 
@@ -64,6 +87,13 @@ def new_vods(campaign, limit=3):
         try:
             for v in list_vods(src["url"], limit=limit):
                 if v["id"] in s["processed"]:
+                    continue
+                must = [w.lower() for w in src.get("title_must_contain", [])]
+                if must and not any(w in (v.get("title") or "").lower() for w in must):
+                    continue
+                if src.get("date_from") and v.get("date") and v["date"] < src["date_from"]:
+                    continue
+                if src.get("date_to") and v.get("date") and v["date"] > src["date_to"]:
                     continue
                 v["streamer"] = src.get("name", "")
                 v["campaign_id"] = campaign["id"]

@@ -20,7 +20,17 @@ from .publish import publish, buffer_post_info
 
 
 def _campaigns(cfg):
-    return [c for c in cfg["campaigns"] if c.get("active", True) and c.get("sources")]
+    now = dt.datetime.now().astimezone()
+    out = []
+    for c in cfg["campaigns"]:
+        if not (c.get("active", True) and c.get("sources")):
+            continue
+        if c.get("start_at") and now < dt.datetime.fromisoformat(c["start_at"]):
+            continue
+        if c.get("end_at") and now > dt.datetime.fromisoformat(c["end_at"]):
+            continue
+        out.append(c)
+    return out
 
 
 def _history_hashes(cfg, L):
@@ -82,7 +92,7 @@ def produce(cfg, L, max_vods=2, per_vod=6):
 def _render_job(cfg, L, camp, acc, vod, sec, clip, insp, tag):
     lane = acc.get("lane", "streamer")
     hid = learner.choose(L, "hook", hook_ids(lane))
-    streamer = vod.get("streamer", "")
+    streamer = camp.get("streamer") or vod.get("streamer", "")
     hook = hook_text(lane, hid, streamer)
     ass = None
     words = captions.transcribe(sec) if cfg.get("captions", {}).get("enabled", True) else None
@@ -103,6 +113,7 @@ def _render_job(cfg, L, camp, acc, vod, sec, clip, insp, tag):
     return {
         "id": tag, "account_id": acc["id"], "platform": acc["platform"], "campaign_id": camp["id"],
         "campaign_url": camp.get("url", ""), "submit_within_min": camp.get("submit_within_min", 0),
+        "after_post_note": camp.get("after_post_note", ""),
         "source": vod["url"], "vod_title": vod.get("title", ""), "streamer": streamer,
         "rights_ok": True,  # only campaign-named sources reach this point
         "highlight": clip, "render": meta, "file": str(out), "hook": hook, "hook_id": hid,
@@ -161,14 +172,26 @@ def post_due(cfg, L, live):
     """Hand every scheduled clip to Buffer with its exact publish time, and pre-schedule
     the 'submit now' push for that moment. Cron delays therefore never make a post late."""
     n = 0
+    horizon = time.time() + 35 * 60  # hand off only what goes live before the next run
     for p in pipeline.list_jobs(cfg, "approved"):
         job = read_json(p)
         if not job.get("scheduled_for"):
             continue
-        if not Path(job["file"]).exists() and not job.get("media_url"):
+        if live and not job.get("media_url") and Path(job["file"]).exists():
+            try:  # park the render online now; runners are wiped between cycles
+                from .publish import host_media
+                job["media_url"] = host_media(job["file"])
+                write_json(p, job)
+            except Exception as e:
+                log(cfg, f"[media] hosting failed {job['id']}: {e}")
+        if dt.datetime.fromisoformat(job["scheduled_for"]).timestamp() > horizon:
+            continue
+        if not live and not Path(job["file"]).exists():
+            continue
+        if live and not Path(job["file"]).exists() and not job.get("media_url"):
             job["status"] = "rejected"; job["reject_reasons"] = ["render lost before hand-off"]
             write_json(Path(cfg["paths"]["queue"], "rejected", p.name), job); p.unlink(); continue
-        due = dt.datetime.fromisoformat(job["scheduled_for"]).timestamp()
+        due = max(time.time() + 120, dt.datetime.fromisoformat(job["scheduled_for"]).timestamp())
         job["due_ts"] = due
         try:
             res = publish(job, cfg, live=live)
@@ -183,9 +206,10 @@ def post_due(cfg, L, live):
             acc = next(a for a in cfg["accounts"] if a["id"] == job["account_id"])
             if job.get("campaign_url"):
                 chan = acc.get("channel_url") or f"https://www.youtube.com/{acc['handle']}/shorts"
-                notify.push(f"SUBMIT NOW ({job.get('submit_within_min') or 30} min): {job['campaign_id']}",
-                            f"New clip just went live: \"{job['hook']}\"\n1) Copy its link from your "
-                            f"channel: {chan}\n2) Tap this alert -> campaign -> Submit Video.",
+                extra = ("\n3) " + job["after_post_note"]) if job.get("after_post_note") else ""
+                notify.push(f"SUBMIT within {job.get('submit_within_min') or 30} min: {job['campaign_id']}",
+                            f"New clip going live: \"{job['hook']}\"\n1) Copy its link from your "
+                            f"channel: {chan}\n2) Open the campaign -> Submit clip -> paste.{extra}",
                             url=job["campaign_url"], priority="high", tags="moneybag", at=due + 150)
             log(cfg, f"[post LIVE] {job['account_id']} queued in Buffer for {job['scheduled_for']}")
         except Exception as e:
