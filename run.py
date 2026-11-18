@@ -176,6 +176,16 @@ def main():
                     vs = sources.list_vods(src["url"], limit=3)
                     print(f"SOURCE OK   {c['id']:<22} {src['url']} -> {len(vs)} items; newest: "
                           f"{(vs[0]['title'][:50] + ' ' + vs[0].get('date','')) if vs else '-'}")
+                    if vs:
+                        import tempfile, pathlib
+                        wd = tempfile.mkdtemp()
+                        try:
+                            f = sources.fetch_section(vs[0], 60, 70, wd, "dltest")
+                            print(f"DOWNLOAD OK {c['id']:<22} 10s section, {pathlib.Path(f).stat().st_size//1024} KB")
+                        except Exception as e:
+                            err = getattr(e, "stderr", b"") or b""
+                            err = err.decode(errors="ignore") if isinstance(err, bytes) else str(err)
+                            print(f"DOWNLOAD FAIL {c['id']:<22} {(err or str(e))[-300:]}")
                 except Exception as e:
                     print(f"SOURCE FAIL {c['id']:<22} {src['url']}: {str(e)[:200]}")
         for k in ("BUFFER_API_KEY", "YT_API_KEY", "YT_MAIN_BUFFER_CHANNEL_ID", "TT_MAIN_BUFFER_CHANNEL_ID"):
