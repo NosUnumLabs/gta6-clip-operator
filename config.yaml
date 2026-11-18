@@ -1,0 +1,87 @@
+# GTA 6 Clip Engine — configuration (autonomous mode)
+# Secrets live in GitHub Actions secrets / .env, never here.
+
+project:
+  game: "GTA 6"
+  launch_date: "2026-11-19"
+  spoiler_lock_until: "2026-12-10"
+  require_human_review: false     # autoreview agent decides (hard gates + learned ranking)
+  timezone: "America/Chicago"
+
+paths:
+  input: "input"
+  output: "output"
+  queue: "queue"
+  logs: "logs"
+  font: "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"   # auto-falls back if missing
+
+detection:
+  min_clip_s: 20          # research: 20-45 s is the streamer-clip sweet spot on Shorts
+  max_clip_s: 45
+  pre_roll_s: 9           # setup before the spike (2-4 s setup + the build)
+  post_roll_s: 12         # payoff + reaction; ends on the reaction
+  top_n_per_source: 10
+  loudness_weight: 0.7    # streamer yelling / laughing is the main signal on VOD audio
+  scene_weight: 0.3       # (only used when video is analysed)
+  chat_weight: 0.8        # Twitch chat bursts, shifted back ~25 s
+  min_gap_s: 45
+
+render:
+  width: 1080
+  height: 1920
+  layout: "blurfill"      # whole stream frame (incl. facecam) over a blurred fill
+  facecam_box: [0, 0, 0.30, 0.30]
+  hook_seconds: 2.5
+  crf: 21
+  preset: "veryfast"
+  audio_mode: "keep"      # streamer voice is the content; see README for music risk
+  replacement_audio: ""
+  disclosure_text: ""
+
+captions:
+  enabled: true           # faster-whisper on the runner; skipped silently if unavailable
+  font_name: "DejaVu Sans"
+
+autoreview:
+  min_highlight_score: 1.2     # z-score floor: no filler clips
+  max_letterbox_ratio: 0.5     # >=50% letterboxed frames => cutscene => reject
+  max_dup_distance: 10         # dHash bits; below = near-duplicate of an earlier clip
+  min_value: 0.12              # learner value floor
+  stale_hours: 18              # unapproved candidates older than this are dropped
+  days_ahead: 1
+  max_vods_per_cycle: 2
+  candidates_per_vod: 6
+
+accounts:
+  - id: "yt_main"
+    platform: "youtube"
+    via: "buffer"
+    handle: "@metamanarmor4675"
+    lane: "streamer"
+    caption_style: {color: "white", box: "black@0.6", size: 66}
+    hashtags: ["#gta6", "#gtavi", "#shorts", "#gaming"]
+    daily_max: 4
+    windows: ["11:00-13:30", "16:30-19:00", "20:00-23:30"]
+  # Add when ready (Buffer free plan allows 3 channels):
+  # - {id: "tt_main", platform: "tiktok", via: "buffer", handle: "@TBD", lane: "streamer",
+  #    hashtags: ["#gta6","#gtavi","#fyp"], daily_max: 4, windows: ["12:00-14:00","18:00-23:00"],
+  #    caption_style: {color: "white", box: "black@0.6", size: 66}}
+
+campaigns:
+  # Only sources listed under an ACTIVE campaign are ever clipped (rights gate).
+  # Paste each campaign you join; the operator handles the rest.
+  - id: "example_streamer_campaign"
+    active: false                      # flip to true once joined
+    name: "Streamer X — GTA 6 launch clipping"
+    url: "https://contentrewards.com/"  # campaign page (opened from the 'submit now' push)
+    platforms: ["youtube"]
+    rate_per_1k: 1.0
+    cap_per_clip: 150
+    submit_within_min: 30
+    disclosure_required: true
+    disclosure_text: "#ad  Paid clip"
+    required_hashtags: []
+    caption_suffix: "Follow @streamer on Kick"
+    title_blocklist: ["ending", "finale", "final mission"]
+    sources:
+      - {name: "StreamerX", url: "https://www.twitch.tv/streamerx/videos?filter=archives"}

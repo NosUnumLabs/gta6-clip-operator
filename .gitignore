@@ -1,0 +1,6 @@
+output/*.mp4
+output/*.ass
+input/*
+!input/.keep
+.env
+__pycache__/

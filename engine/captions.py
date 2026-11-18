@@ -1,0 +1,60 @@
+"""Word-synced burned-in captions (most Shorts are watched muted).
+
+Uses faster-whisper when it is installed (the GitHub runner installs it); if it
+is missing or fails, clips render without captions rather than failing.
+"""
+from pathlib import Path
+
+_MODEL = None
+
+
+def transcribe(path, model_size="base"):
+    global _MODEL
+    try:
+        from faster_whisper import WhisperModel
+    except Exception:
+        return None
+    try:
+        if _MODEL is None:
+            _MODEL = WhisperModel(model_size, device="cpu", compute_type="int8")
+        segs, _ = _MODEL.transcribe(str(path), word_timestamps=True, vad_filter=True)
+        words = []
+        for s in segs:
+            for w in (s.words or []):
+                words.append((float(w.start), float(w.end), w.word.strip()))
+        return words
+    except Exception:
+        return None
+
+
+def _ts(t):
+    h, rem = divmod(max(0.0, t), 3600)
+    m, s = divmod(rem, 60)
+    return f"{int(h)}:{int(m):02d}:{s:05.2f}"
+
+
+def write_ass(words, out_path, width=1080, height=1920, font="Poppins", size=78,
+              color="&H00FFFFFF", highlight="&H0000E5FF", per_line=3, y_frac=0.70):
+    """Groups words 3 at a time; the spoken word is highlighted (karaoke style)."""
+    hdr = f"""[Script Info]
+ScriptType: v4.00+
+PlayResX: {width}
+PlayResY: {height}
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Cap,{font},{size},{color},{color},&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,6,2,2,60,60,{int(height*(1-y_frac))},1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+"""
+    lines = []
+    for i in range(0, len(words), per_line):
+        grp = words[i:i + per_line]
+        for j, (ws, we, _) in enumerate(grp):
+            end = grp[j + 1][0] if j + 1 < len(grp) else we
+            txt = " ".join((r"{\c" + highlight + "}" + w.upper() + r"{\c" + color + "}") if k == j
+                           else w.upper() for k, (_, _, w) in enumerate(grp))
+            lines.append(f"Dialogue: 0,{_ts(ws)},{_ts(max(end, ws + 0.05))},Cap,,0,0,0,,{txt}")
+    Path(out_path).write_text(hdr + "\n".join(lines) + "\n")
+    return out_path
