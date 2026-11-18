@@ -127,7 +127,10 @@ campaigns:
     url: https://www.youtube.com/@Tomovids/streams
     title_must_contain:
     - gta
+    date_from: '2026-11-19'
   - name: Tomo
     url: https://www.youtube.com/@Tomovids/videos
     title_must_contain:
     - gta
+    date_from: '2026-11-19'
+  start_at: '2026-11-18T23:00:00-06:00'
