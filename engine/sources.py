@@ -45,6 +45,7 @@ def _kick_vods(slug, limit):
         if not vid or v.get("is_live"):
             continue  # brief: use the VOD only after the full stream ends
         out.append({"id": f"kick:{vid}", "url": f"https://kick.com/{slug}/videos/{vid}",
+                    "hls": v.get("source") or (v.get("video") or {}).get("source") or "",
                     "title": v.get("session_title") or "", "duration": (v.get("duration") or 0) / 1000,
                     "date": (v.get("start_time") or v.get("created_at") or "")[:10]})
     return out
@@ -111,10 +112,19 @@ def mark_processed(vod_id):
     _save(s)
 
 
+def _ff(args, timeout):
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-user_agent", "Mozilla/5.0"] + args,
+                   check=True, timeout=timeout, capture_output=True)
+
+
 def fetch_audio(vod, workdir):
     """Audio-only copy for detection. Local files are used as-is."""
     if Path(vod["url"]).exists():
         return Path(vod["url"])
+    if vod.get("hls"):  # Kick: read the VOD playlist directly
+        out = Path(workdir) / "audio.m4a"
+        _ff(["-i", vod["hls"], "-vn", "-ac", "1", "-ar", "16000", "-c:a", "aac", "-b:a", "48k", str(out)], 3 * 3600)
+        return out
     out = Path(workdir) / (re.sub(r"[^A-Za-z0-9_-]", "_", vod["id"])[:60] + ".m4a")
     subprocess.run([_ytdlp(), "-f", "ba[ext=m4a]/ba/b", "-o", str(out), "--no-part",
                     "--retries", "5", vod["url"]], check=True, timeout=3600,
@@ -130,6 +140,10 @@ def fetch_audio(vod, workdir):
 def fetch_section(vod, start, end, workdir, tag):
     """Video for one highlight window. Local files are cut with ffmpeg."""
     out = Path(workdir) / f"{tag}.mp4"
+    if vod.get("hls"):
+        _ff(["-ss", f"{start:.2f}", "-i", vod["hls"], "-t", f"{end - start:.2f}",
+             "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-c:a", "aac", str(out)], 1800)
+        return out
     if Path(vod["url"]).exists():
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{start:.2f}", "-to", f"{end:.2f}",
                         "-i", vod["url"], "-c:v", "libx264", "-preset", "ultrafast", "-crf", "18",

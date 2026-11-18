@@ -1,5 +1,5 @@
 numpy
 pyyaml
 requests
-yt-dlp[default]
+yt-dlp[default,curl-cffi]
 faster-whisper
