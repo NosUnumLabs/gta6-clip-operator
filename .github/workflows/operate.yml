@@ -22,6 +22,14 @@ jobs:
       - name: Cache whisper model
         uses: actions/cache@v4
         with: {path: ~/.cache/huggingface, key: whisper-base-v1}
+      - name: Health check (manual runs only)
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+          YT_MAIN_BUFFER_CHANNEL_ID: ${{ secrets.YT_MAIN_BUFFER_CHANNEL_ID }}
+          TT_MAIN_BUFFER_CHANNEL_ID: ${{ secrets.TT_MAIN_BUFFER_CHANNEL_ID }}
+        run: python3 run.py doctor
       - name: Operate
         env:
           BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}

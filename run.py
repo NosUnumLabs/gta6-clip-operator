@@ -107,6 +107,7 @@ def main():
     a = sp.add_parser("cycle"); a.add_argument("--live", action="store_true")
     sp.add_parser("buffer-setup")
     sp.add_parser("brain")
+    sp.add_parser("doctor")
     args = ap.parse_args()
     cfg = load_config()
 
@@ -147,6 +148,28 @@ def main():
     elif args.cmd == "buffer-setup":
         from engine.publish import buffer_setup
         print(json.dumps(buffer_setup(), indent=2))
+    elif args.cmd == "doctor":
+        import os
+        from engine.publish import buffer_setup
+        from engine import learner
+        ok = True
+        try:
+            orgs = buffer_setup()
+            for o in orgs:
+                for c in o["channels"]:
+                    print(f"BUFFER OK  channel {c['service']:<10} {c['name']:<28} id={c['id']}")
+        except Exception as e:
+            ok = False; print("BUFFER FAIL", str(e)[:300])
+        try:
+            L = learner.load(); L["last_scan"] = 0
+            r = learner.market_scan(L, os.environ.get("YT_API_KEY"))
+            print("YOUTUBE API OK  top GTA 6 shorts scanned:", r)
+            learner.save(L)
+        except Exception as e:
+            ok = False; print("YOUTUBE API FAIL", str(e)[:300])
+        for k in ("BUFFER_API_KEY", "YT_API_KEY", "YT_MAIN_BUFFER_CHANNEL_ID", "TT_MAIN_BUFFER_CHANNEL_ID"):
+            print(f"{k:<28} {'set' if os.environ.get(k) else 'MISSING'}")
+        raise SystemExit(0 if ok else 1)
     elif args.cmd == "brain":
         from engine import learner
         L = learner.load()
