@@ -194,6 +194,16 @@ def _render_job(cfg, L, camp, acc, vod, sec, clip, insp, tag):
     return job
 
 
+def _reviewed_count(cfg, camp_id):
+    n = 0
+    for state in ("approved", "posted"):
+        for p in pipeline.list_jobs(cfg, state):
+            j = read_json(p)
+            if j["campaign_id"] == camp_id and j.get("approved_by") == "reviewer":
+                n += 1
+    return n + len([1 for p in pipeline.list_jobs(cfg, "review") if read_json(p)["campaign_id"] == camp_id])
+
+
 def auto_approve(cfg, L):
     """Rank pending clips by learner value; approve up to each account's free capacity."""
     tz = ZoneInfo(cfg["project"]["timezone"])
@@ -220,6 +230,20 @@ def auto_approve(cfg, L):
         acc = next(a for a in cfg["accounts"] if a["id"] == j["account_id"])
         cap = acc["daily_max"] * (cfg["autoreview"].get("days_ahead", 1) + 1)
         if used.get(acc["id"], 0) < cap and val >= cfg["autoreview"]["min_value"]:
+            need_review = _reviewed_count(cfg, j["campaign_id"]) < cfg.get("quality", {}).get("review_first_n", 0)
+            if need_review and os.environ.get("GITHUB_REPOSITORY"):
+                # launch-day safety: first clips of each campaign wait for a reviewer
+                from .publish import draft_upload
+                try:
+                    j["review_asset"] = draft_upload("review-queue", j["file"])
+                    j["status"] = "review"
+                    write_json(Path(cfg["paths"]["queue"], "review", p.name), j)
+                    p.unlink()
+                    notify.push(f"Clip waiting for review: {j['campaign_id']}", j["title"], priority="low")
+                except Exception as e:
+                    log(cfg, f"[review] upload failed {j['id']}: {e}")
+                used[acc["id"]] = used.get(acc["id"], 0) + 1
+                continue
             j["status"] = "approved"
             j["approved_by"] = "autoreview"
             write_json(Path(cfg["paths"]["queue"], "approved", p.name), j)
@@ -255,6 +279,14 @@ def post_due(cfg, L, live):
                 log(cfg, f"[media] hosting failed {job['id']}: {e}")
         if dt.datetime.fromisoformat(job["scheduled_for"]).timestamp() > horizon:
             continue
+        if not Path(job["file"]).exists() and job.get("review_asset") and live:
+            try:  # reviewed clip: fetch its render back from the private draft release
+                from .publish import draft_download
+                got = draft_download(job["review_asset"], cfg["paths"]["output"])
+                job["file"] = str(got)
+                write_json(p, job)
+            except Exception as e:
+                log(cfg, f"[review] fetch failed {job['id']}: {e}")
         if not live and not Path(job["file"]).exists():
             continue
         if live and not Path(job["file"]).exists() and not job.get("media_url"):

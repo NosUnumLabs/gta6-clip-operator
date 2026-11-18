@@ -17,7 +17,7 @@ def load_config(path=None):
     for k, v in cfg["paths"].items():
         if k != "font" and not os.path.isabs(v):
             cfg["paths"][k] = str(ROOT / v)
-    for sub in ("pending", "approved", "rejected", "posted"):
+    for sub in ("pending", "review", "approved", "rejected", "posted"):
         Path(cfg["paths"]["queue"], sub).mkdir(parents=True, exist_ok=True)
     for k in ("input", "output", "logs"):
         Path(cfg["paths"][k]).mkdir(parents=True, exist_ok=True)
