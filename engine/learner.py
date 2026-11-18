@@ -71,7 +71,8 @@ def expected_value(s, job, rng=random):
     for k in keys:
         p *= sample(s, k, rng)
     strength = 1 / (1 + math.exp(-(job["highlight"]["score"] - 1.5)))  # detection confidence
-    return p ** (1 / len(keys)) * (0.5 + strength)
+    quality = job.get("quality", 0.6)
+    return p ** (1 / len(keys)) * (0.5 + strength) * (0.5 + quality)
 
 
 def record_outcome(s, job, views48):
@@ -82,7 +83,8 @@ def record_outcome(s, job, views48):
     win = views48 > med if len(s["views"]) >= 5 else views48 >= 1000
     hour = int(job.get("scheduled_for", "T12")[11:13] or 12)
     for k in (f"hook:{job['hook_id']}", f"dur:{bucket(job['render']['duration'])}",
-              f"src:{job.get('streamer') or 'unknown'}", f"slot:{slot(hour)}"):
+              f"src:{job.get('streamer') or 'unknown'}", f"slot:{slot(hour)}",
+              f"hookkind:{job.get('hook_kind', 'template')}"):
         a = _arm(s, k)
         a[0 if win else 1] += 1
     return win

@@ -104,3 +104,21 @@ def render_clip(src, clip, account, hook, out_path, cfg, seed=None, ass_path=Non
             "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", str(out_path)])
     run(cmd)
     return {"start": round(start, 2), "duration": round(dur, 2), "zoom": round(zoom, 3)}
+
+
+def assemble(src, segs, out_path, cold_open=None):
+    """Cut `src` down to `segs` (jump cuts over dead air). If `cold_open=(a, b)`, that slice
+    (the payoff) plays first as a 1-2 s flash-forward hook, then the clip from its setup."""
+    parts = ([cold_open] if cold_open else []) + list(segs)
+    fc, n = [], 0
+    for i, (a, b) in enumerate(parts):
+        fc.append(f"[0:v]trim=start={a:.3f}:end={b:.3f},setpts=PTS-STARTPTS,fps=30,format=yuv420p[v{i}]")
+        fc.append(f"[0:a]atrim=start={a:.3f}:end={b:.3f},asetpts=PTS-STARTPTS,"
+                  f"afade=t=in:d=0.03,afade=t=out:st={max(0.0, b - a - 0.04):.3f}:d=0.04[a{i}]")
+        n += 1
+    fc.append("".join(f"[v{i}][a{i}]" for i in range(n)) + f"concat=n={n}:v=1:a=1[v][a]")
+    run(["ffmpeg", "-y", "-v", "error", "-i", str(src), "-filter_complex", ";".join(fc),
+         "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-preset", "veryfast", "-crf", "16",
+         "-c:a", "aac", "-b:a", "192k", str(out_path)])
+    cold_len = (cold_open[1] - cold_open[0]) if cold_open else 0.0
+    return out_path, round(cold_len, 3), round(sum(b - a for a, b in parts), 3)

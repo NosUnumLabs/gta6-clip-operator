@@ -12,7 +12,8 @@ import datetime as dt, json, os, random, shutil, tempfile, time
 from pathlib import Path
 from zoneinfo import ZoneInfo
 from .util import write_json, read_json, log, new_id
-from . import sources, autoreview, learner, pipeline, captions, notify
+from . import sources, autoreview, learner, pipeline, captions, notify, edit, compliance
+from .render import assemble
 from .detect import find_highlights
 from .render import render_clip
 from .hooks import hook_ids, hook_text, caption
@@ -21,9 +22,12 @@ from .publish import publish, buffer_post_info
 
 def _campaigns(cfg):
     now = dt.datetime.now().astimezone()
+    kind = os.environ.get("RUNNER_KIND", "cloud")
     out = []
     for c in cfg["campaigns"]:
         if not (c.get("active", True) and c.get("sources")):
+            continue
+        if c.get("runner", "cloud") != kind:
             continue
         if c.get("start_at") and now < dt.datetime.fromisoformat(c["start_at"]):
             continue
@@ -63,11 +67,12 @@ def produce(cfg, L, max_vods=2, per_vod=6):
                         s0 = max(0.0, c["start"] - pad)
                         sec = sources.fetch_section(vod, s0, c["end"] + pad, work, tag)
                         local = {"start": c["start"] - s0, "end": c["end"] - s0,
-                                 "score": c["score"], "peak": c["peak"]}
+                                 "score": c["score"], "peak": c["peak"], "peak_rel": c["peak"] - s0}
                         insp = autoreview.inspect(sec, cfg)
                         acc = accounts[made % len(accounts)]
                         job = _render_job(cfg, L, camp, acc, vod, sec, local, insp, tag)
                         reasons = autoreview.gates(job, insp, cfg, _history_hashes(cfg, L), camp)
+                        reasons += job.pop("_compliance_fail", [])
                         if reasons:
                             job["status"] = "rejected"
                             job["reject_reasons"] = reasons
@@ -89,40 +94,104 @@ def produce(cfg, L, max_vods=2, per_vod=6):
     return made
 
 
+def _loud_fn(path):
+    """Returns loud(t0, t1): True if that stretch has notable game audio (keep, don't cut)."""
+    import numpy as np
+    from .detect import _audio_curve, WIN
+    from .util import probe_duration
+    curve = _audio_curve(path, probe_duration(path))
+    base = float(np.median(curve))
+
+    def loud(t0, t1):
+        i0, i1 = int(t0 / WIN), max(int(t0 / WIN) + 1, int(t1 / WIN))
+        seg = curve[i0:i1]
+        return len(seg) > 0 and float(np.max(seg)) > base + 8
+    return loud
+
+
+def _posted_today(cfg, camp_id):
+    today = dt.date.today().isoformat()
+    n = 0
+    for state in ("approved", "posted"):
+        for p in pipeline.list_jobs(cfg, state):
+            j = read_json(p)
+            if j["campaign_id"] == camp_id and (j.get("scheduled_for") or j.get("posted_at") or "")[:10] == today:
+                n += 1
+    return n
+
+
 def _render_job(cfg, L, camp, acc, vod, sec, clip, insp, tag):
     lane = acc.get("lane", "streamer")
-    hid = learner.choose(L, "hook", hook_ids(lane))
+    q = cfg.get("quality", {})
     streamer = camp.get("streamer") or vod.get("streamer", "")
-    hook = hook_text(lane, hid, streamer)
-    ass = None
     words = captions.transcribe(sec) if cfg.get("captions", {}).get("enabled", True) else None
-    if words:
-        rel = [(s - clip["start"], e - clip["start"], w) for s, e, w in words
-               if clip["start"] <= s < clip["end"]]
-        if rel:
-            ass = Path(cfg["paths"]["output"], f"{tag}.ass")
-            captions.write_ass(rel, ass, font=cfg.get("captions", {}).get("font_name", "DejaVu Sans"))
+    words = words or []
+    prob = captions.LAST_PROB
+    transcript = " ".join(w[2] for w in words)
+
+    # 1) editorial boundaries: start on a sentence, end after the reaction
+    lo = camp.get("min_clip_s", q.get("min_clip_s", 15))
+    hi = camp.get("max_clip_s", q.get("max_clip_s", 60))
+    s, e = edit.snap_bounds(words, clip["start"], clip["end"], clip["peak_rel"], lo, hi - 2)
+    # 2) pacing: jump-cut dead air, keep loud game moments
+    segs = edit.keep_segments(words, s, e, loud=_loud_fn(sec)) if q.get("trim_dead_air", True) else [(s, e)]
+    # 3) cold open: flash the payoff first when the setup is long
+    cold = None
+    if q.get("cold_open", True) and clip["peak_rel"] - s > 6:
+        cold = (max(s, clip["peak_rel"] - 0.5), min(e, clip["peak_rel"] + 1.2))
+    edited = Path(cfg["paths"]["output"], f"{tag}_edit.mp4")
+    edited, cold_len, total = assemble(sec, segs, edited, cold_open=cold)
+    cut_words = [(a + cold_len, b + cold_len, w) for a, b, w in edit.remap(words, segs)]
+
+    # 4) accurate hook/title: the streamer's own words when available
+    quote = edit.pick_quote([w for w in words if s <= w[0] <= e], clip["peak_rel"])
+    kinds = ["quote", "template"] if quote else ["template"]
+    kind = learner.choose(L, "hookkind", kinds)
+    if kind == "quote":
+        hid, hook = "quote", f"“{quote}”"
+        title = f"{streamer}: “{quote}” | GTA 6" if streamer else f"“{quote}” | GTA 6"
+    else:
+        hid = learner.choose(L, "hook", hook_ids(lane))
+        hook = hook_text(lane, hid, streamer)
+        title = hook + " | GTA 6"
+
+    # 5) clean word-synced captions (masked strong language)
+    ass = None
+    if cut_words:
+        ass = Path(cfg["paths"]["output"], f"{tag}.ass")
+        captions.write_ass(cut_words, ass, font=cfg.get("captions", {}).get("font_name", "DejaVu Sans"))
     out = Path(cfg["paths"]["output"], f"{acc['id']}__{tag}.mp4")
-    meta = render_clip(sec, clip, acc, hook, out, cfg, seed=tag, ass_path=ass, jitter=False,
-                       disclosure=camp.get("disclosure_text") if camp.get("disclosure_required") else None)
-    if ass:
-        ass.unlink(missing_ok=True)
+    disclosure = camp.get("disclosure_text") if camp.get("disclosure_required") else None
+    meta = render_clip(edited, {"start": 0.0, "end": total, "score": clip["score"]}, acc, hook, out, cfg,
+                       seed=tag, ass_path=ass, jitter=False, disclosure=disclosure)
+    for f in (ass, edited):
+        if f:
+            Path(f).unlink(missing_ok=True)
     cap = caption(lane, hook, acc.get("hashtags", []) + camp.get("required_hashtags", []),
                   streamer=streamer, extra_terms=L.get("trend_terms", [])[:2],
                   suffix=camp.get("caption_suffix", ""))
-    return {
+    job = {
         "id": tag, "account_id": acc["id"], "platform": acc["platform"], "campaign_id": camp["id"],
         "campaign_url": camp.get("url", ""), "submit_within_min": camp.get("submit_within_min", 0),
         "after_post_note": camp.get("after_post_note", ""),
         "source": vod["url"], "vod_title": vod.get("title", ""), "streamer": streamer,
         "rights_ok": True,  # only campaign-named sources reach this point
         "highlight": clip, "render": meta, "file": str(out), "hook": hook, "hook_id": hid,
-        "captions": bool(ass), "caption": cap,
-        "title": (hook[:90] + " #gta6 #shorts") if acc["platform"] == "youtube" else hook,
-        "inspect": insp, "status": "pending", "created": dt.datetime.now().isoformat(),
+        "hook_kind": kind, "edit": {"bounds": [s, e], "segments": segs, "cold_open": cold, "cuts": len(segs) - 1},
+        "captions": bool(ass), "caption_words": len(cut_words), "caption": cap,
+        "title": title[:100], "disclosure_rendered": bool(disclosure),
+        "transcript": transcript[:2000], "inspect": insp, "status": "pending",
+        "created": dt.datetime.now().isoformat(),
         "checks": {"no_story_spoiler": True, "no_licensed_music": None,
-                   "footage_rights_ok": True, "disclosure_ok": True},
+                   "footage_rights_ok": True, "disclosure_ok": bool(disclosure) or not camp.get("disclosure_required")},
     }
+    job["quality"] = compliance.quality_score(clip["score"], cut_words, meta["duration"],
+                                              insp.get("letterbox", 0), prob)
+    checklist, fails = compliance.check(job, camp, acc, cfg, transcript,
+                                        _posted_today(cfg, camp["id"]), [])
+    job["compliance"] = checklist
+    job["_compliance_fail"] = fails
+    return job
 
 
 def auto_approve(cfg, L):

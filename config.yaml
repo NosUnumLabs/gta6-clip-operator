@@ -11,8 +11,8 @@ paths:
   logs: logs
   font: /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
 detection:
-  min_clip_s: 20
-  max_clip_s: 45
+  min_clip_s: 18
+  max_clip_s: 50
   pre_roll_s: 9
   post_roll_s: 12
   top_n_per_source: 10
@@ -51,7 +51,7 @@ accounts:
 - id: yt_main
   platform: youtube
   via: buffer
-  handle: '@metamanarmor4675'
+  handle: '@vicecastclips'
   lane: streamer
   caption_style:
     color: white
@@ -62,11 +62,12 @@ accounts:
   - '#gtavi'
   - '#shorts'
   - '#gaming'
-  daily_max: 4
+  daily_max: 3
   windows:
   - 11:00-13:30
   - 16:30-19:00
   - 20:00-23:30
+  channel_url: https://www.youtube.com/@vicecastclips/shorts
 campaigns:
 - id: ruckus_dasgasd3m
   active: true
@@ -96,8 +97,13 @@ campaigns:
     url: https://kick.com/dasgasd3m/videos
     date_from: '2026-11-19'
     date_to: '2026-11-20'
+  required_credit:
+  - kick.com/dasgasd3m
+  max_posts_per_day: 3
+  min_clip_s: 15
+  max_clip_s: 58
 - id: tomo_gta6
-  active: false
+  active: true
   name: TOMO GTA VI Clipping
   url: https://contentrewards.com/c/campaigns/df6de26f-86ec-4782-b818-1fc8053b99a4
   platforms:
@@ -134,5 +140,16 @@ campaigns:
     - gta
     date_from: '2026-11-19'
   start_at: '2026-11-18T23:00:00-06:00'
-  note: Joined. YouTube blocks downloads from GitHub's servers; enable when a home/self-hosted
-    runner exists.
+  note: Processed only by the home runner (YouTube blocks GitHub's servers).
+  required_credit:
+  - youtube.com/@Tomovids
+  max_posts_per_day: 3
+  runner: home
+quality:
+  min_clip_s: 15
+  max_clip_s: 58
+  min_caption_words: 6
+  min_quality: 0.55
+  trim_dead_air: true
+  cold_open: true
+  max_posts_per_campaign_per_day: 3

@@ -52,3 +52,36 @@ jobs:
           git add -A state queue logs || true
           git diff --cached --quiet || git commit -qm "operator: cycle $(date -u +%FT%TZ)"
           git pull -q --rebase && git push -q || true
+
+  home:
+    # Runs on the home computer (residential IP) for sources that block data centers, e.g. YouTube.
+    needs: cycle
+    if: always() && vars.HOME_RUNNER == 'true'
+    runs-on: [self-hosted, home]
+    timeout-minutes: 120
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install deps (first run only takes a few minutes)
+        run: python3 -m pip install -q -U -r requirements.txt
+      - name: Operate (home campaigns)
+        env:
+          RUNNER_KIND: home
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+          YT_MAIN_BUFFER_CHANNEL_ID: ${{ secrets.YT_MAIN_BUFFER_CHANNEL_ID }}
+          TT_MAIN_BUFFER_CHANNEL_ID: ${{ secrets.TT_MAIN_BUFFER_CHANNEL_ID }}
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          LIVE="--live"
+          if [ "${{ vars.OPERATOR_LIVE }}" = "false" ]; then LIVE=""; fi
+          python3 run.py cycle $LIVE
+      - name: Persist state
+        if: always()
+        run: |
+          git config user.name "clip-operator" && git config user.email "operator@users.noreply.github.com"
+          git add -A state queue logs || true
+          git diff --cached --quiet || git commit -qm "operator: home cycle $(date -u +%FT%TZ)"
+          git pull -q --rebase && git push -q || true
