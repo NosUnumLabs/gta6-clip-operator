@@ -97,7 +97,7 @@ campaigns:
     date_from: '2026-11-19'
     date_to: '2026-11-20'
 - id: tomo_gta6
-  active: true
+  active: false
   name: TOMO GTA VI Clipping
   url: https://contentrewards.com/c/campaigns/df6de26f-86ec-4782-b818-1fc8053b99a4
   platforms:
@@ -134,3 +134,5 @@ campaigns:
     - gta
     date_from: '2026-11-19'
   start_at: '2026-11-18T23:00:00-06:00'
+  note: Joined. YouTube blocks downloads from GitHub's servers; enable when a home/self-hosted
+    runner exists.
