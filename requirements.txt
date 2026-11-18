@@ -3,3 +3,4 @@ pyyaml
 requests
 yt-dlp[default,curl-cffi]
 faster-whisper
+opencv-python-headless

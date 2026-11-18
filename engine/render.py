@@ -29,7 +29,8 @@ def _wrap(text, width=22):
     return "\n".join(lines)
 
 
-def render_clip(src, clip, account, hook, out_path, cfg, seed=None, ass_path=None, jitter=True, disclosure=None):
+def render_clip(src, clip, account, hook, out_path, cfg, seed=None, ass_path=None, jitter=True, disclosure=None,
+                facecam=None):
     r = cfg["render"]
     rng = random.Random(seed)
     W, H = r["width"], r["height"]
@@ -44,7 +45,19 @@ def render_clip(src, clip, account, hook, out_path, cfg, seed=None, ass_path=Non
     zoom = rng.uniform(1.0, 1.12)
 
     layout = r.get("layout", "blurfill")
-    if layout == "crop":
+    if layout == "auto":
+        layout = "facecam_rect" if facecam else "blurfill"
+    hook_y = "h*0.16"
+    if layout == "facecam_rect":
+        fx, fy, fw, fh = facecam
+        top = int(H * 0.36) // 2 * 2
+        bot = H - top
+        v = (f"[0:v]split[a][b];"
+             f"[a]crop={fw}:{fh}:{fx}:{fy},scale={W}:{top}:force_original_aspect_ratio=increase,crop={W}:{top}[cam];"
+             f"[b]scale=-2:{bot},crop={W}:{bot}[game];"
+             f"[cam][game]vstack,setsar=1[base]")
+        hook_y = f"{top}-text_h/2"   # hook sits on the seam between face and gameplay
+    elif layout == "crop":
         v = (f"[0:v]scale=-2:{int(H*zoom)},crop={W}:{H},setsar=1[base]")
     elif layout == "facecam_stack":
         x, y, w, h = r["facecam_box"]
@@ -67,7 +80,7 @@ def render_clip(src, clip, account, hook, out_path, cfg, seed=None, ass_path=Non
     hook_tf = _textfile(_wrap(hook.upper() if rng.random() < 0.5 else hook))
     hs = r.get("hook_seconds", 2.5)
     draws = [f"drawtext=fontfile={font}:textfile={hook_tf}:fontsize={size}:fontcolor={color}:"
-             f"box=1:boxcolor={box}:boxborderw=24:line_spacing=10:x=(w-text_w)/2:y=h*0.16:"
+             f"box=1:boxcolor={box}:boxborderw=24:line_spacing=10:x=(w-text_w)/2:y={hook_y}:"
              f"enable='lt(t,{hs})'"]
     disc = disclosure or r.get("disclosure_text") or account.get("disclosure_text", "")
     if disc:

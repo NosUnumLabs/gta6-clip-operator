@@ -23,7 +23,7 @@ detection:
 render:
   width: 1080
   height: 1920
-  layout: blurfill
+  layout: auto
   facecam_box:
   - 0
   - 0
