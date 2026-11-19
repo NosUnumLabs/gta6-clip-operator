@@ -49,3 +49,5 @@
 2026-11-19 20:42:10 [gate] reject 20261119-204143-6ecc5f: technical: mostly black frames; captions_present: no clean subtitles (too little detected speech); quality_floor: quality 0.37 below floor
 2026-11-19 20:43:01 [gate] reject 20261119-204210-c8cd36: captions_present: no clean subtitles (too little detected speech); quality_floor: quality 0.37 below floor
 2026-11-19 20:43:01 [cycle] made=0 approved=0 scheduled=0 posted=0 learned=0
+2026-11-19 21:16:20 [learner] market scan: {'scanned': 50, 'trend_terms': []}
+2026-11-19 21:16:20 [cycle] made=0 approved=0 scheduled=0 posted=0 learned=0
