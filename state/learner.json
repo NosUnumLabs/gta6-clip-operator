@@ -19,6 +19,50 @@
   "dur:60+": [
    4.299999999999999,
    4.55
+  ],
+  "hookkind:template": [
+   1.0,
+   1.0
+  ],
+  "hook:s_notready": [
+   1.0,
+   1.0
+  ],
+  "hook:s_reaction": [
+   1.0,
+   1.0
+  ],
+  "hook:s_broke": [
+   1.0,
+   1.0
+  ],
+  "hook:s_waitforit": [
+   1.0,
+   1.0
+  ],
+  "hook:s_chat": [
+   1.0,
+   1.0
+  ],
+  "hook:s_firsthour": [
+   1.0,
+   1.0
+  ],
+  "hook:s_vicecity": [
+   1.0,
+   1.0
+  ],
+  "hook:s_whyyoudont": [
+   1.0,
+   1.0
+  ],
+  "hook:s_rockstar": [
+   1.0,
+   1.0
+  ],
+  "hook:s_npcs": [
+   1.0,
+   1.0
   ]
  },
  "views": [],

@@ -1,0 +1,153 @@
+{
+  "id": "20261119-204143-6ecc5f",
+  "account_id": "yt_main",
+  "platform": "youtube",
+  "campaign_id": "ruckus_dasgasd3m",
+  "campaign_url": "https://contentrewards.com/c/campaigns/051002dd-5c46-43d0-a446-43f2957ba3a9",
+  "submit_within_min": 30,
+  "after_post_note": "",
+  "source": "https://kick.com/dasgasd3m/videos/aacf8cb5-681b-4f63-91a8-37f52197a4a4",
+  "vod_title": "IRL JASON FROM GTA 6 STREAM!",
+  "streamer": "Dasgas Dom",
+  "rights_ok": true,
+  "highlight": {
+    "start": 3.0,
+    "end": 24.0,
+    "score": 1.367,
+    "peak": 39833.0,
+    "peak_rel": 12.0
+  },
+  "render": {
+    "start": 0.0,
+    "duration": 22.7,
+    "zoom": 1.05,
+    "layout": "blurfill"
+  },
+  "file": "/home/runner/work/gta6-clip-operator/gta6-clip-operator/output/yt_main__20261119-204143-6ecc5f.mp4",
+  "hook": "This GTA 6 moment broke Dasgas Dom",
+  "hook_id": "s_broke",
+  "hook_kind": "template",
+  "edit": {
+    "bounds": [
+      3.0,
+      24.0
+    ],
+    "segments": [
+      [
+        3.0,
+        24.0
+      ]
+    ],
+    "cold_open": [
+      11.5,
+      13.2
+    ],
+    "cuts": 0
+  },
+  "captions": false,
+  "caption_words": 0,
+  "caption": "This GTA 6 moment broke Dasgas Dom\n\n\ud83c\udfa5 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#gta6 #gaming #gtavi #shorts #dasgasdom3 #playing",
+  "title": "This GTA 6 moment broke Dasgas Dom | GTA 6",
+  "disclosure_rendered": true,
+  "transcript": "",
+  "inspect": {
+    "letterbox": 0.0,
+    "black": 0.481,
+    "hash": [
+      0,
+      9223372036854775808,
+      9223372036854775808,
+      9223372036854775808,
+      9223372036854775808,
+      12695701126455554288,
+      12695701126522663152,
+      11538258391767973888,
+      13258738865643210820,
+      10088204728033627655,
+      10072245370053491883,
+      10072245370053491883
+    ],
+    "mean_db": -19.4,
+    "duration": 27.0
+  },
+  "status": "rejected",
+  "created": "2026-11-19T20:42:10.696698",
+  "checks": {
+    "no_story_spoiler": true,
+    "no_licensed_music": null,
+    "footage_rights_ok": true,
+    "disclosure_ok": true
+  },
+  "quality": 0.37,
+  "compliance": {
+    "platform_allowed": {
+      "pass": true,
+      "why": ""
+    },
+    "campaign_window": {
+      "pass": true,
+      "why": ""
+    },
+    "source_authorized": {
+      "pass": true,
+      "why": ""
+    },
+    "duration": {
+      "pass": true,
+      "why": ""
+    },
+    "captions_present": {
+      "pass": false,
+      "why": "no clean subtitles (too little detected speech)"
+    },
+    "transcript_safe": {
+      "pass": true,
+      "why": ""
+    },
+    "title_clean": {
+      "pass": true,
+      "why": ""
+    },
+    "no_spoiler_in_title": {
+      "pass": true,
+      "why": ""
+    },
+    "title_accurate": {
+      "pass": true,
+      "why": ""
+    },
+    "hashtag #dasgasdom3": {
+      "pass": true,
+      "why": ""
+    },
+    "credit kick.com/dasgasd3m": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_on_screen": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_in_caption": {
+      "pass": true,
+      "why": ""
+    },
+    "unique_to_campaign": {
+      "pass": true,
+      "why": ""
+    },
+    "daily_cap": {
+      "pass": true,
+      "why": ""
+    },
+    "quality_floor": {
+      "pass": false,
+      "why": "quality 0.37 below floor"
+    }
+  },
+  "reject_reasons": [
+    "technical: mostly black frames",
+    "captions_present: no clean subtitles (too little detected speech)",
+    "quality_floor: quality 0.37 below floor"
+  ]
+}

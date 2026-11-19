@@ -41,3 +41,11 @@
 2026-11-19 17:26:11 [cycle] made=0 approved=0 scheduled=0 posted=0 learned=0
 2026-11-19 18:15:15 [cycle] made=0 approved=0 scheduled=0 posted=0 learned=0
 2026-11-19 19:28:12 [cycle] made=0 approved=0 scheduled=0 posted=0 learned=0
+2026-11-19 20:38:25 [agent] Dasgas Dom 'IRL JASON FROM GTA 6 STREAM!' 843min -> 10 highlights (chat=no)
+2026-11-19 20:39:19 [gate] reject 20261119-203825-c0adfe: captions_present: no clean subtitles (too little detected speech); quality_floor: quality 0.38 below floor
+2026-11-19 20:40:16 [gate] reject 20261119-203919-0fde2f: captions_present: no clean subtitles (too little detected speech); quality_floor: quality 0.38 below floor
+2026-11-19 20:40:59 [gate] reject 20261119-204016-09fca9: captions_present: no clean subtitles (too little detected speech); quality_floor: quality 0.38 below floor
+2026-11-19 20:41:43 [gate] reject 20261119-204059-e48271: captions_present: no clean subtitles (too little detected speech); quality_floor: quality 0.37 below floor
+2026-11-19 20:42:10 [gate] reject 20261119-204143-6ecc5f: technical: mostly black frames; captions_present: no clean subtitles (too little detected speech); quality_floor: quality 0.37 below floor
+2026-11-19 20:43:01 [gate] reject 20261119-204210-c8cd36: captions_present: no clean subtitles (too little detected speech); quality_floor: quality 0.37 below floor
+2026-11-19 20:43:01 [cycle] made=0 approved=0 scheduled=0 posted=0 learned=0
