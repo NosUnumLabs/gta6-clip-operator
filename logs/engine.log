@@ -61,3 +61,11 @@
 2026-11-20 05:51:14 [cycle] made=0 approved=0 scheduled=0 posted=0 learned=0
 2026-11-20 06:52:38 [cycle] made=0 approved=0 scheduled=0 posted=0 learned=0
 2026-11-20 08:08:54 [cycle] made=0 approved=0 scheduled=0 posted=0 learned=0
+2026-11-20 09:31:20 [agent] Dasgas Dom 'LATE NIGZHT GTA 6 STREAM!' 101min -> 10 highlights (chat=no)
+2026-11-20 09:31:45 [gate] reject 20261120-093120-b2b488: captions_present: no clean subtitles (too little detected speech); quality_floor: quality 0.39 below floor
+2026-11-20 09:32:34 [gate] reject 20261120-093145-3edf16: captions_present: no clean subtitles (too little detected speech); quality_floor: quality 0.37 below floor
+2026-11-20 09:33:19 [gate] reject 20261120-093234-f9233a: captions_present: no clean subtitles (too little detected speech); quality_floor: quality 0.35 below floor
+2026-11-20 09:34:09 [gate] reject 20261120-093319-04cb1e: quality: highlight score 1.195 < floor; captions_present: no clean subtitles (too little detected speech); quality_floor: quality 0.35 below floor
+2026-11-20 09:34:34 [gate] reject 20261120-093409-98205b: quality: highlight score 1.19 < floor; captions_present: no clean subtitles (too little detected speech); quality_floor: quality 0.35 below floor
+2026-11-20 09:35:12 [gate] reject 20261120-093434-6514a6: quality: highlight score 1.185 < floor; captions_present: no clean subtitles (too little detected speech); quality_floor: quality 0.35 below floor
+2026-11-20 09:35:12 [cycle] made=0 approved=0 scheduled=0 posted=0 learned=0
