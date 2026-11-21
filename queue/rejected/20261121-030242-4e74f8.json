@@ -1,0 +1,152 @@
+{
+  "id": "20261121-030242-4e74f8",
+  "account_id": "yt_main",
+  "platform": "youtube",
+  "campaign_id": "ruckus_dasgasd3m",
+  "campaign_url": "https://contentrewards.com/c/campaigns/051002dd-5c46-43d0-a446-43f2957ba3a9",
+  "submit_within_min": 30,
+  "after_post_note": "",
+  "source": "https://kick.com/dasgasd3m/videos/b7f72a07-14a1-4ece-9cb3-1fb39c204d56",
+  "vod_title": "thanksgiving. GTA 6 STREAM!",
+  "streamer": "Dasgas Dom",
+  "rights_ok": true,
+  "highlight": {
+    "start": 3.0,
+    "end": 24.0,
+    "score": 1.376,
+    "peak": 8850.0,
+    "peak_rel": 12.0
+  },
+  "render": {
+    "start": 0.0,
+    "duration": 22.7,
+    "zoom": 1.041,
+    "layout": "blurfill"
+  },
+  "file": "/home/runner/work/gta6-clip-operator/gta6-clip-operator/output/yt_main__20261121-030242-4e74f8.mp4",
+  "hook": "This is why you don't do this in GTA 6",
+  "hook_id": "s_whyyoudont",
+  "hook_kind": "template",
+  "edit": {
+    "bounds": [
+      3.0,
+      24.0
+    ],
+    "segments": [
+      [
+        3.0,
+        24.0
+      ]
+    ],
+    "cold_open": [
+      11.5,
+      13.2
+    ],
+    "cuts": 0
+  },
+  "captions": false,
+  "caption_words": 0,
+  "caption": "This is why you don't do this in GTA 6\n\n\ud83c\udfa5 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#shorts #dasgasdom3 #gta6 #gaming #gtavi #who #escapes",
+  "title": "This is why you don't do this in GTA 6 | GTA 6",
+  "disclosure_rendered": true,
+  "transcript": "",
+  "inspect": {
+    "letterbox": 0.0,
+    "black": 0.0,
+    "hash": [
+      1953748702939814668,
+      2098145374565468682,
+      2170205184873891334,
+      1881973713522298374,
+      1881973713522295302,
+      2170202985850635780,
+      1954314981560190470,
+      944943507429033734,
+      944943507428050694,
+      944943507429099014,
+      729053304115398406,
+      1953748707234712066
+    ],
+    "mean_db": -17.7,
+    "duration": 27.0
+  },
+  "status": "rejected",
+  "created": "2026-11-21T03:03:09.488989",
+  "checks": {
+    "no_story_spoiler": true,
+    "no_licensed_music": null,
+    "footage_rights_ok": true,
+    "disclosure_ok": true
+  },
+  "quality": 0.371,
+  "compliance": {
+    "platform_allowed": {
+      "pass": true,
+      "why": ""
+    },
+    "campaign_window": {
+      "pass": true,
+      "why": ""
+    },
+    "source_authorized": {
+      "pass": true,
+      "why": ""
+    },
+    "duration": {
+      "pass": true,
+      "why": ""
+    },
+    "captions_present": {
+      "pass": false,
+      "why": "no clean subtitles (too little detected speech)"
+    },
+    "transcript_safe": {
+      "pass": true,
+      "why": ""
+    },
+    "title_clean": {
+      "pass": true,
+      "why": ""
+    },
+    "no_spoiler_in_title": {
+      "pass": true,
+      "why": ""
+    },
+    "title_accurate": {
+      "pass": true,
+      "why": ""
+    },
+    "hashtag #dasgasdom3": {
+      "pass": true,
+      "why": ""
+    },
+    "credit kick.com/dasgasd3m": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_on_screen": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_in_caption": {
+      "pass": true,
+      "why": ""
+    },
+    "unique_to_campaign": {
+      "pass": true,
+      "why": ""
+    },
+    "daily_cap": {
+      "pass": true,
+      "why": ""
+    },
+    "quality_floor": {
+      "pass": false,
+      "why": "quality 0.37 below floor"
+    }
+  },
+  "reject_reasons": [
+    "captions_present: no clean subtitles (too little detected speech)",
+    "quality_floor: quality 0.37 below floor"
+  ]
+}

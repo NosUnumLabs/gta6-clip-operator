@@ -86,3 +86,11 @@
 2026-11-20 23:40:18 [cycle] made=0 approved=0 scheduled=0 posted=0 learned=0
 2026-11-21 00:39:34 [cycle] made=0 approved=0 scheduled=0 posted=0 learned=0
 2026-11-21 01:59:03 [cycle] made=0 approved=0 scheduled=0 posted=0 learned=0
+2026-11-21 03:01:58 [agent] Dasgas Dom 'thanksgiving. GTA 6 STREAM!' 414min -> 10 highlights (chat=no)
+2026-11-21 03:02:42 [gate] reject 20261121-030158-88bf72: captions_present: no clean subtitles (too little detected speech); quality_floor: quality 0.37 below floor
+2026-11-21 03:03:09 [gate] reject 20261121-030242-4e74f8: captions_present: no clean subtitles (too little detected speech); quality_floor: quality 0.37 below floor
+2026-11-21 03:03:39 [gate] reject 20261121-030309-9aec57: captions_present: no clean subtitles (too little detected speech); quality_floor: quality 0.37 below floor
+2026-11-21 03:04:18 [gate] reject 20261121-030339-4f7e90: captions_present: no clean subtitles (too little detected speech); quality_floor: quality 0.37 below floor
+2026-11-21 03:04:39 [gate] reject 20261121-030418-cc6f10: technical: mostly black frames; captions_present: no clean subtitles (too little detected speech); quality_floor: quality 0.37 below floor
+2026-11-21 03:05:04 [gate] reject 20261121-030439-4a631d: captions_present: no clean subtitles (too little detected speech); quality_floor: quality 0.37 below floor
+2026-11-21 03:05:04 [cycle] made=0 approved=0 scheduled=0 posted=0 learned=0
