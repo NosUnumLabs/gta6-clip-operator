@@ -94,3 +94,4 @@
 2026-11-21 03:04:39 [gate] reject 20261121-030418-cc6f10: technical: mostly black frames; captions_present: no clean subtitles (too little detected speech); quality_floor: quality 0.37 below floor
 2026-11-21 03:05:04 [gate] reject 20261121-030439-4a631d: captions_present: no clean subtitles (too little detected speech); quality_floor: quality 0.37 below floor
 2026-11-21 03:05:04 [cycle] made=0 approved=0 scheduled=0 posted=0 learned=0
+2026-11-21 03:41:07 [cycle] made=0 approved=0 scheduled=0 posted=0 learned=0
