@@ -3,6 +3,7 @@ project:
   launch_date: '2026-11-19'
   spoiler_lock_until: '2026-12-10'
   require_human_review: false
+  posting_paused_until: '2026-11-24T18:00:00-06:00'  # owner: start posting a few days out
   timezone: America/Chicago
 paths:
   input: input

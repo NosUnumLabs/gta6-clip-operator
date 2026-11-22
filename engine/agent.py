@@ -272,6 +272,9 @@ def post_due(cfg, L, live):
     """Hand every scheduled clip to Buffer with its exact publish time, and pre-schedule
     the 'submit now' push for that moment. Cron delays therefore never make a post late."""
     n = 0
+    pause = cfg["project"].get("posting_paused_until")
+    if pause and time.time() < dt.datetime.fromisoformat(str(pause)).timestamp():
+        return 0  # owner asked to hold publishing; clips keep accumulating and being reviewed
     horizon = time.time() + 35 * 60  # hand off only what goes live before the next run
     for p in pipeline.list_jobs(cfg, "approved"):
         job = read_json(p)
@@ -434,7 +437,9 @@ def cycle(cfg, live=False):
         made = produce(cfg, L, max_vods=cfg["autoreview"].get("max_vods_per_cycle", 2),
                        per_vod=cfg["autoreview"].get("candidates_per_vod", 6))
         appr = auto_approve(cfg, L)
-        sched = pipeline.schedule(cfg, days=cfg["autoreview"].get("days_ahead", 1))
+        pause = cfg["project"].get("posting_paused_until")
+        paused = bool(pause) and time.time() < dt.datetime.fromisoformat(str(pause)).timestamp()
+        sched = 0 if paused else pipeline.schedule(cfg, days=cfg["autoreview"].get("days_ahead", 1))
         posted = post_due(cfg, L, live)
         if live:
             refresh_links(cfg)
