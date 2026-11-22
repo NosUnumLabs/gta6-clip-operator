@@ -133,3 +133,16 @@
 2026-11-22 04:55:23 [gate] reject 20261122-045427-62f763: quality: highlight score 1.185 < floor; transcript_safe: explicit or hateful language in clip
 2026-11-22 04:55:32 [post LIVE] yt_main queued in Buffer for 2026-11-21T23:29:23.733509-06:00
 2026-11-22 04:55:32 [cycle] made=4 approved=1 scheduled=1 posted=1 learned=0
+2026-11-22 05:14:25 [agent] Dasgas Dom 'thanksgiving. GTA 6 STREAM!' 414min -> 10 highlights (chat=no)
+2026-11-22 05:15:41 [gate] reject 20261122-051425-09882f: transcript_safe: explicit or hateful language in clip
+2026-11-22 05:16:23 [gate] reject 20261122-051541-3b8649: transcript_safe: explicit or hateful language in clip
+2026-11-22 05:17:15 [gate] reject 20261122-051623-366805: duplicate: 0.0-bit distance to an earlier clip; transcript_safe: explicit or hateful language in clip
+2026-11-22 05:18:28 [gate] reject 20261122-051715-62de6f: transcript_safe: explicit or hateful language in clip
+2026-11-22 05:19:14 [gate] reject 20261122-051828-8f3b4c: technical: mostly black frames
+2026-11-22 05:21:13 [agent] Dasgas Dom 'LATE NIGZHT GTA 6 STREAM!' 101min -> 10 highlights (chat=no)
+2026-11-22 05:22:57 [gate] reject 20261122-052144-2754a2: transcript_safe: explicit or hateful language in clip
+2026-11-22 05:23:58 [gate] reject 20261122-052257-408ea7: transcript_safe: explicit or hateful language in clip
+2026-11-22 05:25:25 [gate] reject 20261122-052358-2514ec: quality: highlight score 1.195 < floor; transcript_safe: explicit or hateful language in clip
+2026-11-22 05:26:04 [gate] reject 20261122-052525-c3e7e9: quality: highlight score 1.19 < floor; transcript_safe: explicit or hateful language in clip
+2026-11-22 05:26:59 [gate] reject 20261122-052604-cb7e97: quality: highlight score 1.185 < floor; transcript_safe: explicit or hateful language in clip
+2026-11-22 05:27:05 [cycle] made=2 approved=0 scheduled=0 posted=0 learned=0
