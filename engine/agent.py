@@ -404,9 +404,30 @@ def digest(cfg, L):
     mark.write_text(now.date().isoformat())
 
 
+def purge_rejected_media(cfg):
+    """Remove public copies of clips that were pulled (rejected after hosting)."""
+    import subprocess
+    if not os.environ.get("GITHUB_REPOSITORY"):
+        return
+    for p in pipeline.list_jobs(cfg, "rejected"):
+        j = read_json(p)
+        url = j.get("media_url")
+        if url and not j.get("media_purged"):
+            name = url.rsplit("/", 1)[-1]
+            r = subprocess.run(["gh", "release", "delete-asset", "media", name, "-y"], capture_output=True, text=True)
+            if r.returncode == 0 or "not found" in (r.stderr or "").lower():
+                j["media_purged"] = True
+                write_json(p, j)
+                log(cfg, f"[purge] removed public media {name}")
+
+
 def cycle(cfg, live=False):
     L = learner.load()
     try:
+        try:
+            purge_rejected_media(cfg)
+        except Exception as e:
+            log(cfg, f"[purge] failed: {e!r}")
         scan = learner.market_scan(L, os.environ.get("YT_API_KEY"))
         if scan:
             log(cfg, f"[learner] market scan: {scan}")
