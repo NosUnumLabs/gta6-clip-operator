@@ -1,0 +1,25 @@
+name: whisper-diag
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["whisperdiag_request.txt"]
+permissions: {contents: write}
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with: {python-version: "3.12", cache: pip}
+      - run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
+          pip install -q -U -r requirements.txt 2>&1 | tail -5
+          pip list 2>/dev/null | grep -iE "whisper|ctranslate|^av |onnx|tokenizers|huggingface" | tee pipl.txt
+      - run: python3 whisperdiag.py 2>&1 | tee -a diag/diag.txt || true
+      - if: always()
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: |
+          mkdir -p diag; cat pipl.txt >> diag/diag.txt || true
+          gh release create "diag-$(date -u +%Y%m%d-%H%M)" --draft -t diag -n "private diag" diag/diag.txt
