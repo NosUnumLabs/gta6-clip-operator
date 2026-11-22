@@ -18,7 +18,7 @@ def main():
         p('MODEL LOAD FAIL', traceback.format_exc())
     sys.path.insert(0, ".")
     from engine import sources
-    vods = sources._kick_vods("dasgasd3m")
+    vods = sources._kick_vods("dasgasd3m", 10)
     v = max(vods, key=lambda x: x.get("duration") or 0)
     p("vod", v.get("title"), v.get("duration"))
     wav = out / "s.mp4"
