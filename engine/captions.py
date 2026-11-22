@@ -9,6 +9,15 @@ _MODEL = None
 LAST_PROB = None  # mean word confidence of the last transcription
 
 
+def _pcm16k(path):
+    """Decode audio with ffmpeg to 16 kHz mono float32 (avoids PyAV API breakage)."""
+    import subprocess
+    import numpy as np
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(path), "-vn", "-ac", "1", "-ar", "16000",
+                          "-f", "f32le", "-"], capture_output=True, check=True).stdout
+    return np.frombuffer(raw, dtype=np.float32).copy()
+
+
 def transcribe(path, model_size="base"):
     global _MODEL, LAST_PROB
     LAST_PROB = None
@@ -20,7 +29,7 @@ def transcribe(path, model_size="base"):
     try:
         if _MODEL is None:
             _MODEL = WhisperModel(model_size, device="cpu", compute_type="int8")
-        segs, _ = _MODEL.transcribe(str(path), word_timestamps=True, vad_filter=True)
+        segs, _ = _MODEL.transcribe(_pcm16k(path), word_timestamps=True, vad_filter=True)
         words, probs = [], []
         for s in segs:
             for w in (s.words or []):

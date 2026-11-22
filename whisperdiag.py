@@ -10,6 +10,7 @@ try:
     p("versions", faster_whisper.__version__, ctranslate2.__version__, av.__version__)
 except Exception:
     p("IMPORT FAIL", traceback.format_exc())
+from engine import captions
 def main():
     try:
         from faster_whisper import WhisperModel
@@ -33,7 +34,7 @@ def main():
         for vad in (True, False):
             try:
                 m = WhisperModel("base", device="cpu", compute_type="int8")
-                segs, info = m.transcribe(str(sec), word_timestamps=True, vad_filter=vad)
+                segs, info = m.transcribe(captions._pcm16k(sec), word_timestamps=True, vad_filter=vad)
                 segs = list(segs)
                 n = sum(len(s.words or []) for s in segs)
                 p(f"vad={vad} lang={info.language} segs={len(segs)} words={n}")
