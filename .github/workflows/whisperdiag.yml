@@ -17,9 +17,9 @@ jobs:
           sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg >/dev/null
           pip install -q -U -r requirements.txt 2>&1 | tail -5
           pip list 2>/dev/null | grep -iE "whisper|ctranslate|^av |onnx|tokenizers|huggingface" | tee pipl.txt
-      - run: python3 whisperdiag.py 2>&1 | tee -a diag/diag.txt || true
+      - run: python3 whisperdiag.py > diag/stdout.txt 2>&1 || true
       - if: always()
         env: {GH_TOKEN: "${{ github.token }}"}
         run: |
-          mkdir -p diag; cat pipl.txt >> diag/diag.txt || true
+          mkdir -p diag; cat diag/diag_py.txt diag/stdout.txt pipl.txt > diag/diag.txt || true
           gh release create "diag-$(date -u +%Y%m%d-%H%M)" --draft -t diag -n "private diag" diag/diag.txt
