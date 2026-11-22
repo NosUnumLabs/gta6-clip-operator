@@ -8,7 +8,7 @@
 import re
 
 MAX_GAP = 1.1        # seconds of silence tolerated inside a clip
-TAIL = 0.7           # keep a beat after the last word (the reaction lands here)
+TAIL = 2.5   # hold ~2-4 s on the reaction, then hard cut (breakout clips)
 LEAD = 0.25          # tiny breath before the first word
 
 # Hard block: slurs / explicit sexual content -> clip is rejected (platform + campaign safety)

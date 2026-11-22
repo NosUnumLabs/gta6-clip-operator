@@ -1,4 +1,14 @@
-# Vicecast clip style guide (from the Nov 21, 2026 post-launch study)
+# Vicecast clip style guide (from the Nov 21, 2026 post-launch study + vidIQ outlier analysis)
+
+## The breakout template (vidIQ, Nov 21: 30 YouTube Shorts outliers from channels with 69-5K subs breaking out 15-31x, 16 TikTok/Reels outliers 30-220x, 4 watched scene-by-scene)
+1. **Persistent headline banner** stating the situation in one sentence, on screen the WHOLE clip: white box, black bold text, top of frame.
+   Formula: `<Streamer> <did/got/found something specific> in GTA 6 <emoji>` - e.g. "Lacy finds a dog in GTA 6", "Speed gets in an accident just after fixing his car in GTA 6 😭", "42 was having a great time in GTA 6 until he saw what came out of the sink 😭". Context + promise; the payoff must deliver it.
+2. **50/50 split**, facecam top, gameplay bottom.
+3. **Short:** start 1.5-3 s before the payoff; most breakouts are 8-25 s. Shortest complete length wins (completion + replays drive Shorts).
+4. **Punch-in zoom on the face + an impact sound at the payoff**; 1-3 word pop captions on the seam.
+5. **Hard cut 2-4 s after the reaction** - no outro, no sign-off.
+6. Novelty matters (YouTube suppresses repetitive templates): vary the moment types and banner wording; never reuse a headline.
+
 
 Evidence: 1,038 GTA 6 Shorts published since launch (YouTube API), 468 streamer clips among them; frame-by-frame look at top streamer clips (Speedzyy, ImGoochy, DaPlug); StreamsCharts most-viewed GTA 6 clips; campaign briefs.
 
@@ -6,7 +16,7 @@ Evidence: 1,038 GTA 6 Shorts published since launch (YouTube API), 468 streamer 
 - **Moment types that travel:** mishaps and wrong buttons (ohnePixel's misclick, 519K; jasontheween powering off his PS5 and losing 11 hours), NPC interactions that go wrong ("IShowSpeed Gets Robbed of His Burger"), streamer vs the game's realism, glitches, discoveries/easter eggs, milestones. Setup -> reaction -> payoff, ending ~3 s after the reaction peaks.
 - **Title formula** (60 top streamer clips: 0 used quote marks; 17/60 lead with the streamer's name; 😭/💀 common):
   `<Streamer> <does/gets/finds what> in GTA 6 😭` - e.g. "Dasgas Dom Gets Robbed By An NPC In GTA 6 😭", "Dasgas Dom Finds A GTA 6 Glitch 💀". Third person, specific verb, max ~60 chars, title case ok, one emoji at the end. Never a filler quote.
-- **Length:** median 30 s; the fastest-growing 20 had a median of 45 s. Aim 20-45 s.
+- **Length:** YouTube-API sample median 30 s, but the breakout outliers from small channels are 8-25 s. Aim 12-25 s.
 - **Layout:** 50/50 stack, facecam on top, gameplay below (full facecam for pure reactions, full gameplay when cam is off).
 - **Captions:** 1-2 words at a time, big bold caps, yellow active word with a thick black outline, popped in, sitting on the face/game seam.
 - **Beat edits:** a short white flash on the cut into the payoff; cold-open flash-forward when the setup is long.

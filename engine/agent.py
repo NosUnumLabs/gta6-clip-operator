@@ -169,9 +169,18 @@ def _render_job(cfg, L, camp, acc, vod, sec, clip, insp, tag):
                            y_frac=TOP_FRAC if cam else 0.66)
     out = Path(cfg["paths"]["output"], f"{acc['id']}__{tag}.mp4")
     disclosure = camp.get("disclosure_text") if camp.get("disclosure_required") else None
-    meta = render_clip(edited, {"start": 0.0, "end": total, "score": clip["score"]}, acc, hook, out, cfg,
+    # payoff moment on the final timeline (for the punch-in zoom + impact sound)
+    payoff_t, off = None, cold_len
+    for a, b in segs:
+        if a <= clip["peak_rel"] < b:
+            payoff_t = off + clip["peak_rel"] - a
+            break
+        off += b - a
+    banner_mode = cfg["render"].get("hook_style", "banner") == "banner"
+    meta = render_clip(edited, {"start": 0.0, "end": total, "score": clip["score"]}, acc,
+                       None if banner_mode else hook, out, cfg,
                        seed=tag, ass_path=ass, jitter=False, disclosure=disclosure, facecam=cam,
-                       flash_at=[cold_len] if cold_len else [])
+                       flash_at=[cold_len] if cold_len else [], payoff_t=payoff_t)
     meta["layout"] = "facecam_stack" if cam else "blurfill"
     for f in (ass, edited):
         if f:
@@ -283,15 +292,8 @@ def post_due(cfg, L, live):
         job = read_json(p)
         if not job.get("scheduled_for"):
             continue
-        if live and not job.get("media_url") and Path(job["file"]).exists():
-            try:  # park the render online now; runners are wiped between cycles
-                from .publish import host_media
-                job["media_url"] = host_media(job["file"])
-                write_json(p, job)
-            except Exception as e:
-                log(cfg, f"[media] hosting failed {job['id']}: {e}")
         if dt.datetime.fromisoformat(job["scheduled_for"]).timestamp() > horizon:
-            continue
+            continue  # nothing goes public before its slot
         if not Path(job["file"]).exists() and job.get("review_asset") and live:
             try:  # reviewed clip: fetch its render back from the private draft release
                 from .publish import draft_download
@@ -300,6 +302,25 @@ def post_due(cfg, L, live):
                 write_json(p, job)
             except Exception as e:
                 log(cfg, f"[review] fetch failed {job['id']}: {e}")
+        if (cfg["render"].get("hook_style", "banner") == "banner" and not job.get("bannered")
+                and Path(job["file"]).exists()):
+            try:  # persistent context headline, written by the reviewer from what really happens
+                from .render import add_banner
+                text = job.get("banner") or job.get("hook") or job["title"]
+                fin = Path(job["file"]).with_name(Path(job["file"]).stem + "_final.mp4")
+                add_banner(job["file"], fin, text, cfg)
+                job["file"], job["bannered"] = str(fin), True
+                write_json(p, job)
+            except Exception as e:
+                log(cfg, f"[banner] failed {job['id']}: {e}")
+                continue
+        if live and not job.get("media_url") and Path(job["file"]).exists():
+            try:
+                from .publish import host_media
+                job["media_url"] = host_media(job["file"])
+                write_json(p, job)
+            except Exception as e:
+                log(cfg, f"[media] hosting failed {job['id']}: {e}")
         if not live and not Path(job["file"]).exists():
             continue
         if live and not Path(job["file"]).exists() and not job.get("media_url"):

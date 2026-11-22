@@ -12,16 +12,18 @@ paths:
   logs: logs
   font: /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
 detection:
-  min_clip_s: 18
-  max_clip_s: 50
-  pre_roll_s: 9
-  post_roll_s: 12
+  min_clip_s: 14
+  max_clip_s: 30   # breakout streamer clips run 8-25 s (Nov 2026 outliers)
+  pre_roll_s: 5
+  post_roll_s: 5
   top_n_per_source: 10
   loudness_weight: 0.7
   scene_weight: 0.3
   chat_weight: 0.8
   min_gap_s: 45
 render:
+  hook_style: banner      # persistent context headline added at publish (reviewer-written)
+  impact_sfx: true
   width: 1080
   height: 1920
   layout: auto
@@ -148,7 +150,7 @@ campaigns:
   runner: home
 quality:
   min_clip_s: 15
-  max_clip_s: 58
+  max_clip_s: 40
   min_caption_words: 6
   min_quality: 0.55
   trim_dead_air: true

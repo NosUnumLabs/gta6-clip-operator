@@ -34,7 +34,7 @@ def _wrap(text, width=22):
     return text
 
 def render_clip(src, clip, account, hook, out_path, cfg, seed=None, ass_path=None, jitter=True, disclosure=None, flash_at=(),
-                facecam=None):
+                facecam=None, payoff_t=None):
     r = cfg["render"]
     rng = random.Random(seed)
     W, H = r["width"], r["height"]
@@ -58,7 +58,9 @@ def render_clip(src, clip, account, hook, out_path, cfg, seed=None, ass_path=Non
         top = int(H * TOP_FRAC) // 2 * 2
         bot = H - top
         v = (f"[0:v]split[a][b];"
-             f"[a]crop={fw}:{fh}:{fx}:{fy},scale={W}:{top}:force_original_aspect_ratio=increase,crop={W}:{top}[cam];"
+             f"[a]crop={fw}:{fh}:{fx}:{fy},scale={W}:{top}:force_original_aspect_ratio=increase,crop={W}:{top}"
+             + (f",scale=w='{W}*(1+0.18*between(t,{payoff_t:.2f},{payoff_t + 0.7:.2f}))':h=-2:eval=frame,"
+                f"crop={W}:{top}" if payoff_t is not None else "") + "[cam];"
              f"[b]scale=-2:{bot},crop={W}:{bot}[game];"
              f"[cam][game]vstack,setsar=1[base]")
         hook_y = "h*0.07"   # top of the facecam; the seam belongs to the word-pop captions
@@ -82,7 +84,7 @@ def render_clip(src, clip, account, hook, out_path, cfg, seed=None, ass_path=Non
     size = style.get("size", 64)
     color = style.get("color", "white")
     box = style.get("box", "black@0.55")
-    lines = _wrap(hook.upper() if rng.random() < 0.5 else hook).split("\n")
+    lines = _wrap(hook.upper() if rng.random() < 0.5 else hook).split("\n") if hook else []
     hs = r.get("hook_seconds", 2.5)
     line_h = int(size * 1.35)
     draws = []
@@ -117,6 +119,12 @@ def render_clip(src, clip, account, hook, out_path, cfg, seed=None, ass_path=Non
             a = "[1:a]anull[aout]"
     elif mode == "keep" and src_audio:
         a = "[0:a]loudnorm=I=-14:TP=-1.5:LRA=11[aout]"
+        if payoff_t is not None and r.get("impact_sfx", True):
+            ms = int(max(0.0, payoff_t) * 1000)
+            inputs += ["-f", "lavfi", "-i", "aevalsrc='0.9*sin(2*PI*58*t)*exp(-7*t)+0.25*sin(2*PI*116*t)*exp(-11*t)':s=44100:d=0.6"]
+            a = ("[0:a]loudnorm=I=-14:TP=-1.5:LRA=11,aformat=channel_layouts=stereo[g];"
+                 f"[1:a]aformat=channel_layouts=stereo,adelay={ms}|{ms},volume=0.8[fx];"
+                 "[g][fx]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[aout]")
     else:
         inputs += ["-f", "lavfi", "-t", f"{dur:.2f}", "-i", "anullsrc=r=44100:cl=stereo"]
         a = "[1:a]anull[aout]"
@@ -128,6 +136,26 @@ def render_clip(src, clip, account, hook, out_path, cfg, seed=None, ass_path=Non
             "-c:a", "aac", "-b:a", "160k", "-movflags", "+faststart", str(out_path)])
     run(cmd)
     return {"start": round(start, 2), "duration": round(dur, 2), "zoom": round(zoom, 3)}
+
+
+def add_banner(src, out_path, text, cfg):
+    """Burn the persistent context headline (top-clipper style: white box, black bold text,
+    on screen the whole clip) onto a finished render. Applied at publish time with the
+    reviewer's text, so the headline always matches what actually happens in the clip."""
+    r = cfg["render"]
+    font = cfg["paths"]["font"]
+    size = r.get("banner_size", 54)
+    lines = _wrap(text, width=r.get("banner_chars", 26)).split("\n")
+    line_h = int(size * 1.32)
+    y0 = int(r["height"] * r.get("banner_y", 0.035))
+    draws = []
+    for i, ln in enumerate(lines):
+        draws.append(f"drawtext=fontfile={font}:textfile={_textfile(ln)}:fontsize={size}:fontcolor=black:"
+                     f"box=1:boxcolor=white@0.96:boxborderw=16:x=(w-text_w)/2:y={y0 + i * line_h}")
+    run(["ffmpeg", "-y", "-v", "error", "-i", str(src), "-vf", ",".join(draws), "-c:v", "libx264",
+         "-preset", r.get("preset", "veryfast"), "-crf", str(r.get("crf", 21)), "-pix_fmt", "yuv420p",
+         "-c:a", "copy", "-movflags", "+faststart", str(out_path)])
+    return out_path
 
 
 def assemble(src, segs, out_path, cold_open=None):
