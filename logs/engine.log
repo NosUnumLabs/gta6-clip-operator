@@ -151,3 +151,4 @@
 2026-11-22 05:55:37 [gate] reject 20261122-055459-88ad62: quality_floor: quality 0.55 below floor
 2026-11-22 05:56:21 [gate] reject 20261122-055537-d853f1: quality_floor: quality 0.50 below floor
 2026-11-22 05:57:38 [gate] reject 20261122-055723-02c5ea: technical: mostly black frames; transcript_safe: explicit or hateful language in clip; quality_floor: quality 0.44 below floor
+2026-11-22 10:37:28 [learner] market scan: {'scanned': 50, 'trend_terms': ['comedy', 'indian']}
