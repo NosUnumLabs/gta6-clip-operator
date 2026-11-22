@@ -1,0 +1,149 @@
+{
+  "id": "20261122-045349-3e39fe",
+  "account_id": "yt_main",
+  "platform": "youtube",
+  "campaign_id": "ruckus_dasgasd3m",
+  "campaign_url": "https://contentrewards.com/c/campaigns/051002dd-5c46-43d0-a446-43f2957ba3a9",
+  "submit_within_min": 30,
+  "after_post_note": "",
+  "source": "https://kick.com/dasgasd3m/videos/be2c2aad-f224-407d-ba7c-4b3e7c599d80",
+  "vod_title": "LATE NIGZHT GTA 6 STREAM!",
+  "streamer": "Dasgas Dom",
+  "rights_ok": true,
+  "highlight": {
+    "start": 3.0,
+    "end": 24.0,
+    "score": 1.19,
+    "peak": 42.5,
+    "peak_rel": 12.0
+  },
+  "render": {
+    "start": 0.0,
+    "duration": 15.0,
+    "zoom": 1.037,
+    "layout": "blurfill"
+  },
+  "file": "/home/runner/work/gta6-clip-operator/gta6-clip-operator/output/yt_main__20261122-045349-3e39fe.mp4",
+  "hook": "\u201cOne, two, three\u201d",
+  "hook_id": "quote",
+  "hook_kind": "quote",
+  "edit": {
+    "bounds": [
+      18.64,
+      33.64
+    ],
+    "segments": [
+      [
+        18.64,
+        33.64
+      ]
+    ],
+    "cold_open": null,
+    "cuts": 0
+  },
+  "captions": true,
+  "caption_words": 30,
+  "caption": "\u201cOne, two, three\u201d\n\n\ud83c\udfa5 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#gta6 #dasgasdom3 #gtavi #gaming #shorts #kpop #indian",
+  "title": "Dasgas Dom: \u201cOne, two, three\u201d | GTA 6",
+  "disclosure_rendered": true,
+  "transcript": "Oh, yeah. Hey, big dick. I can't talk about other bitches under here. I can't talk about other bitches under here. I can't talk about other bitches under here. One, two, three.",
+  "inspect": {
+    "letterbox": 0.0,
+    "black": 0.0,
+    "hash": [
+      7521258084394623353,
+      17036772542258629740,
+      7519419793666563405,
+      7519419724948282629,
+      15907207842722335169,
+      12411433269475960173,
+      17005245385424508269,
+      16892110174418128237,
+      7956968376292887917,
+      7673242153802550637,
+      16968672330156100973,
+      7673524178535075181
+    ],
+    "mean_db": -14.6,
+    "duration": 25.498317
+  },
+  "status": "rejected",
+  "created": "2026-11-22T04:54:27.686826",
+  "checks": {
+    "no_story_spoiler": true,
+    "no_licensed_music": null,
+    "footage_rights_ok": true,
+    "disclosure_ok": true
+  },
+  "quality": 0.676,
+  "compliance": {
+    "platform_allowed": {
+      "pass": true,
+      "why": ""
+    },
+    "campaign_window": {
+      "pass": true,
+      "why": ""
+    },
+    "source_authorized": {
+      "pass": true,
+      "why": ""
+    },
+    "duration": {
+      "pass": true,
+      "why": ""
+    },
+    "captions_present": {
+      "pass": true,
+      "why": ""
+    },
+    "transcript_safe": {
+      "pass": false,
+      "why": "explicit or hateful language in clip"
+    },
+    "title_clean": {
+      "pass": true,
+      "why": ""
+    },
+    "no_spoiler_in_title": {
+      "pass": true,
+      "why": ""
+    },
+    "title_accurate": {
+      "pass": true,
+      "why": ""
+    },
+    "hashtag #dasgasdom3": {
+      "pass": true,
+      "why": ""
+    },
+    "credit kick.com/dasgasd3m": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_on_screen": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_in_caption": {
+      "pass": true,
+      "why": ""
+    },
+    "unique_to_campaign": {
+      "pass": true,
+      "why": ""
+    },
+    "daily_cap": {
+      "pass": true,
+      "why": ""
+    },
+    "quality_floor": {
+      "pass": true,
+      "why": ""
+    }
+  },
+  "reject_reasons": [
+    "quality: highlight score 1.19 < floor",
+    "transcript_safe: explicit or hateful language in clip"
+  ]
+}
