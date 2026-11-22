@@ -1,0 +1,154 @@
+{
+  "id": "20261122-055649-f64074",
+  "account_id": "yt_main",
+  "platform": "youtube",
+  "campaign_id": "ruckus_dasgasd3m",
+  "campaign_url": "https://contentrewards.com/c/campaigns/051002dd-5c46-43d0-a446-43f2957ba3a9",
+  "submit_within_min": 30,
+  "after_post_note": "",
+  "source": "https://kick.com/dasgasd3m/videos/aacf8cb5-681b-4f63-91a8-37f52197a4a4",
+  "vod_title": "IRL JASON FROM GTA 6 STREAM!",
+  "streamer": "Dasgas Dom",
+  "rights_ok": true,
+  "highlight": {
+    "start": 3.0,
+    "end": 17.0,
+    "score": 1.398,
+    "peak": 22606.5,
+    "peak_rel": 10.0
+  },
+  "render": {
+    "start": 0.0,
+    "duration": 21.75,
+    "zoom": 1.009,
+    "layout": "blurfill"
+  },
+  "file": "/home/runner/work/gta6-clip-operator/gta6-clip-operator/output/yt_main__20261122-055649-f64074.mp4",
+  "hook": "\u201cSure, oh man I got\u201d",
+  "hook_id": "quote",
+  "hook_kind": "quote",
+  "edit": {
+    "bounds": [
+      0.0,
+      20.92
+    ],
+    "segments": [
+      [
+        0.0,
+        5.65
+      ],
+      [
+        6.52,
+        20.92
+      ]
+    ],
+    "cold_open": [
+      9.5,
+      11.2
+    ],
+    "cuts": 1
+  },
+  "captions": true,
+  "caption_words": 30,
+  "caption": "\u201cSure, oh man I got\u201d\n\n\ud83c\udfa5 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#gaming #dasgasdom3 #shorts #gtavi #gta6",
+  "title": "Dasgas Dom: \u201cSure, oh man I got\u201d | GTA 6",
+  "disclosure_rendered": true,
+  "transcript": "Info and help us get this place shut down or not fuck now. Oh, yeah sure fucking Sure, oh man I got money. My dad does same thing Your dad",
+  "inspect": {
+    "letterbox": 0.0,
+    "black": 0.0,
+    "hash": [
+      17434186725654747699,
+      12167789900845100445,
+      17932395776228551981,
+      17932397911297095805,
+      13320711955140389305,
+      13216844008932549652,
+      13613436602312898969,
+      13613443182135683513,
+      13613436597950950297,
+      17940292447744654139,
+      13033037869486207084,
+      13033055530400116844
+    ],
+    "mean_db": -15.7,
+    "duration": 20.0
+  },
+  "status": "review",
+  "created": "2026-11-22T05:57:23.072199",
+  "checks": {
+    "no_story_spoiler": true,
+    "no_licensed_music": null,
+    "footage_rights_ok": true,
+    "disclosure_ok": true
+  },
+  "quality": 0.668,
+  "compliance": {
+    "platform_allowed": {
+      "pass": true,
+      "why": ""
+    },
+    "campaign_window": {
+      "pass": true,
+      "why": ""
+    },
+    "source_authorized": {
+      "pass": true,
+      "why": ""
+    },
+    "duration": {
+      "pass": true,
+      "why": ""
+    },
+    "captions_present": {
+      "pass": true,
+      "why": ""
+    },
+    "transcript_safe": {
+      "pass": true,
+      "why": ""
+    },
+    "title_clean": {
+      "pass": true,
+      "why": ""
+    },
+    "no_spoiler_in_title": {
+      "pass": true,
+      "why": ""
+    },
+    "title_accurate": {
+      "pass": true,
+      "why": ""
+    },
+    "hashtag #dasgasdom3": {
+      "pass": true,
+      "why": ""
+    },
+    "credit kick.com/dasgasd3m": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_on_screen": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_in_caption": {
+      "pass": true,
+      "why": ""
+    },
+    "unique_to_campaign": {
+      "pass": true,
+      "why": ""
+    },
+    "daily_cap": {
+      "pass": true,
+      "why": ""
+    },
+    "quality_floor": {
+      "pass": true,
+      "why": ""
+    }
+  },
+  "value": 0.4411,
+  "review_asset": "draft:review-queue/yt_main__20261122-055649-f64074.mp4"
+}

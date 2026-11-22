@@ -146,3 +146,8 @@
 2026-11-22 05:26:04 [gate] reject 20261122-052525-c3e7e9: quality: highlight score 1.19 < floor; transcript_safe: explicit or hateful language in clip
 2026-11-22 05:26:59 [gate] reject 20261122-052604-cb7e97: quality: highlight score 1.185 < floor; transcript_safe: explicit or hateful language in clip
 2026-11-22 05:27:05 [cycle] made=2 approved=0 scheduled=0 posted=0 learned=0
+2026-11-22 05:41:23 [purge] removed public media yt_main__20261122-044459-67fd44.mp4
+2026-11-22 05:54:59 [agent] Dasgas Dom 'IRL JASON FROM GTA 6 STREAM!' 843min -> 10 highlights (chat=no)
+2026-11-22 05:55:37 [gate] reject 20261122-055459-88ad62: quality_floor: quality 0.55 below floor
+2026-11-22 05:56:21 [gate] reject 20261122-055537-d853f1: quality_floor: quality 0.50 below floor
+2026-11-22 05:57:38 [gate] reject 20261122-055723-02c5ea: technical: mostly black frames; transcript_safe: explicit or hateful language in clip; quality_floor: quality 0.44 below floor
