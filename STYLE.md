@@ -32,3 +32,11 @@ Evidence: 1,038 GTA 6 Shorts published since launch (YouTube API), 468 streamer 
 ## Campaign specifics
 - Dom (RUCKUS): $2.00/1K, $20 min (~10K views) - $150 max per clip; any GTA 6 stream from Nov 18; GTA 6-specific account required; credit kick.com/dasgasd3m + #dasgasdom3; submit within 30 min; deadline Dec 19 11:59 PM PST. Brief hook ideas: "Dasgas Dom reacts to [character]'s death", "Dasgas Dom finds a GTA 6 glitch", "Dasgas Dom fails [mission]" - only when the footage supports it, and never reveal a spoiler in the title/cover.
 - Tomo: see config; runs on the home computer.
+
+## Why it works (viewer psychology, Nov 21 research)
+- **The face is the product.** Fans form parasocial bonds and often care more about the streamer's reaction than the gameplay -> keep the facecam big and hold on the reaction.
+- **Incongruity = the joke.** Humor comes from the gap between what was expected and what happened -> every clip needs a visible setup (expectation) and a deviation (payoff); the banner sets the expectation.
+- **Suspense feeds enjoyment** -> a short beat of setup before the payoff beats starting on the payoff.
+- **Shared emotion spreads.** Watching someone react syncs viewers emotionally and drives sharing -> pick moments with a genuine, visible reaction.
+- **Sound cues tell people when to laugh.** Laugh-track research shows added laughter makes jokes rate funnier, and timing of comedic sound changes how funny a scene feels. Meme sounds ("fahh", boom, etc.) are the modern laugh track plus an in-group signal: ONE cue on the payoff, timed just after the beat; never on every beat; never a stale or explained meme; never where it reads as the streamer's own reaction (Dom's brief: don't fabricate reactions). Viewers do notice silence: clip-channel commenters complain when a meme video loses its sounds.
+- **Licensing:** meme sounds are recordings someone owns -> only royalty-free/licensed or our own recordings.
