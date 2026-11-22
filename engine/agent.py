@@ -174,7 +174,7 @@ def _render_job(cfg, L, camp, acc, vod, sec, clip, insp, tag):
         if f:
             Path(f).unlink(missing_ok=True)
     cap = caption(lane, hook, acc.get("hashtags", []) + camp.get("required_hashtags", []),
-                  streamer=streamer, extra_terms=L.get("trend_terms", [])[:2],
+                  streamer=streamer, extra_terms=[],  # market-scan terms are not about the clip: never hashtag them
                   suffix=camp.get("caption_suffix", ""))
     job = {
         "id": tag, "account_id": acc["id"], "platform": acc["platform"], "campaign_id": camp["id"],
@@ -207,7 +207,7 @@ def _reviewed_count(cfg, camp_id):
             j = read_json(p)
             if j["campaign_id"] == camp_id and j.get("approved_by") == "reviewer":
                 n += 1
-    return n + len([1 for p in pipeline.list_jobs(cfg, "review") if read_json(p)["campaign_id"] == camp_id])
+    return n  # only clips a reviewer actually approved count toward review_first_n
 
 
 def auto_approve(cfg, L):
@@ -236,7 +236,8 @@ def auto_approve(cfg, L):
         acc = next(a for a in cfg["accounts"] if a["id"] == j["account_id"])
         cap = acc["daily_max"] * (cfg["autoreview"].get("days_ahead", 1) + 1)
         if used.get(acc["id"], 0) < cap and val >= cfg["autoreview"]["min_value"]:
-            need_review = _reviewed_count(cfg, j["campaign_id"]) < cfg.get("quality", {}).get("review_first_n", 0)
+            need_review = (cfg.get("quality", {}).get("review_all", False)
+                           or _reviewed_count(cfg, j["campaign_id"]) < cfg.get("quality", {}).get("review_first_n", 0))
             if need_review and os.environ.get("GITHUB_REPOSITORY"):
                 # launch-day safety: first clips of each campaign wait for a reviewer
                 from .publish import draft_upload

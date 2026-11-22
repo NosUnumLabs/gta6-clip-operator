@@ -13,7 +13,12 @@ LEAD = 0.25          # tiny breath before the first word
 
 # Hard block: slurs / explicit sexual content -> clip is rejected (platform + campaign safety)
 _BLOCK = [r"\bn[i1]gg", r"\bf[a@]gg?ot", r"\bretard", r"\btr[a@]nny", r"\bk[i1]ke\b", r"\bsp[i1]c\b",
-          r"\bch[i1]nk\b", r"\bporn", r"\bcum\b", r"\bblowjob", r"\bdick\b", r"\bpussy", r"\bboobs?\b"]
+          r"\bch[i1]nk\b", r"\bporn", r"\bcum\b", r"\bblowjob", r"\bdick\b", r"\bpussy", r"\bboobs?\b",
+          # sexual content (YouTube/brand safety): never in a sponsored clip
+          r"\bstrok\w*\s+(his|my|your|her|the)\s+(meat|dick|cock|thing)", r"\bcock\b", r"\bhorny\b",
+          r"\bnudes?\b", r"\bnaked\b", r"\bsex\b", r"\bsexy\b", r"\bpenis\b", r"\bvagina\b",
+          r"\bf\w*ck\w*\s+(her|him|his|your|my|their)\s+(face|mouth|ass|brains)", r"\bthot\b", r"\bslut",
+          r"\bwhore", r"\bjerk(ing)?\s+off", r"\bsuck\w*\s+(my|his|your)\s+(dick|d|cock|balls)"]
 # Strong words: allowed in speech, masked in captions, never in titles/hooks
 _MASK = [r"\bf+u+c+k\w*", r"\bsh[i1]t\w*", r"\bb[i1]tch\w*", r"\bass(hole)?\b", r"\bdamn\b",
          r"\bmotherf\w*", r"\bbastard\w*", r"\bcrap\b", r"\bhell\b"]
@@ -111,13 +116,21 @@ def remap(words, segs):
     return out
 
 
+_FILLER = {"whoa", "woah", "hey", "yo", "oh", "ooh", "bro", "bruh", "yeah", "yes", "no", "nah", "wait", "what",
+           "huh", "ha", "haha", "okay", "ok", "uh", "um", "hmm", "dude", "man", "like", "so", "and", "the", "a",
+           "i", "it", "go", "come", "on", "wow", "damn", "lol", "y'all", "yall"}
+
+
 def pick_quote(words, peak, max_words=8):
     """Choose a short, clean utterance near the peak to use verbatim as the hook/title."""
     best, best_score = None, -1e9
     for u in sentences(words):
         text = " ".join(w[2] for w in u).strip()
         n = len(u)
-        if n < 2 or n > 12 or has_strong(text) or unsafe(text) or SPOILER_WORDS.search(text):
+        if n < 2 or n > 12 or has_strong(text) or unsafe(text) or SPOILER_WORDS.search(text) or "*" in text:
+            continue
+        content = {re.sub(r"[^a-z']", "", w[2].lower()) for w in u} - _FILLER - {""}
+        if len(content) < 2:  # "Whoa, whoa, whoa" / "Hey hey" are not hooks
             continue
         dist = min(abs(u[0][0] - peak), abs(u[-1][1] - peak))
         score = (-dist + (1.5 if re.search(r"[!?]", text) else 0) + (1.0 if 3 <= n <= max_words else 0)

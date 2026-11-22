@@ -1,0 +1,148 @@
+{
+ "id": "20261122-044933-2df856",
+ "account_id": "yt_main",
+ "platform": "youtube",
+ "campaign_id": "ruckus_dasgasd3m",
+ "campaign_url": "https://contentrewards.com/c/campaigns/051002dd-5c46-43d0-a446-43f2957ba3a9",
+ "submit_within_min": 30,
+ "after_post_note": "",
+ "source": "https://kick.com/dasgasd3m/videos/be2c2aad-f224-407d-ba7c-4b3e7c599d80",
+ "vod_title": "LATE NIGZHT GTA 6 STREAM!",
+ "streamer": "Dasgas Dom",
+ "rights_ok": true,
+ "highlight": {
+  "start": 3.0,
+  "end": 24.0,
+  "score": 1.582,
+  "peak": 809.0,
+  "peak_rel": 12.0
+ },
+ "render": {
+  "start": 0.0,
+  "duration": 15.0,
+  "zoom": 1.084,
+  "layout": "blurfill"
+ },
+ "file": "/home/runner/work/gta6-clip-operator/gta6-clip-operator/output/yt_main__20261122-044933-2df856.mp4",
+ "hook": "This is why you don't do this in GTA 6",
+ "hook_id": "s_whyyoudont",
+ "hook_kind": "template",
+ "edit": {
+  "bounds": [
+   7.13,
+   22.13
+  ],
+  "segments": [
+   [
+    7.13,
+    22.13
+   ]
+  ],
+  "cold_open": null,
+  "cuts": 0
+ },
+ "captions": true,
+ "caption_words": 13,
+ "caption": "This is why you don't do this in GTA 6\n\n\ud83c\udfa5 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#gtavi #shorts #dasgasdom3 #gta6 #gaming #kpop #indian",
+ "title": "This is why you don't do this in GTA 6 | GTA 6",
+ "disclosure_rendered": true,
+ "transcript": "I'll split you to 6. I see the negative speed like 70 % in already. We fucking shit",
+ "inspect": {
+  "letterbox": 0.0,
+  "black": 0.0,
+  "hash": [
+   17216406524555256940,
+   3183190085668791404,
+   12375036925131973740,
+   12177404108085683308,
+   17221470875129504876,
+   17148815151312692332,
+   16928139933239240044,
+   17216369209879323756,
+   16928138833719223404,
+   16856116424066032748,
+   16928456592873251948,
+   17072254021804516456
+  ],
+  "mean_db": -12.4,
+  "duration": 27.0
+ },
+ "status": "review",
+ "created": "2026-11-22T04:50:05.346083",
+ "checks": {
+  "no_story_spoiler": true,
+  "no_licensed_music": null,
+  "footage_rights_ok": true,
+  "disclosure_ok": true
+ },
+ "quality": 0.561,
+ "compliance": {
+  "platform_allowed": {
+   "pass": true,
+   "why": ""
+  },
+  "campaign_window": {
+   "pass": true,
+   "why": ""
+  },
+  "source_authorized": {
+   "pass": true,
+   "why": ""
+  },
+  "duration": {
+   "pass": true,
+   "why": ""
+  },
+  "captions_present": {
+   "pass": true,
+   "why": ""
+  },
+  "transcript_safe": {
+   "pass": true,
+   "why": ""
+  },
+  "title_clean": {
+   "pass": true,
+   "why": ""
+  },
+  "no_spoiler_in_title": {
+   "pass": true,
+   "why": ""
+  },
+  "title_accurate": {
+   "pass": true,
+   "why": ""
+  },
+  "hashtag #dasgasdom3": {
+   "pass": true,
+   "why": ""
+  },
+  "credit kick.com/dasgasd3m": {
+   "pass": true,
+   "why": ""
+  },
+  "disclosure_on_screen": {
+   "pass": true,
+   "why": ""
+  },
+  "disclosure_in_caption": {
+   "pass": true,
+   "why": ""
+  },
+  "unique_to_campaign": {
+   "pass": true,
+   "why": ""
+  },
+  "daily_cap": {
+   "pass": true,
+   "why": ""
+  },
+  "quality_floor": {
+   "pass": true,
+   "why": ""
+  }
+ },
+ "value": 0.8698,
+ "review_asset": "draft:review-queue/yt_main__20261122-044933-2df856.mp4",
+ "rejected_reason": "irrelevant trend hashtags (pulled by editor 2026-11-21; never published)"
+}
