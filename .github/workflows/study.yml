@@ -1,0 +1,16 @@
+name: market-study
+on:
+  workflow_dispatch:
+  push: {branches: [main], paths: ["study_request.txt"]}
+permissions: {contents: write}
+jobs:
+  study:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - run: pip install -q requests && python3 study.py
+        env: {YT_API_KEY: "${{ secrets.YT_API_KEY }}"}
+      - env: {GH_TOKEN: "${{ github.token }}"}
+        run: |
+          cd study_out && tar czf study.tgz study.json thumbs
+          gh release create "study-$(date -u +%Y%m%d-%H%M)" --draft -t study -n "private market study" study.tgz
