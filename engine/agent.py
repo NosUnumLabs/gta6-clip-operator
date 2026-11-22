@@ -156,19 +156,22 @@ def _render_job(cfg, L, camp, acc, vod, sec, clip, insp, tag):
         title = hook + " | GTA 6"
 
     # 5) clean word-synced captions (masked strong language)
-    ass = None
-    if cut_words:
-        ass = Path(cfg["paths"]["output"], f"{tag}.ass")
-        captions.write_ass(cut_words, ass, font=cfg.get("captions", {}).get("font_name", "DejaVu Sans"))
-    out = Path(cfg["paths"]["output"], f"{acc['id']}__{tag}.mp4")
-    disclosure = camp.get("disclosure_text") if camp.get("disclosure_required") else None
-    from .layout import detect_facecam
+    from .layout import detect_facecam, TOP_FRAC
     try:
         cam = detect_facecam(edited)
     except Exception:
         cam = None
+    ass = None
+    if cut_words:
+        ass = Path(cfg["paths"]["output"], f"{tag}.ass")
+        # captions sit on the face/game seam when stacked (top clipper style), lower-middle otherwise
+        captions.write_ass(cut_words, ass, font=cfg.get("captions", {}).get("font_name", "DejaVu Sans"),
+                           y_frac=TOP_FRAC if cam else 0.66)
+    out = Path(cfg["paths"]["output"], f"{acc['id']}__{tag}.mp4")
+    disclosure = camp.get("disclosure_text") if camp.get("disclosure_required") else None
     meta = render_clip(edited, {"start": 0.0, "end": total, "score": clip["score"]}, acc, hook, out, cfg,
-                       seed=tag, ass_path=ass, jitter=False, disclosure=disclosure, facecam=cam)
+                       seed=tag, ass_path=ass, jitter=False, disclosure=disclosure, facecam=cam,
+                       flash_at=[cold_len] if cold_len else [])
     meta["layout"] = "facecam_stack" if cam else "blurfill"
     for f in (ass, edited):
         if f:

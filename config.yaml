@@ -77,9 +77,9 @@ campaigns:
   platforms:
   - youtube
   - tiktok
-  rate_per_1k: 1.0
-  cap_per_clip: 100
-  min_payout: 10
+  rate_per_1k: 2.0
+  cap_per_clip: 150
+  min_payout: 20
   submit_within_min: 30
   start_at: '2026-11-19T11:00:00-06:00'
   end_at: '2026-12-20T01:59:00-06:00'
@@ -96,8 +96,8 @@ campaigns:
   sources:
   - name: Dasgas Dom
     url: https://kick.com/dasgasd3m/videos
-    date_from: '2026-11-19'
-    date_to: '2026-11-20'
+    date_from: '2026-11-18'   # brief (updated): any GTA 6 playthrough stream from Nov 18 on
+    title_must_contain: [gta]  # skip his IRL / just-chatting streams
   required_credit:
   - kick.com/dasgasd3m
   max_posts_per_day: 3

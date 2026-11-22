@@ -7,7 +7,7 @@ face, or None when no stable face is found (then the renderer falls back to blur
 import subprocess
 import numpy as np
 
-TOP_FRAC = 0.36          # share of the 1080x1920 canvas used by the facecam panel
+TOP_FRAC = 0.50          # 50/50 face-over-game, matching top streamer clips (Nov 2026 study); share of the 1080x1920 canvas used by the facecam panel
 SAMPLE_W = 640
 
 

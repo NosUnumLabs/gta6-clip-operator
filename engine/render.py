@@ -17,19 +17,23 @@ def _textfile(text):
 
 
 def _wrap(text, width=22):
-    words, lines, cur = text.split(), [], ""
-    for w in words:
-        if len(cur) + len(w) + 1 > width and cur:
-            lines.append(cur)
-            cur = w
-        else:
-            cur = (cur + " " + w).strip()
-    if cur:
-        lines.append(cur)
-    return "\n".join(lines)
+    """Balanced wrap into the fewest lines that fit `width`; no orphan last word."""
+    import itertools
+    words = text.split()
+    if len(text) <= width or len(words) < 2:
+        return text
+    for n in range(2, 5):
+        best = None
+        for cuts in itertools.combinations(range(1, len(words)), n - 1):
+            parts = [" ".join(words[a:b]) for a, b in zip((0,) + cuts, cuts + (len(words),))]
+            m = max(len(x) for x in parts)
+            if m <= width and (best is None or m < best[0]):
+                best = (m, parts)
+        if best:
+            return "\n".join(best[1])
+    return text
 
-
-def render_clip(src, clip, account, hook, out_path, cfg, seed=None, ass_path=None, jitter=True, disclosure=None,
+def render_clip(src, clip, account, hook, out_path, cfg, seed=None, ass_path=None, jitter=True, disclosure=None, flash_at=(),
                 facecam=None):
     r = cfg["render"]
     rng = random.Random(seed)
@@ -50,13 +54,14 @@ def render_clip(src, clip, account, hook, out_path, cfg, seed=None, ass_path=Non
     hook_y = "h*0.16"
     if layout == "facecam_rect":
         fx, fy, fw, fh = facecam
-        top = int(H * 0.36) // 2 * 2
+        from .layout import TOP_FRAC
+        top = int(H * TOP_FRAC) // 2 * 2
         bot = H - top
         v = (f"[0:v]split[a][b];"
              f"[a]crop={fw}:{fh}:{fx}:{fy},scale={W}:{top}:force_original_aspect_ratio=increase,crop={W}:{top}[cam];"
              f"[b]scale=-2:{bot},crop={W}:{bot}[game];"
              f"[cam][game]vstack,setsar=1[base]")
-        hook_y = f"{top}-text_h/2"   # hook sits on the seam between face and gameplay
+        hook_y = "h*0.07"   # top of the facecam; the seam belongs to the word-pop captions
     elif layout == "crop":
         v = (f"[0:v]scale=-2:{int(H*zoom)},crop={W}:{H},setsar=1[base]")
     elif layout == "facecam_stack":
@@ -95,6 +100,9 @@ def render_clip(src, clip, account, hook, out_path, cfg, seed=None, ass_path=Non
                      f"fontcolor=white@0.7:x=(w-text_w)/2:y=h*0.86")
     if ass_path:
         draws.insert(0, "ass=" + str(ass_path).replace(":", r"\:"))
+    for t in flash_at or ():  # quick white flash on the beat (cold-open -> setup cut), as top clippers do
+        draws.insert(0, f"drawbox=x=0:y=0:w=iw:h=ih:color=white@0.85:t=fill:enable='between(t,{t:.2f},{t + 0.08:.2f})'")
+        draws.insert(1, f"drawbox=x=0:y=0:w=iw:h=ih:color=white@0.4:t=fill:enable='between(t,{t + 0.08:.2f},{t + 0.16:.2f})'")
     v += ";[base]" + ",".join(draws) + "[v]"
 
     inputs = ["-ss", f"{start:.2f}", "-t", f"{dur:.2f}", "-i", str(src)]

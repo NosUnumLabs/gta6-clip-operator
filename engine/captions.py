@@ -51,8 +51,8 @@ def _ts(t):
     return f"{int(h)}:{int(m):02d}:{s:05.2f}"
 
 
-def write_ass(words, out_path, width=1080, height=1920, font="Poppins", size=78,
-              color="&H00FFFFFF", highlight="&H0000E5FF", per_line=3, y_frac=0.70):
+def write_ass(words, out_path, width=1080, height=1920, font="Poppins", size=96,
+              color="&H00FFFFFF", highlight="&H0000E5FF", per_line=2, y_frac=0.70):
     """Groups words 3 at a time; the spoken word is highlighted (karaoke style)."""
     hdr = f"""[Script Info]
 ScriptType: v4.00+
@@ -61,7 +61,7 @@ PlayResY: {height}
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Cap,{font},{size},{color},{color},&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,6,2,2,60,60,{int(height*(1-y_frac))},1
+Style: Cap,{font},{size},{color},{color},&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,8,3,2,60,60,{int(height*(1-y_frac)) - size // 2},1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
@@ -74,6 +74,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             from .edit import mask
             txt = " ".join((r"{\c" + highlight + "}" + mask(w).upper() + r"{\c" + color + "}") if k == j
                            else mask(w).upper() for k, (_, _, w) in enumerate(grp))
-            lines.append(f"Dialogue: 0,{_ts(ws)},{_ts(max(end, ws + 0.05))},Cap,,0,0,0,,{txt}")
+            pop = r"{\fscx82\fscy82\t(0,90,\fscx100\fscy100)}" if j == 0 else ""  # chunk pops in
+            lines.append(f"Dialogue: 0,{_ts(ws)},{_ts(max(end, ws + 0.05))},Cap,,0,0,0,,{pop}{txt}")
     Path(out_path).write_text(hdr + "\n".join(lines) + "\n")
     return out_path
