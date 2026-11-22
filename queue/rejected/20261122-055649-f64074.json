@@ -1,88 +1,88 @@
 {
-  "id": "20261122-051914-774b0e",
+  "id": "20261122-055649-f64074",
   "account_id": "yt_main",
   "platform": "youtube",
   "campaign_id": "ruckus_dasgasd3m",
   "campaign_url": "https://contentrewards.com/c/campaigns/051002dd-5c46-43d0-a446-43f2957ba3a9",
   "submit_within_min": 30,
   "after_post_note": "",
-  "source": "https://kick.com/dasgasd3m/videos/b7f72a07-14a1-4ece-9cb3-1fb39c204d56",
-  "vod_title": "thanksgiving. GTA 6 STREAM!",
+  "source": "https://kick.com/dasgasd3m/videos/aacf8cb5-681b-4f63-91a8-37f52197a4a4",
+  "vod_title": "IRL JASON FROM GTA 6 STREAM!",
   "streamer": "Dasgas Dom",
   "rights_ok": true,
   "highlight": {
     "start": 3.0,
-    "end": 24.0,
-    "score": 1.348,
-    "peak": 5664.0,
-    "peak_rel": 12.0
+    "end": 17.0,
+    "score": 1.398,
+    "peak": 22606.5,
+    "peak_rel": 10.0
   },
   "render": {
     "start": 0.0,
-    "duration": 24.55,
-    "zoom": 1.06,
+    "duration": 21.75,
+    "zoom": 1.009,
     "layout": "blurfill"
   },
-  "file": "/home/runner/work/gta6-clip-operator/gta6-clip-operator/output/yt_main__20261122-051914-774b0e.mp4",
-  "hook": "Wait for it\u2026 (Dasgas Dom in GTA 6)",
-  "hook_id": "s_waitforit",
-  "hook_kind": "template",
+  "file": "/home/runner/work/gta6-clip-operator/gta6-clip-operator/output/yt_main__20261122-055649-f64074.mp4",
+  "hook": "“Sure, oh man I got”",
+  "hook_id": "quote",
+  "hook_kind": "quote",
   "edit": {
     "bounds": [
       0.0,
-      25.42
+      20.92
     ],
     "segments": [
       [
         0.0,
-        18.65
+        5.65
       ],
       [
-        21.22,
-        25.42
+        6.52,
+        20.92
       ]
     ],
     "cold_open": [
-      11.5,
-      13.2
+      9.5,
+      11.2
     ],
     "cuts": 1
   },
   "captions": true,
-  "caption_words": 54,
-  "caption": "Wait for it\u2026 (Dasgas Dom in GTA 6)\n\n\ud83c\udfa5 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#dasgasdom3 #gaming #gta6 #gtavi #shorts",
-  "title": "Wait for it\u2026 (Dasgas Dom in GTA 6) | GTA 6",
+  "caption_words": 30,
+  "caption": "“Sure, oh man I got”\n\n🎥 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#gaming #dasgasdom3 #shorts #gtavi #gta6",
+  "title": "Dasgas Dom: “Sure, oh man I got” | GTA 6",
   "disclosure_rendered": true,
-  "transcript": "Fuck you'reB a fuck I'm awesome Just always boy with black people And always always boy with a FUCK victims Get off forty -\u30dbight Let's do it man he miss it B, B, B F\u3001K nonsense Hey, caca -kay, caca -kay -kay -kay -kay -kay -kay -Hey -kay -kay -kay -kay, damn! Oh, gawp, gawp, gawp, gawp, gawp! Oh, gawp! Oh! Oh, gawp! Oh, now go to the...",
+  "transcript": "Info and help us get this place shut down or not fuck now. Oh, yeah sure fucking Sure, oh man I got money. My dad does same thing Your dad",
   "inspect": {
     "letterbox": 0.0,
     "black": 0.0,
     "hash": [
-      9826907854574477408,
-      9255091473742323808,
-      9250447102271053920,
-      9250640616317542496,
-      9250587838685929568,
-      9250447102402125920,
-      9250640615242752096,
-      10407872206505271392,
-      9250499878828138592,
-      9255021070642602080,
-      9250499912918392928,
-      9255021139362078816
+      17434186725654747699,
+      12167789900845100445,
+      17932395776228551981,
+      17932397911297095805,
+      13320711955140389305,
+      13216844008932549652,
+      13613436602312898969,
+      13613443182135683513,
+      13613436597950950297,
+      17940292447744654139,
+      13033037869486207084,
+      13033055530400116844
     ],
-    "mean_db": -13.5,
-    "duration": 27.008
+    "mean_db": -15.7,
+    "duration": 20.0
   },
-  "status": "review",
-  "created": "2026-11-22T05:20:24.580685",
+  "status": "rejected",
+  "created": "2026-11-22T05:57:23.072199",
   "checks": {
     "no_story_spoiler": true,
     "no_licensed_music": null,
     "footage_rights_ok": true,
     "disclosure_ok": true
   },
-  "quality": 0.612,
+  "quality": 0.668,
   "compliance": {
     "platform_allowed": {
       "pass": true,
@@ -149,6 +149,8 @@
       "why": ""
     }
   },
-  "value": 0.1636,
-  "review_asset": "draft:review-queue/yt_main__20261122-051914-774b0e.mp4"
+  "value": 0.4411,
+  "review_asset": "draft:review-queue/yt_main__20261122-055649-f64074.mp4",
+  "rejected_reason": "No clear moment: static shot of player standing in front of NPC crowd, no setup->payoff, garbled transcript, filler quote hook ('Sure, oh man I got').",
+  "rejected_at": 1795328113
 }

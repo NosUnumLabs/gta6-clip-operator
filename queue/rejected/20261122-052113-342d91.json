@@ -1,88 +1,81 @@
 {
-  "id": "20261122-055649-f64074",
+  "id": "20261122-052113-342d91",
   "account_id": "yt_main",
   "platform": "youtube",
   "campaign_id": "ruckus_dasgasd3m",
   "campaign_url": "https://contentrewards.com/c/campaigns/051002dd-5c46-43d0-a446-43f2957ba3a9",
   "submit_within_min": 30,
   "after_post_note": "",
-  "source": "https://kick.com/dasgasd3m/videos/aacf8cb5-681b-4f63-91a8-37f52197a4a4",
-  "vod_title": "IRL JASON FROM GTA 6 STREAM!",
+  "source": "https://kick.com/dasgasd3m/videos/be2c2aad-f224-407d-ba7c-4b3e7c599d80",
+  "vod_title": "LATE NIGZHT GTA 6 STREAM!",
   "streamer": "Dasgas Dom",
   "rights_ok": true,
   "highlight": {
     "start": 3.0,
-    "end": 17.0,
-    "score": 1.398,
-    "peak": 22606.5,
-    "peak_rel": 10.0
+    "end": 24.0,
+    "score": 1.582,
+    "peak": 809.0,
+    "peak_rel": 12.0
   },
   "render": {
     "start": 0.0,
-    "duration": 21.75,
-    "zoom": 1.009,
+    "duration": 15.0,
+    "zoom": 1.032,
     "layout": "blurfill"
   },
-  "file": "/home/runner/work/gta6-clip-operator/gta6-clip-operator/output/yt_main__20261122-055649-f64074.mp4",
-  "hook": "\u201cSure, oh man I got\u201d",
+  "file": "/home/runner/work/gta6-clip-operator/gta6-clip-operator/output/yt_main__20261122-052113-342d91.mp4",
+  "hook": "“I see the negative speed like 70 %…”",
   "hook_id": "quote",
   "hook_kind": "quote",
   "edit": {
     "bounds": [
-      0.0,
-      20.92
+      7.13,
+      22.13
     ],
     "segments": [
       [
-        0.0,
-        5.65
-      ],
-      [
-        6.52,
-        20.92
+        7.13,
+        22.13
       ]
     ],
-    "cold_open": [
-      9.5,
-      11.2
-    ],
-    "cuts": 1
+    "cold_open": null,
+    "cuts": 0
   },
   "captions": true,
-  "caption_words": 30,
-  "caption": "\u201cSure, oh man I got\u201d\n\n\ud83c\udfa5 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#gaming #dasgasdom3 #shorts #gtavi #gta6",
-  "title": "Dasgas Dom: \u201cSure, oh man I got\u201d | GTA 6",
+  "caption_words": 13,
+  "caption": "“I see the negative speed like 70 %…”\n\n🎥 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#dasgasdom3 #shorts #gta6 #gaming #gtavi",
+  "title": "Dasgas Dom: “I see the negative speed like 70 %…” | GTA 6",
   "disclosure_rendered": true,
-  "transcript": "Info and help us get this place shut down or not fuck now. Oh, yeah sure fucking Sure, oh man I got money. My dad does same thing Your dad",
+  "transcript": "I'll split you to 6. I see the negative speed like 70 % in already. We fucking shit",
   "inspect": {
     "letterbox": 0.0,
     "black": 0.0,
     "hash": [
-      17434186725654747699,
-      12167789900845100445,
-      17932395776228551981,
-      17932397911297095805,
-      13320711955140389305,
-      13216844008932549652,
-      13613436602312898969,
-      13613443182135683513,
-      13613436597950950297,
-      17940292447744654139,
-      13033037869486207084,
-      13033055530400116844
+      17216406524555256940,
+      3183190085668791404,
+      12375036925131973740,
+      12177404108085683308,
+      17221470875129504876,
+      17148815151312692332,
+      16928139933239240044,
+      17216369209879323756,
+      16928138833719223404,
+      16856116424066032748,
+      16928456592873251948,
+      17072254021804516456
     ],
-    "mean_db": -15.7,
-    "duration": 20.0
+    "mean_db": -12.4,
+    "duration": 27.0
   },
-  "status": "review",
-  "created": "2026-11-22T05:57:23.072199",
+  "status": "rejected",
+  "created": "2026-11-22T05:21:44.789713",
   "checks": {
     "no_story_spoiler": true,
     "no_licensed_music": null,
     "footage_rights_ok": true,
     "disclosure_ok": true
   },
-  "quality": 0.668,
+  "quality": 0.561,
   "compliance": {
     "platform_allowed": {
       "pass": true,
@@ -149,6 +142,8 @@
       "why": ""
     }
   },
-  "value": 0.4411,
-  "review_asset": "draft:review-queue/yt_main__20261122-055649-f64074.mp4"
+  "value": 0.5137,
+  "review_asset": "draft:review-queue/yt_main__20261122-052113-342d91.mp4",
+  "rejected_reason": "No game footage: streamer at desktop browsing a dashboard/chat; no moment, nothing happens; filler quote hook.",
+  "rejected_at": 1795328113
 }

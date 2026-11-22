@@ -1,5 +1,5 @@
 {
-  "id": "20261122-055738-49bb5a",
+  "id": "20261122-055621-9cde81",
   "account_id": "yt_main",
   "platform": "youtube",
   "campaign_id": "ruckus_dasgasd3m",
@@ -13,72 +13,69 @@
   "highlight": {
     "start": 3.0,
     "end": 17.0,
-    "score": 1.365,
-    "peak": 44559.0,
+    "score": 1.419,
+    "peak": 40403.0,
     "peak_rel": 10.0
   },
   "render": {
     "start": 0.0,
-    "duration": 20.48,
-    "zoom": 1.081,
+    "duration": 15.0,
+    "zoom": 1.015,
     "layout": "blurfill"
   },
-  "file": "/home/runner/work/gta6-clip-operator/gta6-clip-operator/output/yt_main__20261122-055738-49bb5a.mp4",
+  "file": "/home/runner/work/gta6-clip-operator/gta6-clip-operator/output/yt_main__20261122-055621-9cde81.mp4",
   "hook": "This GTA 6 moment broke Dasgas Dom",
   "hook_id": "s_broke",
   "hook_kind": "template",
   "edit": {
     "bounds": [
-      2.63,
-      21.41
+      5.94,
+      20.94
     ],
     "segments": [
       [
-        2.63,
-        21.41
+        5.94,
+        20.94
       ]
     ],
-    "cold_open": [
-      9.5,
-      11.2
-    ],
+    "cold_open": null,
     "cuts": 0
   },
   "captions": true,
-  "caption_words": 31,
-  "caption": "This GTA 6 moment broke Dasgas Dom\n\n\ud83c\udfa5 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#gtavi #gta6 #gaming #shorts #dasgasdom3",
+  "caption_words": 18,
+  "caption": "This GTA 6 moment broke Dasgas Dom\n\n🎥 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#gta6 #dasgasdom3 #shorts #gaming #gtavi",
   "title": "This GTA 6 moment broke Dasgas Dom | GTA 6",
   "disclosure_rendered": true,
-  "transcript": "I win, next time! Come on, we'll get it. Oh, blah, blah, blah. I'll shock my fucking nuts. You fucking me around. You fucking me around. You're gonna see my game. You can't see it.",
+  "transcript": "Take a shower. Oh Actually the guy who was hanging around with you, right? Oh, yeah. Oh, yeah. Oh, yeah scrub bitch",
   "inspect": {
     "letterbox": 0.0,
     "black": 0.0,
     "hash": [
-      9511772574465222265,
-      10678229377500322572,
-      9520786436553185817,
-      9232548307836217612,
-      9537086640467879948,
-      14033372625590616320,
-      14467963920759914752,
-      14469164604703408132,
-      12239018186583445753,
-      9628091036933293952,
-      9739801854875652086,
-      11436802979597324057
+      10308650551223323916,
+      11285347299399244569,
+      12189466483651469087,
+      12623500898815729215,
+      9783372022171370753,
+      9929747840481170693,
+      9784509512022328597,
+      10074146676752450323,
+      10882551657767831307,
+      10217697267788612947,
+      10217697267721504069,
+      9783655833509495555
     ],
-    "mean_db": -15.6,
-    "duration": 18.952
+    "mean_db": -14.1,
+    "duration": 20.0
   },
-  "status": "review",
-  "created": "2026-11-22T05:58:17.065896",
+  "status": "rejected",
+  "created": "2026-11-22T05:56:49.705151",
   "checks": {
     "no_story_spoiler": true,
     "no_licensed_music": null,
     "footage_rights_ok": true,
     "disclosure_ok": true
   },
-  "quality": 0.664,
+  "quality": 0.623,
   "compliance": {
     "platform_allowed": {
       "pass": true,
@@ -145,6 +142,8 @@
       "why": ""
     }
   },
-  "value": 0.8557,
-  "review_asset": "draft:review-queue/yt_main__20261122-055738-49bb5a.mp4"
+  "value": 0.6514,
+  "review_asset": "draft:review-queue/yt_main__20261122-055621-9cde81.mp4",
+  "rejected_reason": "Nudity: in-game shower scene with nude character on screen the whole clip - sexual content, not sponsor/YouTube safe. Also 14.1 s < campaign min 15 s.",
+  "rejected_at": 1795328113
 }
