@@ -174,3 +174,24 @@
 2026-11-23 01:07:05 [gate] reject 20261123-010603-917c29: quality: highlight score 1.15 < floor; duration: 9.0s outside 15-58s; no_reaction: only 0 reaction words within 4 s of the peak
 2026-11-23 01:07:56 [gate] reject 20261123-010705-2200ea: quality: highlight score 1.134 < floor; no_reaction: only 0 reaction words within 4 s of the peak
 2026-11-23 01:07:59 [cycle] made=1 approved=0 scheduled=0 posted=0 learned=0
+2026-11-23 01:49:24 [agent] Dasgas Dom 'thanksgiving. GTA 6 STREAM!' 414min -> 10 highlights (chat=no)
+2026-11-23 01:50:56 [gate] skip 20261123-015043-331e2e: off-game (gameplay layout in 0% of frames)
+2026-11-23 01:51:10 [gate] skip 20261123-015056-b1c6b3: off-game (gameplay layout in 0% of frames)
+2026-11-23 01:51:52 [gate] reject 20261123-015110-465240: no_reaction: only 0 reaction words within 4 s of the peak
+2026-11-23 01:52:38 [gate] reject 20261123-015152-7ec8bf: technical: mostly black frames
+2026-11-23 01:52:50 [gate] skip 20261123-015238-332fcc: off-game (gameplay layout in 0% of frames)
+2026-11-23 01:53:02 [gate] skip 20261123-015250-eb240c: off-game (gameplay layout in 40% of frames)
+2026-11-23 01:53:15 [gate] skip 20261123-015302-8514e2: off-game (gameplay layout in 0% of frames)
+2026-11-23 01:53:28 [gate] skip 20261123-015315-1cf8bb: off-game (gameplay layout in 0% of frames)
+2026-11-23 01:53:39 [gate] skip 20261123-015328-7c0f27: off-game (gameplay layout in 0% of frames)
+2026-11-23 01:54:23 [agent] Dasgas Dom 'LATE NIGZHT GTA 6 STREAM!' 101min -> 10 highlights (chat=no)
+2026-11-23 01:54:34 [gate] skip 20261123-015423-18ead6: off-game (gameplay layout in 0% of frames)
+2026-11-23 01:55:21 [gate] reject 20261123-015434-50e883: transcript_safe: explicit or hateful language in clip
+2026-11-23 01:56:53 [gate] reject 20261123-015606-5a3735: quality: highlight score 1.195 < floor
+2026-11-23 01:57:04 [gate] skip 20261123-015653-2fc75a: off-game (gameplay layout in 30% of frames)
+2026-11-23 01:57:38 [gate] reject 20261123-015704-d6c2a3: quality: highlight score 1.185 < floor; transcript_safe: explicit or hateful language in clip; no_reaction: only 0 reaction words within 4 s of the peak
+2026-11-23 01:58:25 [gate] reject 20261123-015738-93c642: quality: highlight score 1.174 < floor; quality_floor: quality 0.54 below floor
+2026-11-23 01:59:05 [gate] reject 20261123-015825-bea5be: quality: highlight score 1.151 < floor; duration: 13.4s outside 15-58s
+2026-11-23 02:00:06 [gate] reject 20261123-015905-6458bb: quality: highlight score 1.15 < floor; duration: 10.0s outside 15-58s; no_reaction: only 0 reaction words within 4 s of the peak
+2026-11-23 02:00:48 [gate] reject 20261123-020006-b4de07: quality: highlight score 1.134 < floor; no_reaction: only 0 reaction words within 4 s of the peak
+2026-11-23 02:00:54 [cycle] made=2 approved=0 scheduled=0 posted=0 learned=0

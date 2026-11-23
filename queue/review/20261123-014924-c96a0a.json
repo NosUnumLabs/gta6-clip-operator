@@ -1,0 +1,156 @@
+{
+  "id": "20261123-014924-c96a0a",
+  "account_id": "yt_main",
+  "platform": "youtube",
+  "campaign_id": "ruckus_dasgasd3m",
+  "campaign_url": "https://contentrewards.com/c/campaigns/051002dd-5c46-43d0-a446-43f2957ba3a9",
+  "submit_within_min": 30,
+  "after_post_note": "",
+  "source": "https://kick.com/dasgasd3m/videos/b7f72a07-14a1-4ece-9cb3-1fb39c204d56",
+  "vod_title": "thanksgiving. GTA 6 STREAM!",
+  "streamer": "Dasgas Dom",
+  "rights_ok": true,
+  "highlight": {
+    "start": 3.0,
+    "end": 17.0,
+    "score": 1.377,
+    "peak": 17322.0,
+    "peak_rel": 10.0
+  },
+  "render": {
+    "start": 0.0,
+    "duration": 18.8,
+    "zoom": 1.031,
+    "layout": "facecam_stack"
+  },
+  "file": "/home/runner/work/gta6-clip-operator/gta6-clip-operator/output/yt_main__20261123-014924-c96a0a.mp4",
+  "hook": "Dasgas Dom wasn't ready for this",
+  "hook_id": "s_notready",
+  "hook_kind": "template",
+  "edit": {
+    "bounds": [
+      2.22,
+      19.99
+    ],
+    "segments": [
+      [
+        2.22,
+        8.98
+      ],
+      [
+        9.67,
+        19.99
+      ]
+    ],
+    "cold_open": [
+      9.5,
+      11.2
+    ],
+    "cuts": 1
+  },
+  "captions": true,
+  "caption_words": 34,
+  "caption": "Dasgas Dom wasn't ready for this\n\n\ud83c\udfa5 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#gaming #shorts #gtavi #dasgasdom3 #gta6",
+  "title": "Dasgas Dom wasn't ready for this | GTA 6",
+  "disclosure_rendered": true,
+  "muted_words": 2,
+  "transcript": "Oh shit! Motherfucker! Where the fuck did that nigga come from?! Yo, what the fuck?! Ah shit, get in, bitch! Hey, hey, hey! Holy fuckin' shit! Where the flying fuck did that nigga come from?! Fuck me!",
+  "inspect": {
+    "letterbox": 0.0,
+    "black": 0.0,
+    "hash": [
+      17501807254438737400,
+      17921682783071771190,
+      17919136082576244063,
+      14329580747792281511,
+      17063292261869314168,
+      17417078288854832540,
+      13309446299527435548,
+      16854329994389984040,
+      14685050391328056018,
+      14259983855526245496,
+      18151386031085137079,
+      16337558582301241657
+    ],
+    "mean_db": -13.6,
+    "duration": 20.0
+  },
+  "status": "review",
+  "created": "2026-11-23T01:50:43.346926",
+  "checks": {
+    "no_story_spoiler": true,
+    "no_licensed_music": null,
+    "footage_rights_ok": true,
+    "disclosure_ok": true
+  },
+  "quality": 0.722,
+  "reaction_score": 3,
+  "compliance": {
+    "platform_allowed": {
+      "pass": true,
+      "why": ""
+    },
+    "campaign_window": {
+      "pass": true,
+      "why": ""
+    },
+    "source_authorized": {
+      "pass": true,
+      "why": ""
+    },
+    "duration": {
+      "pass": true,
+      "why": ""
+    },
+    "captions_present": {
+      "pass": true,
+      "why": ""
+    },
+    "transcript_safe": {
+      "pass": true,
+      "why": ""
+    },
+    "title_clean": {
+      "pass": true,
+      "why": ""
+    },
+    "no_spoiler_in_title": {
+      "pass": true,
+      "why": ""
+    },
+    "title_accurate": {
+      "pass": true,
+      "why": ""
+    },
+    "hashtag #dasgasdom3": {
+      "pass": true,
+      "why": ""
+    },
+    "credit kick.com/dasgasd3m": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_on_screen": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_in_caption": {
+      "pass": true,
+      "why": ""
+    },
+    "unique_to_campaign": {
+      "pass": true,
+      "why": ""
+    },
+    "daily_cap": {
+      "pass": true,
+      "why": ""
+    },
+    "quality_floor": {
+      "pass": true,
+      "why": ""
+    }
+  },
+  "value": 0.6827,
+  "review_asset": "draft:review-queue/yt_main__20261123-014924-c96a0a.mp4"
+}

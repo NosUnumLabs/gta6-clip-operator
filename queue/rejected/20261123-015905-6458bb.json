@@ -1,0 +1,152 @@
+{
+  "id": "20261123-015905-6458bb",
+  "account_id": "yt_main",
+  "platform": "youtube",
+  "campaign_id": "ruckus_dasgasd3m",
+  "campaign_url": "https://contentrewards.com/c/campaigns/051002dd-5c46-43d0-a446-43f2957ba3a9",
+  "submit_within_min": 30,
+  "after_post_note": "",
+  "source": "https://kick.com/dasgasd3m/videos/be2c2aad-f224-407d-ba7c-4b3e7c599d80",
+  "vod_title": "LATE NIGZHT GTA 6 STREAM!",
+  "streamer": "Dasgas Dom",
+  "rights_ok": true,
+  "highlight": {
+    "start": 3.0,
+    "end": 17.0,
+    "score": 1.15,
+    "peak": 3629.5,
+    "peak_rel": 10.0
+  },
+  "render": {
+    "start": 0.0,
+    "duration": 10.0,
+    "zoom": 1.033,
+    "layout": "facecam_stack"
+  },
+  "file": "/home/runner/work/gta6-clip-operator/gta6-clip-operator/output/yt_main__20261123-015905-6458bb.mp4",
+  "hook": "Dasgas Dom's reaction to GTA 6 \ud83d\ude2d",
+  "hook_id": "s_reaction",
+  "hook_kind": "template",
+  "edit": {
+    "bounds": [
+      8.41,
+      23.41
+    ],
+    "segments": [
+      [
+        8.41,
+        23.41
+      ]
+    ],
+    "cold_open": null,
+    "cuts": 0
+  },
+  "captions": true,
+  "caption_words": 17,
+  "caption": "Dasgas Dom's reaction to GTA 6 \ud83d\ude2d\n\n\ud83c\udfa5 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#gaming #dasgasdom3 #shorts #gtavi #gta6",
+  "title": "Dasgas Dom's reaction to GTA 6 \ud83d\ude2d | GTA 6",
+  "disclosure_rendered": true,
+  "muted_words": 0,
+  "transcript": "I Can meet parking daddy We hear it delights we got a little something for everybody oh, okay",
+  "inspect": {
+    "letterbox": 0.0,
+    "black": 0.0,
+    "hash": [
+      13039284837384549873,
+      17317142497190333917,
+      16859180103138132449,
+      17328719895278317294,
+      17004460221980506232,
+      18193940410633088104,
+      11404464922322297442,
+      13793307038671826317,
+      15483870067102448467,
+      10287314890325717875,
+      13720188117287626727,
+      13726334999695510985
+    ],
+    "mean_db": -16.0,
+    "duration": 18.393317
+  },
+  "status": "rejected",
+  "created": "2026-11-23T02:00:06.348171",
+  "checks": {
+    "no_story_spoiler": true,
+    "no_licensed_music": null,
+    "footage_rights_ok": true,
+    "disclosure_ok": true
+  },
+  "quality": 0.659,
+  "reaction_score": 0,
+  "compliance": {
+    "platform_allowed": {
+      "pass": true,
+      "why": ""
+    },
+    "campaign_window": {
+      "pass": true,
+      "why": ""
+    },
+    "source_authorized": {
+      "pass": true,
+      "why": ""
+    },
+    "duration": {
+      "pass": false,
+      "why": "10.0s outside 15-58s"
+    },
+    "captions_present": {
+      "pass": true,
+      "why": ""
+    },
+    "transcript_safe": {
+      "pass": true,
+      "why": ""
+    },
+    "title_clean": {
+      "pass": true,
+      "why": ""
+    },
+    "no_spoiler_in_title": {
+      "pass": true,
+      "why": ""
+    },
+    "title_accurate": {
+      "pass": true,
+      "why": ""
+    },
+    "hashtag #dasgasdom3": {
+      "pass": true,
+      "why": ""
+    },
+    "credit kick.com/dasgasd3m": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_on_screen": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_in_caption": {
+      "pass": true,
+      "why": ""
+    },
+    "unique_to_campaign": {
+      "pass": true,
+      "why": ""
+    },
+    "daily_cap": {
+      "pass": true,
+      "why": ""
+    },
+    "quality_floor": {
+      "pass": true,
+      "why": ""
+    }
+  },
+  "reject_reasons": [
+    "quality: highlight score 1.15 < floor",
+    "duration: 10.0s outside 15-58s",
+    "no_reaction: only 0 reaction words within 4 s of the peak"
+  ]
+}
