@@ -195,3 +195,52 @@
 2026-11-23 02:00:06 [gate] reject 20261123-015905-6458bb: quality: highlight score 1.15 < floor; duration: 10.0s outside 15-58s; no_reaction: only 0 reaction words within 4 s of the peak
 2026-11-23 02:00:48 [gate] reject 20261123-020006-b4de07: quality: highlight score 1.134 < floor; no_reaction: only 0 reaction words within 4 s of the peak
 2026-11-23 02:00:54 [cycle] made=2 approved=0 scheduled=0 posted=0 learned=0
+2026-11-23 02:30:38 [agent] Dasgas Dom 'thanksgiving. GTA 6 STREAM!' 414min -> 40 highlights (chat=no)
+2026-11-23 02:32:16 [gate] reject 20261123-023038-01a22b: slur_in_clip (slur_policy: skip)
+2026-11-23 02:32:33 [gate] skip 20261123-023216-25fa1b: off-game (gameplay layout in 0% of frames)
+2026-11-23 02:32:50 [gate] skip 20261123-023233-5a316c: off-game (gameplay layout in 0% of frames)
+2026-11-23 02:33:46 [gate] reject 20261123-023250-bd024e: quality_floor: quality 0.54 below floor; slur_in_clip (slur_policy: skip); no_reaction: only 0 reaction words within 4 s of the peak
+2026-11-23 02:34:29 [gate] reject 20261123-023346-f6f856: technical: mostly black frames
+2026-11-23 02:34:43 [gate] skip 20261123-023429-140e39: off-game (gameplay layout in 0% of frames)
+2026-11-23 02:34:59 [gate] skip 20261123-023443-86f977: off-game (gameplay layout in 40% of frames)
+2026-11-23 02:35:15 [gate] skip 20261123-023459-7d2dd3: off-game (gameplay layout in 0% of frames)
+2026-11-23 02:35:31 [gate] skip 20261123-023515-8a1603: off-game (gameplay layout in 0% of frames)
+2026-11-23 02:35:45 [gate] skip 20261123-023531-149e05: off-game (gameplay layout in 0% of frames)
+2026-11-23 02:36:00 [gate] skip 20261123-023545-860fc3: off-game (gameplay layout in 20% of frames)
+2026-11-23 02:37:03 [gate] reject 20261123-023600-23ddc8: slur_in_clip (slur_policy: skip)
+2026-11-23 02:37:19 [gate] skip 20261123-023703-652209: off-game (gameplay layout in 0% of frames)
+2026-11-23 02:37:34 [gate] skip 20261123-023719-b8e27f: off-game (gameplay layout in 40% of frames)
+2026-11-23 02:38:25 [gate] reject 20261123-023734-66beb3: no_reaction: only 1 reaction words within 4 s of the peak
+2026-11-23 02:38:41 [gate] skip 20261123-023825-c57ac4: off-game (gameplay layout in 0% of frames)
+2026-11-23 02:38:56 [gate] skip 20261123-023841-cf19ef: off-game (gameplay layout in 0% of frames)
+2026-11-23 02:39:12 [gate] skip 20261123-023856-f51e0f: off-game (gameplay layout in 0% of frames)
+2026-11-23 02:40:08 [gate] reject 20261123-023912-83fff4: no_reaction: only 0 reaction words within 4 s of the peak
+2026-11-23 02:40:25 [gate] skip 20261123-024008-595da8: off-game (gameplay layout in 0% of frames)
+2026-11-23 02:40:40 [gate] skip 20261123-024025-abb604: off-game (gameplay layout in 0% of frames)
+2026-11-23 02:41:03 [gate] skip 20261123-024040-587d44: off-game (gameplay layout in 0% of frames)
+2026-11-23 02:41:17 [gate] skip 20261123-024103-7dc1cb: off-game (gameplay layout in 10% of frames)
+2026-11-23 02:41:33 [gate] skip 20261123-024117-6ae6d7: off-game (gameplay layout in 0% of frames)
+2026-11-23 02:42:38 [gate] reject 20261123-024133-326157: slur_in_clip (slur_policy: skip); no_reaction: only 1 reaction words within 4 s of the peak
+2026-11-23 02:43:37 [gate] reject 20261123-024238-eab735: slur_in_clip (slur_policy: skip)
+2026-11-23 02:43:52 [gate] skip 20261123-024337-5c0cfb: off-game (gameplay layout in 0% of frames)
+2026-11-23 02:44:09 [gate] skip 20261123-024352-4579e5: off-game (gameplay layout in 0% of frames)
+2026-11-23 02:44:24 [gate] skip 20261123-024409-0f31aa: off-game (gameplay layout in 0% of frames)
+2026-11-23 02:44:42 [gate] skip 20261123-024424-1d5075: off-game (gameplay layout in 0% of frames)
+2026-11-23 02:45:33 [gate] reject 20261123-024442-ee6741: slur_in_clip (slur_policy: skip)
+2026-11-23 02:45:50 [gate] skip 20261123-024533-d305d6: off-game (gameplay layout in 0% of frames)
+2026-11-23 02:46:03 [gate] skip 20261123-024550-ecd4b6: off-game (gameplay layout in 30% of frames)
+2026-11-23 02:47:02 [gate] reject 20261123-024603-c159df: slur_in_clip (slur_policy: skip); no_reaction: only 1 reaction words within 4 s of the peak
+2026-11-23 02:47:45 [agent] Dasgas Dom 'LATE NIGZHT GTA 6 STREAM!' 101min -> 40 highlights (chat=no)
+2026-11-23 02:47:59 [gate] skip 20261123-024745-37d6d1: off-game (gameplay layout in 0% of frames)
+2026-11-23 02:48:59 [gate] reject 20261123-024759-d2f761: transcript_safe: explicit or hateful language in clip
+2026-11-23 02:49:56 [gate] reject 20261123-024859-7af1bc: quality_floor: quality 0.54 below floor; slur_in_clip (slur_policy: skip); no_reaction: only 1 reaction words within 4 s of the peak
+2026-11-23 02:50:58 [gate] reject 20261123-024956-9d9e3c: quality: highlight score 1.195 < floor
+2026-11-23 02:51:11 [gate] skip 20261123-025058-dc3a8c: off-game (gameplay layout in 30% of frames)
+2026-11-23 02:51:54 [gate] reject 20261123-025111-cb1be2: quality: highlight score 1.185 < floor; transcript_safe: explicit or hateful language in clip; slur_in_clip (slur_policy: skip); no_reaction: only 0 reaction words within 4 s of the peak
+2026-11-23 02:52:56 [gate] reject 20261123-025154-7835e9: quality: highlight score 1.174 < floor; quality_floor: quality 0.53 below floor; slur_in_clip (slur_policy: skip)
+2026-11-23 02:53:47 [gate] reject 20261123-025256-b0e0df: quality: highlight score 1.151 < floor; duration: 13.4s outside 15-58s; slur_in_clip (slur_policy: skip)
+2026-11-23 02:55:06 [gate] reject 20261123-025347-926127: quality: highlight score 1.15 < floor
+2026-11-23 02:55:59 [gate] reject 20261123-025506-360c4f: quality: highlight score 1.134 < floor; no_reaction: only 0 reaction words within 4 s of the peak
+2026-11-23 02:56:57 [gate] reject 20261123-025559-4dde7f: quality: highlight score 1.116 < floor
+2026-11-23 02:57:57 [gate] reject 20261123-025657-43ca39: quality: highlight score 1.097 < floor
+2026-11-23 02:57:57 [cycle] made=0 approved=0 scheduled=0 posted=0 learned=0

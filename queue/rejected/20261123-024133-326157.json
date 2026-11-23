@@ -1,0 +1,158 @@
+{
+  "id": "20261123-024133-326157",
+  "account_id": "yt_main",
+  "platform": "youtube",
+  "campaign_id": "ruckus_dasgasd3m",
+  "campaign_url": "https://contentrewards.com/c/campaigns/051002dd-5c46-43d0-a446-43f2957ba3a9",
+  "submit_within_min": 30,
+  "after_post_note": "",
+  "source": "https://kick.com/dasgasd3m/videos/b7f72a07-14a1-4ece-9cb3-1fb39c204d56",
+  "vod_title": "thanksgiving. GTA 6 STREAM!",
+  "streamer": "Dasgas Dom",
+  "rights_ok": true,
+  "highlight": {
+    "start": 3.0,
+    "end": 17.0,
+    "score": 1.266,
+    "peak": 15598.5,
+    "peak_rel": 10.0
+  },
+  "render": {
+    "start": 0.0,
+    "duration": 20.3,
+    "zoom": 1.052,
+    "layout": "facecam_stack"
+  },
+  "file": "/home/runner/work/gta6-clip-operator/gta6-clip-operator/output/yt_main__20261123-024133-326157.mp4",
+  "hook": "\u201cOn her look on her\u201d",
+  "hook_id": "quote",
+  "hook_kind": "quote",
+  "edit": {
+    "bounds": [
+      0.0,
+      21.1
+    ],
+    "segments": [
+      [
+        0.0,
+        15.13
+      ],
+      [
+        16.56,
+        21.1
+      ]
+    ],
+    "cold_open": [
+      9.5,
+      11.2
+    ],
+    "cuts": 1
+  },
+  "captions": true,
+  "caption_words": 32,
+  "caption": "\u201cOn her look on her\u201d\n\n\ud83c\udfa5 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#gaming #shorts #dasgasdom3 #gtavi #gta6",
+  "title": "Dasgas Dom: \u201cOn her look on her\u201d | GTA 6",
+  "disclosure_rendered": true,
+  "muted_words": 1,
+  "transcript": "oh shit they playin that shit nigga get a switch wait you get a handgun as automatic oh fuck that bitch is about to blow cuz look on her look on her",
+  "inspect": {
+    "letterbox": 0.0,
+    "black": 0.0,
+    "hash": [
+      13534401041663660831,
+      16701255583085108365,
+      18010127394031832717,
+      17920582563354414156,
+      14728170326270463646,
+      12746517186266189726,
+      14986509543292069603,
+      15347914222903154460,
+      16782942157384045788,
+      11588320372609309846,
+      16276565345581190853,
+      16204219888977071236
+    ],
+    "mean_db": -14.7,
+    "duration": 20.0
+  },
+  "status": "rejected",
+  "created": "2026-11-23T02:42:38.718076",
+  "checks": {
+    "no_story_spoiler": true,
+    "no_licensed_music": null,
+    "footage_rights_ok": true,
+    "disclosure_ok": true
+  },
+  "quality": 0.672,
+  "reaction_score": 1,
+  "compliance": {
+    "platform_allowed": {
+      "pass": true,
+      "why": ""
+    },
+    "campaign_window": {
+      "pass": true,
+      "why": ""
+    },
+    "source_authorized": {
+      "pass": true,
+      "why": ""
+    },
+    "duration": {
+      "pass": true,
+      "why": ""
+    },
+    "captions_present": {
+      "pass": true,
+      "why": ""
+    },
+    "transcript_safe": {
+      "pass": true,
+      "why": ""
+    },
+    "title_clean": {
+      "pass": true,
+      "why": ""
+    },
+    "no_spoiler_in_title": {
+      "pass": true,
+      "why": ""
+    },
+    "title_accurate": {
+      "pass": true,
+      "why": ""
+    },
+    "hashtag #dasgasdom3": {
+      "pass": true,
+      "why": ""
+    },
+    "credit kick.com/dasgasd3m": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_on_screen": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_in_caption": {
+      "pass": true,
+      "why": ""
+    },
+    "unique_to_campaign": {
+      "pass": true,
+      "why": ""
+    },
+    "daily_cap": {
+      "pass": true,
+      "why": ""
+    },
+    "quality_floor": {
+      "pass": true,
+      "why": ""
+    }
+  },
+  "reject_reasons": [
+    "slur_in_clip (slur_policy: skip)",
+    "no_reaction: only 1 reaction words within 4 s of the peak"
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "id": "20261123-023912-83fff4",
+  "account_id": "yt_main",
+  "platform": "youtube",
+  "campaign_id": "ruckus_dasgasd3m",
+  "campaign_url": "https://contentrewards.com/c/campaigns/051002dd-5c46-43d0-a446-43f2957ba3a9",
+  "submit_within_min": 30,
+  "after_post_note": "",
+  "source": "https://kick.com/dasgasd3m/videos/b7f72a07-14a1-4ece-9cb3-1fb39c204d56",
+  "vod_title": "thanksgiving. GTA 6 STREAM!",
+  "streamer": "Dasgas Dom",
+  "rights_ok": true,
+  "highlight": {
+    "start": 3.0,
+    "end": 17.0,
+    "score": 1.29,
+    "peak": 22857.0,
+    "peak_rel": 10.0
+  },
+  "render": {
+    "start": 0.0,
+    "duration": 19.6,
+    "zoom": 1.056,
+    "layout": "facecam_stack"
+  },
+  "file": "/home/runner/work/gta6-clip-operator/gta6-clip-operator/output/yt_main__20261123-023912-83fff4.mp4",
+  "hook": "\u201cHold on, who want money?\u201d",
+  "hook_id": "quote",
+  "hook_kind": "quote",
+  "edit": {
+    "bounds": [
+      1.18,
+      20.13
+    ],
+    "segments": [
+      [
+        1.18,
+        6.26
+      ],
+      [
+        7.29,
+        20.13
+      ]
+    ],
+    "cold_open": [
+      9.5,
+      11.2
+    ],
+    "cuts": 1
+  },
+  "captions": true,
+  "caption_words": 49,
+  "caption": "\u201cHold on, who want money?\u201d\n\n\ud83c\udfa5 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#gaming #dasgasdom3 #shorts #gta6 #gtavi",
+  "title": "Dasgas Dom: \u201cHold on, who want money?\u201d | GTA 6",
+  "disclosure_rendered": true,
+  "muted_words": 0,
+  "transcript": "On your feet, I will trick your ass Ooh trees, call it Halloween Sorry Hold on, hey, hey, hey Hey, bitch, you get it, bitch Hold on, who want money? Free money, hey bitch, you want some money? Hold on, hold on, I'm trying to, you want some money?",
+  "inspect": {
+    "letterbox": 0.0,
+    "black": 0.0,
+    "hash": [
+      2418879970908260929,
+      2418879992382572045,
+      2418881104796665351,
+      2563003989454439949,
+      2708298109566118902,
+      904238915123151153,
+      12948842939229475217,
+      14334577383355331707,
+      10993770579044744251,
+      2856323536542054706,
+      11502070096296107501,
+      11502087069474193373
+    ],
+    "mean_db": -14.1,
+    "duration": 20.0
+  },
+  "status": "rejected",
+  "created": "2026-11-23T02:40:08.786108",
+  "checks": {
+    "no_story_spoiler": true,
+    "no_licensed_music": null,
+    "footage_rights_ok": true,
+    "disclosure_ok": true
+  },
+  "quality": 0.704,
+  "reaction_score": 0,
+  "compliance": {
+    "platform_allowed": {
+      "pass": true,
+      "why": ""
+    },
+    "campaign_window": {
+      "pass": true,
+      "why": ""
+    },
+    "source_authorized": {
+      "pass": true,
+      "why": ""
+    },
+    "duration": {
+      "pass": true,
+      "why": ""
+    },
+    "captions_present": {
+      "pass": true,
+      "why": ""
+    },
+    "transcript_safe": {
+      "pass": true,
+      "why": ""
+    },
+    "title_clean": {
+      "pass": true,
+      "why": ""
+    },
+    "no_spoiler_in_title": {
+      "pass": true,
+      "why": ""
+    },
+    "title_accurate": {
+      "pass": true,
+      "why": ""
+    },
+    "hashtag #dasgasdom3": {
+      "pass": true,
+      "why": ""
+    },
+    "credit kick.com/dasgasd3m": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_on_screen": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_in_caption": {
+      "pass": true,
+      "why": ""
+    },
+    "unique_to_campaign": {
+      "pass": true,
+      "why": ""
+    },
+    "daily_cap": {
+      "pass": true,
+      "why": ""
+    },
+    "quality_floor": {
+      "pass": true,
+      "why": ""
+    }
+  },
+  "reject_reasons": [
+    "no_reaction: only 0 reaction words within 4 s of the peak"
+  ]
+}

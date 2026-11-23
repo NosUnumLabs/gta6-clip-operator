@@ -1,0 +1,153 @@
+{
+  "id": "20261123-023600-23ddc8",
+  "account_id": "yt_main",
+  "platform": "youtube",
+  "campaign_id": "ruckus_dasgasd3m",
+  "campaign_url": "https://contentrewards.com/c/campaigns/051002dd-5c46-43d0-a446-43f2957ba3a9",
+  "submit_within_min": 30,
+  "after_post_note": "",
+  "source": "https://kick.com/dasgasd3m/videos/b7f72a07-14a1-4ece-9cb3-1fb39c204d56",
+  "vod_title": "thanksgiving. GTA 6 STREAM!",
+  "streamer": "Dasgas Dom",
+  "rights_ok": true,
+  "highlight": {
+    "start": 3.0,
+    "end": 17.0,
+    "score": 1.337,
+    "peak": 22093.0,
+    "peak_rel": 10.0
+  },
+  "render": {
+    "start": 0.0,
+    "duration": 19.8,
+    "zoom": 1.038,
+    "layout": "facecam_stack"
+  },
+  "file": "/home/runner/work/gta6-clip-operator/gta6-clip-operator/output/yt_main__20261123-023600-23ddc8.mp4",
+  "hook": "Chat lost it at this part",
+  "hook_id": "s_chat",
+  "hook_kind": "template",
+  "edit": {
+    "bounds": [
+      1.05,
+      20.68
+    ],
+    "segments": [
+      [
+        1.05,
+        20.68
+      ]
+    ],
+    "cold_open": [
+      9.5,
+      11.2
+    ],
+    "cuts": 0
+  },
+  "captions": true,
+  "caption_words": 27,
+  "caption": "Chat lost it at this part\n\n\ud83c\udfa5 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#shorts #gaming #gtavi #gta6 #dasgasdom3",
+  "title": "Chat lost it at this part | GTA 6",
+  "disclosure_rendered": true,
+  "muted_words": 4,
+  "transcript": "nigga nigga fuck me nigga I have the worst luck bro fuck like how dude come the fuck on I'm stuck the fuck out of niggas way",
+  "inspect": {
+    "letterbox": 0.0,
+    "black": 0.0,
+    "hash": [
+      13604508508364379806,
+      9694140099591940377,
+      3581401815737810142,
+      553245551379978131,
+      9575211307683127716,
+      17357031983451066612,
+      14035147579873596582,
+      14047486388126339057,
+      13034231938559056958,
+      4957501444756346936,
+      10429418079937952916,
+      915890650036932549
+    ],
+    "mean_db": -13.1,
+    "duration": 19.118667
+  },
+  "status": "rejected",
+  "created": "2026-11-23T02:37:03.536999",
+  "checks": {
+    "no_story_spoiler": true,
+    "no_licensed_music": null,
+    "footage_rights_ok": true,
+    "disclosure_ok": true
+  },
+  "quality": 0.665,
+  "reaction_score": 3,
+  "compliance": {
+    "platform_allowed": {
+      "pass": true,
+      "why": ""
+    },
+    "campaign_window": {
+      "pass": true,
+      "why": ""
+    },
+    "source_authorized": {
+      "pass": true,
+      "why": ""
+    },
+    "duration": {
+      "pass": true,
+      "why": ""
+    },
+    "captions_present": {
+      "pass": true,
+      "why": ""
+    },
+    "transcript_safe": {
+      "pass": true,
+      "why": ""
+    },
+    "title_clean": {
+      "pass": true,
+      "why": ""
+    },
+    "no_spoiler_in_title": {
+      "pass": true,
+      "why": ""
+    },
+    "title_accurate": {
+      "pass": true,
+      "why": ""
+    },
+    "hashtag #dasgasdom3": {
+      "pass": true,
+      "why": ""
+    },
+    "credit kick.com/dasgasd3m": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_on_screen": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_in_caption": {
+      "pass": true,
+      "why": ""
+    },
+    "unique_to_campaign": {
+      "pass": true,
+      "why": ""
+    },
+    "daily_cap": {
+      "pass": true,
+      "why": ""
+    },
+    "quality_floor": {
+      "pass": true,
+      "why": ""
+    }
+  },
+  "reject_reasons": [
+    "slur_in_clip (slur_policy: skip)"
+  ]
+}
