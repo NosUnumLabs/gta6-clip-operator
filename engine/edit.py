@@ -12,8 +12,17 @@ TAIL = 2.5   # hold ~2-4 s on the reaction, then hard cut (breakout clips)
 LEAD = 0.25          # tiny breath before the first word
 
 # Hard block: slurs / explicit sexual content -> clip is rejected (platform + campaign safety)
-_BLOCK = [r"\bn[i1]gg", r"\bf[a@]gg?ot", r"\bretard", r"\btr[a@]nny", r"\bk[i1]ke\b", r"\bsp[i1]c\b",
-          r"\bch[i1]nk\b", r"\bporn", r"\bcum\b", r"\bblowjob", r"\bdick\b", r"\bpussy", r"\bboobs?\b",
+# Slurs: muted in the audio + fully masked in captions (clip can still pass).
+SLURS = [r"\bn[i1]gg\w*", r"\bf[a@]gg?ot\w*", r"\bretard\w*", r"\btr[a@]nny\w*", r"\bk[i1]ke\b",
+         r"\bsp[i1]c\b", r"\bch[i1]nk\b"]
+SLUR_RE = re.compile("|".join(SLURS), re.I)
+
+
+def is_slur(word):
+    return bool(SLUR_RE.search(word or ""))
+
+
+_BLOCK = [r"\bporn", r"\bcum\b", r"\bblowjob", r"\bdick\b", r"\bpussy", r"\bboobs?\b",
           # sexual content (YouTube/brand safety): never in a sponsored clip
           r"\bstrok\w*\s+(his|my|your|her|the)\s+(meat|dick|cock|thing)", r"\bcock\b", r"\bhorny\b",
           r"\bnudes?\b", r"\bnaked\b", r"\bsex\b", r"\bsexy\b", r"\bpenis\b", r"\bvagina\b",
@@ -34,6 +43,8 @@ def unsafe(text):
 
 
 def mask(word):
+    if is_slur(word):
+        return "*" * max(4, len(word.strip(".,!?")))
     return _MASK_RE.sub(lambda m: m.group(0)[0] + "*" * (len(m.group(0)) - 1), word)
 
 
@@ -127,7 +138,7 @@ def pick_quote(words, peak, max_words=8):
     for u in sentences(words):
         text = " ".join(w[2] for w in u).strip()
         n = len(u)
-        if n < 2 or n > 12 or has_strong(text) or unsafe(text) or SPOILER_WORDS.search(text) or "*" in text:
+        if n < 2 or n > 12 or has_strong(text) or unsafe(text) or is_slur(text) or SPOILER_WORDS.search(text) or "*" in text:
             continue
         content = {re.sub(r"[^a-z']", "", w[2].lower()) for w in u} - _FILLER - {""}
         if len(content) < 2:  # "Whoa, whoa, whoa" / "Hey hey" are not hooks

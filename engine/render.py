@@ -34,7 +34,7 @@ def _wrap(text, width=22):
     return text
 
 def render_clip(src, clip, account, hook, out_path, cfg, seed=None, ass_path=None, jitter=True, disclosure=None, flash_at=(),
-                facecam=None, payoff_t=None):
+                facecam=None, payoff_t=None, mute=()):
     r = cfg["render"]
     rng = random.Random(seed)
     W, H = r["width"], r["height"]
@@ -126,10 +126,14 @@ def render_clip(src, clip, account, hook, out_path, cfg, seed=None, ass_path=Non
             a = "[1:a]anull[aout]"
     elif mode == "keep" and src_audio:
         a = "[0:a]loudnorm=I=-14:TP=-1.5:LRA=11[aout]"
+        if mute:  # silence slurs (captions are masked separately)
+            cond = "+".join(f"between(t,{max(0.0, x):.2f},{y:.2f})" for x, y in mute)
+            a = f"[0:a]volume=enable='{cond}':volume=0,loudnorm=I=-14:TP=-1.5:LRA=11[aout]"
         if payoff_t is not None and r.get("impact_sfx", True):
             ms = int(max(0.0, payoff_t) * 1000)
             inputs += ["-f", "lavfi", "-i", "aevalsrc='0.9*sin(2*PI*58*t)*exp(-7*t)+0.25*sin(2*PI*116*t)*exp(-11*t)':s=44100:d=0.6"]
-            a = ("[0:a]loudnorm=I=-14:TP=-1.5:LRA=11,aformat=channel_layouts=stereo[g];"
+            pre = (f"volume=enable='{cond}':volume=0," if mute else "")
+            a = (f"[0:a]{pre}loudnorm=I=-14:TP=-1.5:LRA=11,aformat=channel_layouts=stereo[g];"
                  f"[1:a]aformat=channel_layouts=stereo,adelay={ms}|{ms},volume=0.8[fx];"
                  "[g][fx]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.95[aout]")
     else:

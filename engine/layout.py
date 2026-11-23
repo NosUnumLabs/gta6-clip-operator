@@ -104,3 +104,32 @@ def box_to_rect(path, box):
     else:                  # box taller: trim height, keep the top (face) part
         cw, ch = bw, bw / aspect
     return (int(bx) // 2 * 2, int(by) // 2 * 2, int(cw) // 2 * 2, int(ch) // 2 * 2)
+
+
+def box_layout_ratio(path, box, n=10):
+    """Share of sampled frames that show the streamer's gameplay layout: the configured cam
+    box has a hard right edge and bottom edge (the box border against the game). IRL / phone
+    / just-chatting segments are one continuous camera image with no such border."""
+    W, H = _probe_wh(path)
+    sh = int(SAMPLE_W * H / W) // 2 * 2
+    p = subprocess.run(["ffmpeg", "-v", "error", "-i", str(path), "-an", "-vf",
+                        f"fps=1,scale={SAMPLE_W}:{sh},format=gray", "-frames:v", str(n),
+                        "-f", "rawvideo", "-"], capture_output=True)
+    a = np.frombuffer(p.stdout, dtype=np.uint8)
+    k = len(a) // (SAMPLE_W * sh)
+    if k == 0:
+        return 0.0
+    x, y, w, h = box
+    xr, yb = int((x + w) * SAMPLE_W), int((y + h) * sh)
+    hits = 0
+    for f in a[: k * SAMPLE_W * sh].reshape(k, sh, SAMPLE_W).astype(np.int16):
+        top = f[: max(2, yb - 2)]
+        gx = np.abs(np.diff(top, axis=1)).mean(0)          # per-column edge energy above the box bottom
+        lo, hi = max(1, xr - 12), min(len(gx), xr + 12)
+        v_ok = gx[lo:hi].max() > 3.0 * (np.median(gx) + 1)
+        left = f[:, : max(2, xr - 2)]
+        gy = np.abs(np.diff(left, axis=0)).mean(1)         # per-row edge energy left of the box edge
+        lo, hi = max(1, yb - 12), min(len(gy), yb + 12)
+        h_ok = gy[lo:hi].max() > 3.0 * (np.median(gy) + 1)
+        hits += bool(v_ok and h_ok)
+    return hits / k

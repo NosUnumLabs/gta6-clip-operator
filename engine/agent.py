@@ -73,6 +73,17 @@ def produce(cfg, L, max_vods=2, per_vod=6):
                             bfr = big_face_ratio(sec)
                         except Exception:
                             bfr = 0.0
+                        box = next((x.get("facecam_box") for x in camp.get("sources", []) if x.get("facecam_box")), None)
+                        if box:
+                            from .layout import box_layout_ratio
+                            try:
+                                lay = box_layout_ratio(sec, box)
+                            except Exception:
+                                lay = 1.0
+                            if lay < cfg["autoreview"].get("min_layout_ratio", 0.5):
+                                log(cfg, f"[gate] skip {tag}: off-game (gameplay layout in {lay:.0%} of frames)")
+                                sec.unlink(missing_ok=True)
+                                continue
                         if bfr > cfg["autoreview"].get("max_big_face_ratio", 0.4):
                             log(cfg, f"[gate] skip {tag}: off-game (full-screen camera {bfr:.0%} of frames)")
                             sec.unlink(missing_ok=True)
@@ -144,6 +155,8 @@ def _render_job(cfg, L, camp, acc, vod, sec, clip, insp, tag):
     s, e = edit.snap_bounds(words, clip["start"], clip["end"], clip["peak_rel"], lo, hi - 2)
     # 2) pacing: jump-cut dead air, keep loud game moments
     segs = edit.keep_segments(words, s, e, loud=_loud_fn(sec)) if q.get("trim_dead_air", True) else [(s, e)]
+    if sum(b - a for a, b in segs) < lo + 0.5:
+        segs = [(s, e)]  # trimming would drop it under the campaign minimum: keep it whole
     # 3) cold open: flash the payoff first when the setup is long
     cold = None
     if q.get("cold_open", True) and clip["peak_rel"] - s > 6:
@@ -190,11 +203,15 @@ def _render_job(cfg, L, camp, acc, vod, sec, clip, insp, tag):
             payoff_t = off + clip["peak_rel"] - a
             break
         off += b - a
+    mute = [(a - 0.05, b + 0.05) for a, b, w in cut_words if edit.is_slur(w)]
+    if cold:
+        mute += [(a - cold[0] - 0.05, b - cold[0] + 0.05) for a, b, w in words
+                 if cold[0] <= a < cold[1] and edit.is_slur(w)]
     banner_mode = cfg["render"].get("hook_style", "banner") == "banner"
     meta = render_clip(edited, {"start": 0.0, "end": total, "score": clip["score"]}, acc,
                        None if banner_mode else hook, out, cfg,
                        seed=tag, ass_path=ass, jitter=False, disclosure=disclosure, facecam=cam,
-                       flash_at=[cold_len] if cold_len else [], payoff_t=payoff_t)
+                       flash_at=[cold_len] if cold_len else [], payoff_t=payoff_t, mute=mute)
     meta["layout"] = "facecam_stack" if cam else "blurfill"
     try:  # the real length after jump cuts (the compliance duration check uses this)
         import subprocess as _sp
@@ -218,7 +235,7 @@ def _render_job(cfg, L, camp, acc, vod, sec, clip, insp, tag):
         "highlight": clip, "render": meta, "file": str(out), "hook": hook, "hook_id": hid,
         "hook_kind": kind, "edit": {"bounds": [s, e], "segments": segs, "cold_open": cold, "cuts": len(segs) - 1},
         "captions": bool(ass), "caption_words": len(cut_words), "caption": cap,
-        "title": title[:100], "disclosure_rendered": bool(disclosure),
+        "title": title[:100], "disclosure_rendered": bool(disclosure), "muted_words": len(mute),
         "transcript": transcript[:2000], "inspect": insp, "status": "pending",
         "created": dt.datetime.now().isoformat(),
         "checks": {"no_story_spoiler": True, "no_licensed_music": None,

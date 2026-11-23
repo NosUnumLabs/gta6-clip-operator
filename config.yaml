@@ -52,6 +52,7 @@ autoreview:
   candidates_per_vod: 10
   min_reaction_words: 2
   max_big_face_ratio: 0.4
+  min_layout_ratio: 0.5
 accounts:
 - id: yt_main
   platform: youtube
