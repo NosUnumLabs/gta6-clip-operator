@@ -1,0 +1,157 @@
+{
+  "id": "20261123-005259-5e3823",
+  "account_id": "yt_main",
+  "platform": "youtube",
+  "campaign_id": "ruckus_dasgasd3m",
+  "campaign_url": "https://contentrewards.com/c/campaigns/051002dd-5c46-43d0-a446-43f2957ba3a9",
+  "submit_within_min": 30,
+  "after_post_note": "",
+  "source": "https://kick.com/dasgasd3m/videos/b7f72a07-14a1-4ece-9cb3-1fb39c204d56",
+  "vod_title": "thanksgiving. GTA 6 STREAM!",
+  "streamer": "Dasgas Dom",
+  "rights_ok": true,
+  "highlight": {
+    "start": 3.0,
+    "end": 17.0,
+    "score": 1.376,
+    "peak": 8850.0,
+    "peak_rel": 10.0
+  },
+  "render": {
+    "start": 0.0,
+    "duration": 19.3,
+    "zoom": 1.015,
+    "layout": "facecam_stack"
+  },
+  "file": "/home/runner/work/gta6-clip-operator/gta6-clip-operator/output/yt_main__20261123-005259-5e3823.mp4",
+  "hook": "\u201cSince I first saw you\u201d",
+  "hook_id": "quote",
+  "hook_kind": "quote",
+  "edit": {
+    "bounds": [
+      0.0,
+      20.37
+    ],
+    "segments": [
+      [
+        0.0,
+        3.43
+      ],
+      [
+        5.92,
+        20.37
+      ]
+    ],
+    "cold_open": [
+      9.5,
+      11.2
+    ],
+    "cuts": 1
+  },
+  "captions": true,
+  "caption_words": 25,
+  "caption": "\u201cSince I first saw you\u201d\n\n\ud83c\udfa5 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#gtavi #shorts #gta6 #dasgasdom3 #gaming",
+  "title": "Dasgas Dom: \u201cSince I first saw you\u201d | GTA 6",
+  "disclosure_rendered": true,
+  "transcript": "Since I first saw you, and I'm gonna suck your fucking dick! It's been a while, fucking peed myself. Dammit, what are we gonna -",
+  "inspect": {
+    "letterbox": 0.0,
+    "black": 0.0,
+    "hash": [
+      2098145374632581634,
+      1881974791542312454,
+      1881975912545551878,
+      1881973713522298374,
+      1881973713522295302,
+      2170205184806782470,
+      1881974808722179590,
+      1954314981560190470,
+      2098147590835963398,
+      729053304115398406,
+      944660932940629766,
+      2097865012034897414
+    ],
+    "mean_db": -16.6,
+    "duration": 20.0
+  },
+  "status": "rejected",
+  "created": "2026-11-23T00:53:36.959697",
+  "checks": {
+    "no_story_spoiler": true,
+    "no_licensed_music": null,
+    "footage_rights_ok": true,
+    "disclosure_ok": true
+  },
+  "quality": 0.66,
+  "reaction_score": 1,
+  "compliance": {
+    "platform_allowed": {
+      "pass": true,
+      "why": ""
+    },
+    "campaign_window": {
+      "pass": true,
+      "why": ""
+    },
+    "source_authorized": {
+      "pass": true,
+      "why": ""
+    },
+    "duration": {
+      "pass": true,
+      "why": ""
+    },
+    "captions_present": {
+      "pass": true,
+      "why": ""
+    },
+    "transcript_safe": {
+      "pass": false,
+      "why": "explicit or hateful language in clip"
+    },
+    "title_clean": {
+      "pass": true,
+      "why": ""
+    },
+    "no_spoiler_in_title": {
+      "pass": true,
+      "why": ""
+    },
+    "title_accurate": {
+      "pass": true,
+      "why": ""
+    },
+    "hashtag #dasgasdom3": {
+      "pass": true,
+      "why": ""
+    },
+    "credit kick.com/dasgasd3m": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_on_screen": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_in_caption": {
+      "pass": true,
+      "why": ""
+    },
+    "unique_to_campaign": {
+      "pass": true,
+      "why": ""
+    },
+    "daily_cap": {
+      "pass": true,
+      "why": ""
+    },
+    "quality_floor": {
+      "pass": true,
+      "why": ""
+    }
+  },
+  "reject_reasons": [
+    "transcript_safe: explicit or hateful language in clip",
+    "no_reaction: only 1 reaction words within 4 s of the peak"
+  ]
+}

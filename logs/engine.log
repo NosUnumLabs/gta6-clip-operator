@@ -152,3 +152,25 @@
 2026-11-22 05:56:21 [gate] reject 20261122-055537-d853f1: quality_floor: quality 0.50 below floor
 2026-11-22 05:57:38 [gate] reject 20261122-055723-02c5ea: technical: mostly black frames; transcript_safe: explicit or hateful language in clip; quality_floor: quality 0.44 below floor
 2026-11-22 10:37:28 [learner] market scan: {'scanned': 50, 'trend_terms': ['comedy', 'indian']}
+2026-11-23 00:51:14 [agent] Dasgas Dom 'thanksgiving. GTA 6 STREAM!' 414min -> 10 highlights (chat=no)
+2026-11-23 00:52:59 [gate] reject 20261123-005114-0b7dc5: transcript_safe: explicit or hateful language in clip; no_reaction: only 1 reaction words within 4 s of the peak
+2026-11-23 00:53:36 [gate] reject 20261123-005259-5e3823: transcript_safe: explicit or hateful language in clip; no_reaction: only 1 reaction words within 4 s of the peak
+2026-11-23 00:54:21 [gate] reject 20261123-005336-4b03ba: duplicate: 7.3-bit distance to an earlier clip; transcript_safe: explicit or hateful language in clip
+2026-11-23 00:55:14 [gate] reject 20261123-005421-70e314: transcript_safe: explicit or hateful language in clip; quality_floor: quality 0.54 below floor; no_reaction: only 0 reaction words within 4 s of the peak
+2026-11-23 00:55:56 [gate] reject 20261123-005514-ed613b: technical: mostly black frames
+2026-11-23 00:56:49 [gate] reject 20261123-005556-16049a: transcript_safe: explicit or hateful language in clip
+2026-11-23 00:57:20 [gate] reject 20261123-005649-fead3d: duration: 12.7s outside 15-58s
+2026-11-23 00:57:52 [gate] reject 20261123-005720-e1acf1: duration: 11.4s outside 15-58s
+2026-11-23 00:58:31 [gate] reject 20261123-005752-fa430d: transcript_safe: explicit or hateful language in clip; no_reaction: only 0 reaction words within 4 s of the peak
+2026-11-23 00:59:56 [agent] Dasgas Dom 'LATE NIGZHT GTA 6 STREAM!' 101min -> 10 highlights (chat=no)
+2026-11-23 01:00:26 [gate] reject 20261123-005956-1ab643: transcript_safe: explicit or hateful language in clip; no_reaction: only 0 reaction words within 4 s of the peak
+2026-11-23 01:01:24 [gate] reject 20261123-010026-a11702: transcript_safe: explicit or hateful language in clip
+2026-11-23 01:02:19 [gate] reject 20261123-010124-448ccf: transcript_safe: explicit or hateful language in clip; quality_floor: quality 0.54 below floor; no_reaction: only 1 reaction words within 4 s of the peak
+2026-11-23 01:03:19 [gate] reject 20261123-010219-089f84: quality: highlight score 1.195 < floor
+2026-11-23 01:03:41 [gate] reject 20261123-010319-b2d95a: quality: highlight score 1.19 < floor; duration: 1.2s outside 15-58s; captions_present: no clean subtitles (too little detected speech); transcript_safe: explicit or hateful language in clip; no_reaction: only 0 reaction words within 4 s of the peak
+2026-11-23 01:04:23 [gate] reject 20261123-010341-6d3280: quality: highlight score 1.185 < floor; transcript_safe: explicit or hateful language in clip; no_reaction: only 0 reaction words within 4 s of the peak
+2026-11-23 01:05:16 [gate] reject 20261123-010423-dce49a: quality: highlight score 1.174 < floor; duration: 14.4s outside 15-58s; transcript_safe: explicit or hateful language in clip
+2026-11-23 01:06:03 [gate] reject 20261123-010516-2eac2a: quality: highlight score 1.151 < floor; duration: 11.2s outside 15-58s; transcript_safe: explicit or hateful language in clip
+2026-11-23 01:07:05 [gate] reject 20261123-010603-917c29: quality: highlight score 1.15 < floor; duration: 9.0s outside 15-58s; no_reaction: only 0 reaction words within 4 s of the peak
+2026-11-23 01:07:56 [gate] reject 20261123-010705-2200ea: quality: highlight score 1.134 < floor; no_reaction: only 0 reaction words within 4 s of the peak
+2026-11-23 01:07:59 [cycle] made=1 approved=0 scheduled=0 posted=0 learned=0

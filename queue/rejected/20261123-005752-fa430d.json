@@ -1,0 +1,157 @@
+{
+  "id": "20261123-005752-fa430d",
+  "account_id": "yt_main",
+  "platform": "youtube",
+  "campaign_id": "ruckus_dasgasd3m",
+  "campaign_url": "https://contentrewards.com/c/campaigns/051002dd-5c46-43d0-a446-43f2957ba3a9",
+  "submit_within_min": 30,
+  "after_post_note": "",
+  "source": "https://kick.com/dasgasd3m/videos/b7f72a07-14a1-4ece-9cb3-1fb39c204d56",
+  "vod_title": "thanksgiving. GTA 6 STREAM!",
+  "streamer": "Dasgas Dom",
+  "rights_ok": true,
+  "highlight": {
+    "start": 3.0,
+    "end": 17.0,
+    "score": 1.344,
+    "peak": 9906.0,
+    "peak_rel": 10.0
+  },
+  "render": {
+    "start": 0.0,
+    "duration": 19.7,
+    "zoom": 1.036,
+    "layout": "facecam_stack"
+  },
+  "file": "/home/runner/work/gta6-clip-operator/gta6-clip-operator/output/yt_main__20261123-005752-fa430d.mp4",
+  "hook": "Rockstar really added this \ud83d\udc80",
+  "hook_id": "s_rockstar",
+  "hook_kind": "template",
+  "edit": {
+    "bounds": [
+      0.57,
+      21.34
+    ],
+    "segments": [
+      [
+        0.57,
+        7.11
+      ],
+      [
+        8.64,
+        21.34
+      ]
+    ],
+    "cold_open": [
+      9.5,
+      11.2
+    ],
+    "cuts": 1
+  },
+  "captions": true,
+  "caption_words": 58,
+  "caption": "Rockstar really added this \ud83d\udc80\n\n\ud83c\udfa5 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#gaming #gtavi #shorts #gta6 #dasgasdom3",
+  "title": "Rockstar really added this \ud83d\udc80 | GTA 6",
+  "disclosure_rendered": true,
+  "transcript": "You should suck his dick with the big -ass dirty -ass nigga lips bitch -ass nigga Get so Nigga get your baby key looking ass the fuck on get your Dennis Schroder looking ass the fuck on bitch -ass nigga You in a swamp right now, nigga. You niggas parked up into a lake. Yeah. Niggas is gay",
+  "inspect": {
+    "letterbox": 0.0,
+    "black": 0.0,
+    "hash": [
+      4114064756278400917,
+      13373606327640496021,
+      13373606327640496021,
+      4114064756278400918,
+      4114064756278400919,
+      4114065306034345879,
+      4114065306035281871,
+      13373606877397376974,
+      13373606327640512406,
+      4114064756278384406,
+      4114065306034231190,
+      13373606327640512406
+    ],
+    "mean_db": -13.4,
+    "duration": 20.0
+  },
+  "status": "rejected",
+  "created": "2026-11-23T00:58:31.835789",
+  "checks": {
+    "no_story_spoiler": true,
+    "no_licensed_music": null,
+    "footage_rights_ok": true,
+    "disclosure_ok": true
+  },
+  "quality": 0.716,
+  "reaction_score": 0,
+  "compliance": {
+    "platform_allowed": {
+      "pass": true,
+      "why": ""
+    },
+    "campaign_window": {
+      "pass": true,
+      "why": ""
+    },
+    "source_authorized": {
+      "pass": true,
+      "why": ""
+    },
+    "duration": {
+      "pass": true,
+      "why": ""
+    },
+    "captions_present": {
+      "pass": true,
+      "why": ""
+    },
+    "transcript_safe": {
+      "pass": false,
+      "why": "explicit or hateful language in clip"
+    },
+    "title_clean": {
+      "pass": true,
+      "why": ""
+    },
+    "no_spoiler_in_title": {
+      "pass": true,
+      "why": ""
+    },
+    "title_accurate": {
+      "pass": true,
+      "why": ""
+    },
+    "hashtag #dasgasdom3": {
+      "pass": true,
+      "why": ""
+    },
+    "credit kick.com/dasgasd3m": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_on_screen": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_in_caption": {
+      "pass": true,
+      "why": ""
+    },
+    "unique_to_campaign": {
+      "pass": true,
+      "why": ""
+    },
+    "daily_cap": {
+      "pass": true,
+      "why": ""
+    },
+    "quality_floor": {
+      "pass": true,
+      "why": ""
+    }
+  },
+  "reject_reasons": [
+    "transcript_safe: explicit or hateful language in clip",
+    "no_reaction: only 0 reaction words within 4 s of the peak"
+  ]
+}

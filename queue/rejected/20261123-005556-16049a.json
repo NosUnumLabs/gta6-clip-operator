@@ -1,0 +1,152 @@
+{
+  "id": "20261123-005556-16049a",
+  "account_id": "yt_main",
+  "platform": "youtube",
+  "campaign_id": "ruckus_dasgasd3m",
+  "campaign_url": "https://contentrewards.com/c/campaigns/051002dd-5c46-43d0-a446-43f2957ba3a9",
+  "submit_within_min": 30,
+  "after_post_note": "",
+  "source": "https://kick.com/dasgasd3m/videos/b7f72a07-14a1-4ece-9cb3-1fb39c204d56",
+  "vod_title": "thanksgiving. GTA 6 STREAM!",
+  "streamer": "Dasgas Dom",
+  "rights_ok": true,
+  "highlight": {
+    "start": 3.0,
+    "end": 17.0,
+    "score": 1.348,
+    "peak": 5664.0,
+    "peak_rel": 10.0
+  },
+  "render": {
+    "start": 0.0,
+    "duration": 19.6,
+    "zoom": 1.089,
+    "layout": "facecam_stack"
+  },
+  "file": "/home/runner/work/gta6-clip-operator/gta6-clip-operator/output/yt_main__20261123-005556-16049a.mp4",
+  "hook": "\u201cMan, at least you know I'm Dominican\u201d",
+  "hook_id": "quote",
+  "hook_kind": "quote",
+  "edit": {
+    "bounds": [
+      2.19,
+      21.54
+    ],
+    "segments": [
+      [
+        2.19,
+        21.54
+      ]
+    ],
+    "cold_open": [
+      9.5,
+      11.2
+    ],
+    "cuts": 0
+  },
+  "captions": true,
+  "caption_words": 47,
+  "caption": "\u201cMan, at least you know I'm Dominican\u201d\n\n\ud83c\udfa5 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#gta6 #gaming #gtavi #dasgasdom3 #shorts",
+  "title": "Dasgas Dom: \u201cMan, at least you know I'm Dominican\u201d | GTA 6",
+  "disclosure_rendered": true,
+  "transcript": "What are you doing here? What up? Ok. Like, talk about some old, it's always our Black people. And it's always our fucking dirty ass Dominicans. Ok, man, at least you know I'm Dominican. Me no Black nigga. Me no fucking Black nigga. Pop, pop, pop, pop, pop, pop. Ok, ok, ok.",
+  "inspect": {
+    "letterbox": 0.0,
+    "black": 0.0,
+    "hash": [
+      9255091473742323808,
+      9250447101063094368,
+      9250640616317542496,
+      9250640616317542496,
+      9250587838681735264,
+      9250587838682783840,
+      10439520549334442080,
+      9250640615242752096,
+      9250499878829187168,
+      10407942575249449056,
+      9255021070642602080,
+      9255021070642602080
+    ],
+    "mean_db": -13.9,
+    "duration": 20.0
+  },
+  "status": "rejected",
+  "created": "2026-11-23T00:56:49.058534",
+  "checks": {
+    "no_story_spoiler": true,
+    "no_licensed_music": null,
+    "footage_rights_ok": true,
+    "disclosure_ok": true
+  },
+  "quality": 0.686,
+  "reaction_score": 2,
+  "compliance": {
+    "platform_allowed": {
+      "pass": true,
+      "why": ""
+    },
+    "campaign_window": {
+      "pass": true,
+      "why": ""
+    },
+    "source_authorized": {
+      "pass": true,
+      "why": ""
+    },
+    "duration": {
+      "pass": true,
+      "why": ""
+    },
+    "captions_present": {
+      "pass": true,
+      "why": ""
+    },
+    "transcript_safe": {
+      "pass": false,
+      "why": "explicit or hateful language in clip"
+    },
+    "title_clean": {
+      "pass": true,
+      "why": ""
+    },
+    "no_spoiler_in_title": {
+      "pass": true,
+      "why": ""
+    },
+    "title_accurate": {
+      "pass": true,
+      "why": ""
+    },
+    "hashtag #dasgasdom3": {
+      "pass": true,
+      "why": ""
+    },
+    "credit kick.com/dasgasd3m": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_on_screen": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_in_caption": {
+      "pass": true,
+      "why": ""
+    },
+    "unique_to_campaign": {
+      "pass": true,
+      "why": ""
+    },
+    "daily_cap": {
+      "pass": true,
+      "why": ""
+    },
+    "quality_floor": {
+      "pass": true,
+      "why": ""
+    }
+  },
+  "reject_reasons": [
+    "transcript_safe: explicit or hateful language in clip"
+  ]
+}
