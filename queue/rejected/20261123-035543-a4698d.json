@@ -24,7 +24,7 @@
     "layout": "facecam_stack"
   },
   "file": "/home/runner/work/gta6-clip-operator/gta6-clip-operator/output/yt_main__20261123-035543-a4698d.mp4",
-  "hook": "\u201cI'll burrow him\u201d",
+  "hook": "“I'll burrow him”",
   "hook_id": "quote",
   "hook_kind": "quote",
   "edit": {
@@ -50,8 +50,8 @@
   },
   "captions": true,
   "caption_words": 26,
-  "caption": "\u201cI'll burrow him\u201d\n\n\ud83c\udfa5 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#shorts #dasgasdom3 #gta6 #gtavi #gaming",
-  "title": "Dasgas Dom: \u201cI'll burrow him\u201d | GTA 6",
+  "caption": "“I'll burrow him”\n\n🎥 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#shorts #dasgasdom3 #gta6 #gtavi #gaming",
+  "title": "Dasgas Dom: “I'll burrow him” | GTA 6",
   "disclosure_rendered": true,
   "muted_words": 0,
   "transcript": "Take a shower? Oh, bet. Mmm. Okay. I'll burrow him. There's something in the guy who was hanging around me, too. Right? Oh, yeah! Oh, yeah! Oh, yeah! Scrub, bitch! Mmm.",
@@ -75,7 +75,7 @@
     "mean_db": -14.1,
     "duration": 20.0
   },
-  "status": "review",
+  "status": "rejected",
   "created": "2026-11-23T03:56:32.185954",
   "checks": {
     "no_story_spoiler": true,
@@ -152,5 +152,6 @@
     }
   },
   "value": 0.7511,
-  "review_asset": "draft:review-queue/yt_main__20261123-035543-a4698d.mp4"
+  "review_asset": "draft:review-queue/yt_main__20261123-035543-a4698d.mp4",
+  "rejected_reason": "Nudity/sexual content: in-game shower scene with a nude character on screen for the whole clip (same scene already rejected as 20261122-055621-9cde81); Dom's commentary ('Scrub, b****') adds nothing - not YouTube/sponsor safe. Filler quote hook."
 }

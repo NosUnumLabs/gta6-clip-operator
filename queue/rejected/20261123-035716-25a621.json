@@ -50,7 +50,7 @@
   },
   "captions": true,
   "caption_words": 36,
-  "caption": "Dasgas Dom wasn't ready for this\n\n\ud83c\udfa5 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#gtavi #dasgasdom3 #gaming #gta6 #shorts",
+  "caption": "Dasgas Dom wasn't ready for this\n\n🎥 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#gtavi #dasgasdom3 #gaming #gta6 #shorts",
   "title": "Dasgas Dom wasn't ready for this | GTA 6",
   "disclosure_rendered": true,
   "muted_words": 0,
@@ -75,7 +75,7 @@
     "mean_db": -15.6,
     "duration": 18.952
   },
-  "status": "review",
+  "status": "rejected",
   "created": "2026-11-23T03:58:36.169014",
   "checks": {
     "no_story_spoiler": true,
@@ -152,5 +152,6 @@
     }
   },
   "value": 0.5086,
-  "review_asset": "draft:review-queue/yt_main__20261123-035716-25a621.mp4"
+  "review_asset": "draft:review-queue/yt_main__20261123-035716-25a621.mp4",
+  "rejected_reason": "Crude sexual line captioned ('Suck my f****** nuts'); captions overlap/duplicate ('IT! COME' doubled, 'YOU'RE GONNA' over another line); tow-truck story sequence with no clear setup->payoff; near-duplicate of rejected 20261122-055738-49bb5a (same tow-truck moment and line)."
 }
