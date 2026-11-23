@@ -62,7 +62,10 @@ def produce(cfg, L, max_vods=2, per_vod=6):
                     clips, dur = find_highlights(audio, cfg, chat_offsets=chat)
                     log(cfg, f"[agent] {vod['streamer']} '{vod['title'][:50]}' {dur/60:.0f}min "
                              f"-> {len(clips)} highlights (chat={'yes' if chat else 'no'})")
-                    for i, c in enumerate(clips[:per_vod]):
+                    tried = 0
+                    for i, c in enumerate(clips):
+                        if tried >= per_vod:
+                            break  # off-game skips are cheap and don't count toward the render budget
                         tag = new_id()
                         s0 = max(0.0, c["start"] - pad)
                         sec = sources.fetch_section(vod, s0, c["end"] + pad, work, tag)
@@ -88,6 +91,7 @@ def produce(cfg, L, max_vods=2, per_vod=6):
                             log(cfg, f"[gate] skip {tag}: off-game (full-screen camera {bfr:.0%} of frames)")
                             sec.unlink(missing_ok=True)
                             continue
+                        tried += 1
                         insp = autoreview.inspect(sec, cfg)
                         acc = accounts[made % len(accounts)]
                         job = _render_job(cfg, L, camp, acc, vod, sec, local, insp, tag)
@@ -252,6 +256,8 @@ def _render_job(cfg, L, camp, acc, vod, sec, clip, insp, tag):
     react = sum(1 for w in near if w[2].strip(".,!?\"'").lower() in react_words
                 or w[2].endswith("!") or w[2].endswith("?"))
     job["reaction_score"] = react
+    if cfg.get("quality", {}).get("slur_policy", "skip") == "skip" and any(edit.is_slur(w[2]) for w in cut_words):
+        fails.append("slur_in_clip (slur_policy: skip)")
     if react < cfg["autoreview"].get("min_reaction_words", 2):
         fails.append(f"no_reaction: only {react} reaction words within 4 s of the peak")
     job["compliance"] = checklist

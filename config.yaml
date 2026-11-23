@@ -16,7 +16,7 @@ detection:
   max_clip_s: 30   # breakout streamer clips run 8-25 s (Nov 2026 outliers)
   pre_roll_s: 5
   post_roll_s: 5
-  top_n_per_source: 10
+  top_n_per_source: 40   # many loud moments are off-game; the layout gate skips them cheaply
   loudness_weight: 0.7
   scene_weight: 0.3
   chat_weight: 0.8
@@ -161,4 +161,5 @@ quality:
   cold_open: true
   max_posts_per_campaign_per_day: 3
   review_first_n: 10
-  review_all: true   # every clip is checked by the reviewer agent before it can post
+  review_all: true
+  slur_policy: skip   # skip = drop clips containing slurs; mute = silence + mask them and keep the clip (owner's call)   # every clip is checked by the reviewer agent before it can post
