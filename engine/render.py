@@ -54,14 +54,21 @@ def render_clip(src, clip, account, hook, out_path, cfg, seed=None, ass_path=Non
     hook_y = "h*0.16"
     if layout == "facecam_rect":
         fx, fy, fw, fh = facecam
-        from .layout import TOP_FRAC
+        from .layout import TOP_FRAC, _probe_wh
+        gx = "(iw-ow)/2"
+        try:  # cam box on the left side of the stream: start the gameplay crop past it
+            srcw = _probe_wh(src)[0]
+            if (fx + fw) / srcw < 0.4:
+                gx = f"'min(iw-ow,max((iw-ow)/2,iw*{(fx + fw) / srcw + 0.03:.3f}))'"
+        except Exception:
+            pass
         top = int(H * TOP_FRAC) // 2 * 2
         bot = H - top
         v = (f"[0:v]split[a][b];"
              f"[a]crop={fw}:{fh}:{fx}:{fy},scale={W}:{top}:force_original_aspect_ratio=increase,crop={W}:{top}"
              + (f",scale=w='{W}*(1+0.18*between(t,{payoff_t:.2f},{payoff_t + 0.7:.2f}))':h=-2:eval=frame,"
                 f"crop={W}:{top}" if payoff_t is not None else "") + "[cam];"
-             f"[b]scale=-2:{bot},crop={W}:{bot}[game];"
+             f"[b]scale=-2:{bot},crop={W}:{bot}:{gx}:0[game];"
              f"[cam][game]vstack,setsar=1[base]")
         hook_y = "h*0.07"   # top of the facecam; the seam belongs to the word-pop captions
     elif layout == "crop":

@@ -18,7 +18,7 @@ def _pcm16k(path):
     return np.frombuffer(raw, dtype=np.float32).copy()
 
 
-def transcribe(path, model_size="base"):
+def transcribe(path, model_size="small"):
     global _MODEL, LAST_PROB
     LAST_PROB = None
     try:
@@ -29,7 +29,8 @@ def transcribe(path, model_size="base"):
     try:
         if _MODEL is None:
             _MODEL = WhisperModel(model_size, device="cpu", compute_type="int8")
-        segs, _ = _MODEL.transcribe(_pcm16k(path), word_timestamps=True, vad_filter=True)
+        segs, _ = _MODEL.transcribe(_pcm16k(path), word_timestamps=True, vad_filter=True, language="en",
+                                  condition_on_previous_text=False)
         words, probs = [], []
         for s in segs:
             for w in (s.words or []):

@@ -65,3 +65,42 @@ def detect_facecam(path, n=14):
     x0 = int(np.clip(cx - cw / 2, 0, W - cw))
     y0 = int(np.clip(cy - ch * 0.45, 0, H - ch))
     return (x0, y0, int(cw) // 2 * 2, int(ch) // 2 * 2)
+
+
+def big_face_ratio(path, n=10, min_frac=0.11):
+    """Share of sampled frames whose largest face is wider than `min_frac` of the frame.
+    In a gameplay layout the streamer sits in a small cam box (face ~5-8% of width); a
+    big face means a full-screen camera, i.e. IRL / just-chatting, not GTA gameplay."""
+    casc = _cascade()
+    if casc is None:
+        return 0.0
+    W, H = _probe_wh(path)
+    sh = int(SAMPLE_W * H / W) // 2 * 2
+    p = subprocess.run(["ffmpeg", "-v", "error", "-i", str(path), "-an", "-vf",
+                        f"fps=1,scale={SAMPLE_W}:{sh},format=gray", "-frames:v", str(n),
+                        "-f", "rawvideo", "-"], capture_output=True)
+    a = np.frombuffer(p.stdout, dtype=np.uint8)
+    k = len(a) // (SAMPLE_W * sh)
+    if k == 0:
+        return 0.0
+    big = 0
+    for f in a[: k * SAMPLE_W * sh].reshape(k, sh, SAMPLE_W):
+        faces = casc.detectMultiScale(f, scaleFactor=1.1, minNeighbors=6, minSize=(28, 28))
+        if len(faces) and max(r[2] for r in faces) > min_frac * SAMPLE_W:
+            big += 1
+    return big / k
+
+
+def box_to_rect(path, box):
+    """Configured facecam box (fractions x, y, w, h of the frame) -> pixel crop sized to the
+    top panel's aspect, anchored on the box (so a corner cam fills the panel)."""
+    W, H = _probe_wh(path)
+    x, y, w, h = box
+    bx, by, bw, bh = x * W, y * H, w * W, h * H
+    aspect = 1080 / (1920 * TOP_FRAC)
+    if bw / bh > aspect:   # box wider than panel: trim width around centre
+        cw, ch = bh * aspect, bh
+        bx += (bw - cw) / 2
+    else:                  # box taller: trim height, keep the top (face) part
+        cw, ch = bw, bw / aspect
+    return (int(bx) // 2 * 2, int(by) // 2 * 2, int(cw) // 2 * 2, int(ch) // 2 * 2)

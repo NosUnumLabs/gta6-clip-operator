@@ -49,7 +49,9 @@ autoreview:
   stale_hours: 18
   days_ahead: 1
   max_vods_per_cycle: 2
-  candidates_per_vod: 6
+  candidates_per_vod: 10
+  min_reaction_words: 2
+  max_big_face_ratio: 0.4
 accounts:
 - id: yt_main
   platform: youtube
@@ -100,6 +102,7 @@ campaigns:
     url: https://kick.com/dasgasd3m/videos
     date_from: '2026-11-18'   # brief (updated): any GTA 6 playthrough stream from Nov 18 on
     title_must_contain: [gta]  # skip his IRL / just-chatting streams
+    facecam_box: [0.0, 0.0, 0.262, 0.38]   # Dom's cam: fixed top-left box on his GTA layout
   required_credit:
   - kick.com/dasgasd3m
   max_posts_per_day: 3

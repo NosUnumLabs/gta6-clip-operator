@@ -68,6 +68,15 @@ def produce(cfg, L, max_vods=2, per_vod=6):
                         sec = sources.fetch_section(vod, s0, c["end"] + pad, work, tag)
                         local = {"start": c["start"] - s0, "end": c["end"] - s0,
                                  "score": c["score"], "peak": c["peak"], "peak_rel": c["peak"] - s0}
+                        from .layout import big_face_ratio
+                        try:
+                            bfr = big_face_ratio(sec)
+                        except Exception:
+                            bfr = 0.0
+                        if bfr > cfg["autoreview"].get("max_big_face_ratio", 0.4):
+                            log(cfg, f"[gate] skip {tag}: off-game (full-screen camera {bfr:.0%} of frames)")
+                            sec.unlink(missing_ok=True)
+                            continue
                         insp = autoreview.inspect(sec, cfg)
                         acc = accounts[made % len(accounts)]
                         job = _render_job(cfg, L, camp, acc, vod, sec, local, insp, tag)
@@ -158,7 +167,12 @@ def _render_job(cfg, L, camp, acc, vod, sec, clip, insp, tag):
     # 5) clean word-synced captions (masked strong language)
     from .layout import detect_facecam, TOP_FRAC
     try:
-        cam = detect_facecam(edited)
+        src_cfg = next((x for x in camp.get("sources", []) if x.get("name") == vod.get("streamer")), {}) \
+            if isinstance(vod, dict) else {}
+        box = src_cfg.get("facecam_box") or next((x.get("facecam_box") for x in camp.get("sources", [])
+                                                  if x.get("facecam_box")), None)
+        from .layout import box_to_rect
+        cam = box_to_rect(edited, box) if box else detect_facecam(edited)
     except Exception:
         cam = None
     ass = None
@@ -182,6 +196,13 @@ def _render_job(cfg, L, camp, acc, vod, sec, clip, insp, tag):
                        seed=tag, ass_path=ass, jitter=False, disclosure=disclosure, facecam=cam,
                        flash_at=[cold_len] if cold_len else [], payoff_t=payoff_t)
     meta["layout"] = "facecam_stack" if cam else "blurfill"
+    try:  # the real length after jump cuts (the compliance duration check uses this)
+        import subprocess as _sp
+        meta["duration"] = round(float(_sp.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                                                "-of", "csv=p=0", str(out)], capture_output=True,
+                                               text=True).stdout.strip()), 2)
+    except Exception:
+        pass
     for f in (ass, edited):
         if f:
             Path(f).unlink(missing_ok=True)
@@ -207,6 +228,15 @@ def _render_job(cfg, L, camp, acc, vod, sec, clip, insp, tag):
                                               insp.get("letterbox", 0), prob)
     checklist, fails = compliance.check(job, camp, acc, cfg, transcript,
                                         _posted_today(cfg, camp["id"]), [])
+    # was there a real reaction at the payoff? (loud != funny)
+    react_words = {"bro", "bruh", "what", "no", "nah", "yo", "wait", "why", "oh", "dude", "huh", "how", "stop",
+                   "haha", "hahaha", "lol", "lmao", "omg", "god", "damn", "wow", "yooo", "nooo", "whoa", "wtf"}
+    near = [w for w in (words or []) if abs(w[0] - clip["peak_rel"]) <= 4.0]
+    react = sum(1 for w in near if w[2].strip(".,!?\"'").lower() in react_words
+                or w[2].endswith("!") or w[2].endswith("?"))
+    job["reaction_score"] = react
+    if react < cfg["autoreview"].get("min_reaction_words", 2):
+        fails.append(f"no_reaction: only {react} reaction words within 4 s of the peak")
     job["compliance"] = checklist
     job["_compliance_fail"] = fails
     return job
@@ -463,7 +493,7 @@ def cycle(cfg, live=False):
         appr = auto_approve(cfg, L)
         pause = cfg["project"].get("posting_paused_until")
         paused = bool(pause) and time.time() < dt.datetime.fromisoformat(str(pause)).timestamp()
-        sched = 0 if paused else pipeline.schedule(cfg, days=cfg["autoreview"].get("days_ahead", 1))
+        sched = [] if paused else pipeline.schedule(cfg, days=cfg["autoreview"].get("days_ahead", 1))
         posted = post_due(cfg, L, live)
         if live:
             refresh_links(cfg)
