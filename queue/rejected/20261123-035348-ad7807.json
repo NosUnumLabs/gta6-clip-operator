@@ -1,0 +1,153 @@
+{
+  "id": "20261123-035348-ad7807",
+  "account_id": "yt_main",
+  "platform": "youtube",
+  "campaign_id": "ruckus_dasgasd3m",
+  "campaign_url": "https://contentrewards.com/c/campaigns/051002dd-5c46-43d0-a446-43f2957ba3a9",
+  "submit_within_min": 30,
+  "after_post_note": "",
+  "source": "https://kick.com/dasgasd3m/videos/aacf8cb5-681b-4f63-91a8-37f52197a4a4",
+  "vod_title": "IRL JASON FROM GTA 6 STREAM!",
+  "streamer": "Dasgas Dom",
+  "rights_ok": true,
+  "highlight": {
+    "start": 3.0,
+    "end": 17.0,
+    "score": 1.455,
+    "peak": 22395.5,
+    "peak_rel": 10.0
+  },
+  "render": {
+    "start": 0.0,
+    "duration": 17.98,
+    "zoom": 1.03,
+    "layout": "facecam_stack"
+  },
+  "file": "/home/runner/work/gta6-clip-operator/gta6-clip-operator/output/yt_main__20261123-035348-ad7807.mp4",
+  "hook": "Dasgas Dom's reaction to GTA 6 \ud83d\ude2d",
+  "hook_id": "s_reaction",
+  "hook_kind": "template",
+  "edit": {
+    "bounds": [
+      0.0,
+      16.28
+    ],
+    "segments": [
+      [
+        0.0,
+        16.28
+      ]
+    ],
+    "cold_open": [
+      9.5,
+      11.2
+    ],
+    "cuts": 0
+  },
+  "captions": true,
+  "caption_words": 15,
+  "caption": "Dasgas Dom's reaction to GTA 6 \ud83d\ude2d\n\n\ud83c\udfa5 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#gta6 #gaming #shorts #gtavi #dasgasdom3",
+  "title": "Dasgas Dom's reaction to GTA 6 \ud83d\ude2d | GTA 6",
+  "disclosure_rendered": true,
+  "muted_words": 0,
+  "transcript": "yeah your games fuck oh shit it's the morning fuck me good morning good morning imagine this with DLF",
+  "inspect": {
+    "letterbox": 0.0,
+    "black": 0.0,
+    "hash": [
+      13328672447433330659,
+      13328672447433330659,
+      13328672447164895203,
+      13618028723492016099,
+      13762709060544548771,
+      13762715397533780963,
+      13618033129876672243,
+      13402063473694532594,
+      13761264303358135026,
+      13326952678120271603,
+      13616906945679895155,
+      13618025422761258610
+    ],
+    "mean_db": -12.6,
+    "duration": 20.0
+  },
+  "status": "rejected",
+  "created": "2026-11-23T03:54:43.077801",
+  "checks": {
+    "no_story_spoiler": true,
+    "no_licensed_music": null,
+    "footage_rights_ok": true,
+    "disclosure_ok": true
+  },
+  "quality": 0.555,
+  "reaction_score": 0,
+  "compliance": {
+    "platform_allowed": {
+      "pass": true,
+      "why": ""
+    },
+    "campaign_window": {
+      "pass": true,
+      "why": ""
+    },
+    "source_authorized": {
+      "pass": true,
+      "why": ""
+    },
+    "duration": {
+      "pass": true,
+      "why": ""
+    },
+    "captions_present": {
+      "pass": true,
+      "why": ""
+    },
+    "transcript_safe": {
+      "pass": true,
+      "why": ""
+    },
+    "title_clean": {
+      "pass": true,
+      "why": ""
+    },
+    "no_spoiler_in_title": {
+      "pass": true,
+      "why": ""
+    },
+    "title_accurate": {
+      "pass": true,
+      "why": ""
+    },
+    "hashtag #dasgasdom3": {
+      "pass": true,
+      "why": ""
+    },
+    "credit kick.com/dasgasd3m": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_on_screen": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_in_caption": {
+      "pass": true,
+      "why": ""
+    },
+    "unique_to_campaign": {
+      "pass": true,
+      "why": ""
+    },
+    "daily_cap": {
+      "pass": true,
+      "why": ""
+    },
+    "quality_floor": {
+      "pass": true,
+      "why": ""
+    }
+  },
+  "reject_reasons": [
+    "no_reaction: only 0 reaction words within 4 s of the peak"
+  ]
+}

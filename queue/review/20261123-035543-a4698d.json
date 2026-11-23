@@ -1,0 +1,156 @@
+{
+  "id": "20261123-035543-a4698d",
+  "account_id": "yt_main",
+  "platform": "youtube",
+  "campaign_id": "ruckus_dasgasd3m",
+  "campaign_url": "https://contentrewards.com/c/campaigns/051002dd-5c46-43d0-a446-43f2957ba3a9",
+  "submit_within_min": 30,
+  "after_post_note": "",
+  "source": "https://kick.com/dasgasd3m/videos/aacf8cb5-681b-4f63-91a8-37f52197a4a4",
+  "vod_title": "IRL JASON FROM GTA 6 STREAM!",
+  "streamer": "Dasgas Dom",
+  "rights_ok": true,
+  "highlight": {
+    "start": 3.0,
+    "end": 17.0,
+    "score": 1.419,
+    "peak": 40403.0,
+    "peak_rel": 10.0
+  },
+  "render": {
+    "start": 0.0,
+    "duration": 18.1,
+    "zoom": 1.105,
+    "layout": "facecam_stack"
+  },
+  "file": "/home/runner/work/gta6-clip-operator/gta6-clip-operator/output/yt_main__20261123-035543-a4698d.mp4",
+  "hook": "\u201cI'll burrow him\u201d",
+  "hook_id": "quote",
+  "hook_kind": "quote",
+  "edit": {
+    "bounds": [
+      2.8,
+      20.12
+    ],
+    "segments": [
+      [
+        2.8,
+        3.7
+      ],
+      [
+        4.55,
+        20.12
+      ]
+    ],
+    "cold_open": [
+      9.5,
+      11.2
+    ],
+    "cuts": 1
+  },
+  "captions": true,
+  "caption_words": 26,
+  "caption": "\u201cI'll burrow him\u201d\n\n\ud83c\udfa5 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#shorts #dasgasdom3 #gta6 #gtavi #gaming",
+  "title": "Dasgas Dom: \u201cI'll burrow him\u201d | GTA 6",
+  "disclosure_rendered": true,
+  "muted_words": 0,
+  "transcript": "Take a shower? Oh, bet. Mmm. Okay. I'll burrow him. There's something in the guy who was hanging around me, too. Right? Oh, yeah! Oh, yeah! Oh, yeah! Scrub, bitch! Mmm.",
+  "inspect": {
+    "letterbox": 0.0,
+    "black": 0.0,
+    "hash": [
+      10308650551223323916,
+      11285347299399244569,
+      12189466483651469087,
+      12623500898815729215,
+      9783372022171370753,
+      9929747840481170693,
+      9784509512022328597,
+      10074146676752450323,
+      10882551657767831307,
+      10217697267788612947,
+      10217697267721504069,
+      9783655833509495555
+    ],
+    "mean_db": -14.1,
+    "duration": 20.0
+  },
+  "status": "review",
+  "created": "2026-11-23T03:56:32.185954",
+  "checks": {
+    "no_story_spoiler": true,
+    "no_licensed_music": null,
+    "footage_rights_ok": true,
+    "disclosure_ok": true
+  },
+  "quality": 0.674,
+  "reaction_score": 4,
+  "compliance": {
+    "platform_allowed": {
+      "pass": true,
+      "why": ""
+    },
+    "campaign_window": {
+      "pass": true,
+      "why": ""
+    },
+    "source_authorized": {
+      "pass": true,
+      "why": ""
+    },
+    "duration": {
+      "pass": true,
+      "why": ""
+    },
+    "captions_present": {
+      "pass": true,
+      "why": ""
+    },
+    "transcript_safe": {
+      "pass": true,
+      "why": ""
+    },
+    "title_clean": {
+      "pass": true,
+      "why": ""
+    },
+    "no_spoiler_in_title": {
+      "pass": true,
+      "why": ""
+    },
+    "title_accurate": {
+      "pass": true,
+      "why": ""
+    },
+    "hashtag #dasgasdom3": {
+      "pass": true,
+      "why": ""
+    },
+    "credit kick.com/dasgasd3m": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_on_screen": {
+      "pass": true,
+      "why": ""
+    },
+    "disclosure_in_caption": {
+      "pass": true,
+      "why": ""
+    },
+    "unique_to_campaign": {
+      "pass": true,
+      "why": ""
+    },
+    "daily_cap": {
+      "pass": true,
+      "why": ""
+    },
+    "quality_floor": {
+      "pass": true,
+      "why": ""
+    }
+  },
+  "value": 0.7511,
+  "review_asset": "draft:review-queue/yt_main__20261123-035543-a4698d.mp4"
+}

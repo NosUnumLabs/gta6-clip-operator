@@ -244,3 +244,14 @@
 2026-11-23 02:56:57 [gate] reject 20261123-025559-4dde7f: quality: highlight score 1.116 < floor
 2026-11-23 02:57:57 [gate] reject 20261123-025657-43ca39: quality: highlight score 1.097 < floor
 2026-11-23 02:57:57 [cycle] made=0 approved=0 scheduled=0 posted=0 learned=0
+2026-11-23 03:53:48 [agent] Dasgas Dom 'IRL JASON FROM GTA 6 STREAM!' 843min -> 40 highlights (chat=no)
+2026-11-23 03:54:43 [gate] reject 20261123-035348-ad7807: no_reaction: only 0 reaction words within 4 s of the peak
+2026-11-23 03:55:43 [gate] reject 20261123-035443-4a17af: quality_floor: quality 0.54 below floor
+2026-11-23 03:56:52 [gate] skip 20261123-035632-84ca55: off-game (gameplay layout in 10% of frames)
+2026-11-23 03:57:16 [gate] reject 20261123-035652-979689: technical: mostly black frames; duration: 3.9s outside 15-58s; no_reaction: only 0 reaction words within 4 s of the peak
+2026-11-23 03:59:31 [gate] reject 20261123-035836-22c8ef: no_reaction: only 0 reaction words within 4 s of the peak
+2026-11-23 04:00:29 [gate] reject 20261123-035931-0e920c: transcript_safe: explicit or hateful language in clip; slur_in_clip (slur_policy: skip); no_reaction: only 1 reaction words within 4 s of the peak
+2026-11-23 04:01:26 [gate] reject 20261123-040029-fc5260: quality_floor: quality 0.55 below floor; no_reaction: only 0 reaction words within 4 s of the peak
+2026-11-23 04:02:29 [gate] reject 20261123-040126-88fdda: slur_in_clip (slur_policy: skip)
+2026-11-23 04:03:11 [gate] reject 20261123-040229-3a4466: slur_in_clip (slur_policy: skip)
+2026-11-23 04:03:16 [cycle] made=2 approved=0 scheduled=0 posted=0 learned=0
