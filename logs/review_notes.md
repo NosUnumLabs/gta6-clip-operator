@@ -9,3 +9,7 @@
 - SYSTEMIC: every highlight has start=3.0 and peak_rel 10-12 (looks like a fixed fallback window, not a detected moment) -> 4/5 clips have no payoff.
 - SYSTEMIC: transcript_safe/compliance passed a nude shower scene and off-game desktop/IRL segments; no visual safety or gameplay-presence check. VOD title filter ('gta') lets in non-gameplay segments of GTA-titled streams.
 - SYSTEMIC: layout=blurfill with small gameplay + tiny facecam, not the STYLE.md 50/50 split; review renders 774b0e/342d91 already have a hook headline burned in.
+
+## 2026-11-23 run: 0 approved, 1 rejected
+- 20261123-005831-c14391 REJECT: Off-game footage (TikTok LIVE phone screen + room cam, no GTA 6 gameplay); no setup->payoff, just shouting about a chatter; captions carry 'I don't give a f***, b****' - not sponsor-safe; filler template hook.
+- SYSTEMIC (repeat of 11-22): still no gameplay-presence check - a 'GTA 6 STREAM' titled VOD's pre-game phone/IRL segment passed every compliance check; highlight again starts at 3.0 s (fallback window). Layout facecam_stack used Dom's whole webcam as 'facecam' and the phone screen as 'gameplay'.
