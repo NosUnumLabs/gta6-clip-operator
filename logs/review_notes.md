@@ -13,3 +13,8 @@
 ## 2026-11-23 run: 0 approved, 1 rejected
 - 20261123-005831-c14391 REJECT: Off-game footage (TikTok LIVE phone screen + room cam, no GTA 6 gameplay); no setup->payoff, just shouting about a chatter; captions carry 'I don't give a f***, b****' - not sponsor-safe; filler template hook.
 - SYSTEMIC (repeat of 11-22): still no gameplay-presence check - a 'GTA 6 STREAM' titled VOD's pre-game phone/IRL segment passed every compliance check; highlight again starts at 3.0 s (fallback window). Layout facecam_stack used Dom's whole webcam as 'facecam' and the phone screen as 'gameplay'.
+
+## 2026-11-23 run 2: 0 approved, 2 rejected
+- 20261123-014924-c96a0a REJECT: Slur in transcript (n-word x2, audio-muted only) plus heavy swearing; not sponsor-safe. Moment (something appears out of nowhere while driving) has no visible setup; generic template hook.
+- 20261123-015521-a42e99 REJECT: Slur in transcript (n-word, muted) + 'bitch'; transcript is incoherent fragments with no clear setup->payoff; 3-segment jump-cut edit; generic 'reaction to GTA 6' hook; reaction_score 2.
+- SYSTEMIC: slur policy mismatch - engine/edit.py mutes slurs and lets the clip pass (compliance transcript_safe ignores SLUR_RE), but the review bar rejects any clip with a slur; both clips this run wasted a render on it. Engine should hard-skip windows whose transcript matches SLUR_RE. Also highlight start=3.0 fallback window and identical cold_open [9.5,11.2] on both clips (looks hard-coded).

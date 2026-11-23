@@ -50,7 +50,7 @@
   },
   "captions": true,
   "caption_words": 34,
-  "caption": "Dasgas Dom wasn't ready for this\n\n\ud83c\udfa5 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#gaming #shorts #gtavi #dasgasdom3 #gta6",
+  "caption": "Dasgas Dom wasn't ready for this\n\n🎥 Dasgas Dom\nWatch Dom live on Kick: kick.com/dasgasd3m  #ad\n\n#gaming #shorts #gtavi #dasgasdom3 #gta6",
   "title": "Dasgas Dom wasn't ready for this | GTA 6",
   "disclosure_rendered": true,
   "muted_words": 2,
@@ -75,7 +75,7 @@
     "mean_db": -13.6,
     "duration": 20.0
   },
-  "status": "review",
+  "status": "rejected",
   "created": "2026-11-23T01:50:43.346926",
   "checks": {
     "no_story_spoiler": true,
@@ -152,5 +152,7 @@
     }
   },
   "value": 0.6827,
-  "review_asset": "draft:review-queue/yt_main__20261123-014924-c96a0a.mp4"
+  "review_asset": "draft:review-queue/yt_main__20261123-014924-c96a0a.mp4",
+  "rejected_reason": "Slur in transcript (n-word x2, audio-muted only) plus heavy swearing; not sponsor-safe. Moment (something appears out of nowhere while driving) has no visible setup; generic template hook.",
+  "rejected_at": 1795400052
 }
